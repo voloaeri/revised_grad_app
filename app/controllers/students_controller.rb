@@ -19,6 +19,9 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    puts "in student edit"
+    @job = Job.where(:id => Student.find(params[:id])).first
+
   end
 
   # POST /students

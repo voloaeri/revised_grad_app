@@ -19,6 +19,8 @@ class JobsController < ApplicationController
 
   # GET /jobs/1/edit
   def edit
+    puts "in Edit"
+    @job = Job.find(params[:id])
   end
 
   # POST /jobs
