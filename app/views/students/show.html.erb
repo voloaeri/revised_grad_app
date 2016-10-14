@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @student.firstName %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @student.lastName %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @student.age %>
+</p>
+
+<% @student.jobs.all.each do |job| %>       <!--Goes to the junction table between student and course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
+    <tr class="ctable">
+      <td class="ctable"> <%= job.title =%></td>
+      <td class="ctable"> <%= job.semester =%></td>
+      <%= link_to 'Edit', edit_job_path(job) %> |
+    </tr>
+<% end %>
+
+<br/>
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>
