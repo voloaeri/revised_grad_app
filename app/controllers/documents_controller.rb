@@ -25,14 +25,33 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
+    # @document = Document.new(document_params)
+    #
+    # respond_to do |format|
+    #   if @document.save
+    #     format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully created.' }
+    #     format.json { render :show, status: :created, location: @document }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @document.errors, status: :unprocessable_entity }
+    #   end
+    # end
 
+    uploaded_io = params[:document][:location]
+    studentName = Student.find(params[:document][:student_id]).lastName
+    folder = "public/uploads/#{studentName}"
+    FileUtils.mkdir_p folder
+    File.open(Rails.root.join('public', "uploads/#{studentName}", uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    params[:document][:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
+    @document = Document.new(document_params)
     respond_to do |format|
       if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
-        format.json { render :show, status: :created, location: @document }
+        format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully updated.' }
+        format.json { render :show, status: :ok, location: @document }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
@@ -64,7 +83,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
+      format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

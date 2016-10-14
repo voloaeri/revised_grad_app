@@ -47,15 +47,12 @@
 
 <% @student.documents.all.each do |document| %>
     <tr>
-      <td><a target="_blank" href="<%= asset_path(document.location)  %>"> <%= document.title %> </a> </td>
-      <td><%= document.student %></td>
-      <td><%= link_to 'Show', document %></td>
-      <td><%= link_to 'Edit', edit_document_path(document) %></td>
-      <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
+      <td><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
+      <td><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
     </tr>
 <% end %>
 
-<%= form_for(@document, :url => url_for(:controller => 'documents', :action => 'update')) do |f| %>
+<%= form_for(@document, :url => url_for(:controller => 'documents', :action => 'create')) do |f| %>
     <div class="field">
       <%= f.label :File %>
       <%= f.file_field :location %>
@@ -81,23 +78,10 @@
                                               ], "Select One")) %>
     </div>
 
-    <!--<option>Background Preparation Worksheet</option>-->
-    <!--<option>Course Waiver</option>-->
-    <!--<option>M.S. Program of Study</option>-->
-    <!--<option>Outside Review Option</option>-->
-    <!--<option>Request for Appointment of M.S. Committee</option>-->
-    <!--<option>Ph.D. Program of Study</option>-->
-    <!--<option>Report of Disapproval of Dissertation Proposal</option>-->
-    <!--<option>Technical Writing Requirement</option>-->
-    <!--<option>Report of Preliminary Research Presentation</option>-->
-    <!--<option>Teaching Requirement</option>-->
-    <!--<option>Report of Research Discussion</option>-->
-    <!--<option>Program Product Requirement</option>-->
-
     <div class="actions">
       <%= f.submit "upload file" %>
     </div>
 <% end %>
-
+<td><%= link_to 'Delete Student', @student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <%= link_to 'Show', @student %> |
 <%= link_to 'Back', students_path %>

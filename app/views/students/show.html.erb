@@ -15,23 +15,21 @@
   <%= @student.age %>
 </p>
 
+<div> Jobs </div>
 <% @student.jobs.all.each do |job| %>       <!--Goes to the junction table between student and course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
     <tr class="ctable">
       <td class="ctable"> <%= job.title =%></td>
       <td class="ctable"> <%= job.semester =%></td>
-      <%= link_to 'Edit', edit_job_path(job) %> |
+      <br/>
     </tr>
 <% end %>
 
 <br/>
 
+<div> Documents </div>
 <% @student.documents.all.each do |document| %>
     <tr>
       <td><a target="_blank" href="<%= asset_path(document.location)  %>"> <%= document.title %> </a> </td>
-      <td><%= document.student %></td>
-      <td><%= link_to 'Show', document %></td>
-      <td><%= link_to 'Edit', edit_document_path(document) %></td>
-      <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
     </tr>
 <% end %>
 
