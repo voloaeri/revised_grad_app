@@ -20,8 +20,10 @@ class StudentsController < ApplicationController
   # GET /students/1/edit
   def edit
     puts "in student edit"
-    @job = Job.where(:id => Student.find(params[:id])).first
-
+    @job = Job.new(student: @student)
+    #@job.student = @student
+    #raise @job.inspect
+    @document = Document.new(student: @student)
   end
 
   # POST /students

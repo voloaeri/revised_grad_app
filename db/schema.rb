@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20161014035833) do
 
   create_table "documents", force: :cascade do |t|
-    t.string   "type"
+    t.string   "title"
     t.string   "location"
     t.integer  "student_id"
     t.datetime "created_at", null: false

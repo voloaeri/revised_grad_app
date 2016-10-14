@@ -26,11 +26,12 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+    #raise params.inspect
     @job = Job.new(job_params)
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to edit_student_url(@job.student_id), notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }

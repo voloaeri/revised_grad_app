@@ -2,7 +2,102 @@
 
 <%= render 'form', student: @student %>
 
-<%= render 'jobs/form', job: @job %>
+<% @student.jobs.all.each do |job| %>       <!--Goes to the junction table between student and course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
+    <tr class="ctable">
+      <td class="ctable"> <%= job.title =%></td>
+      <td class="ctable"> <%= job.semester =%></td>
+      <%= link_to 'Edit', edit_job_path(job) %> |
+      <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
+    </tr>
+<% end %>
+
+<br/>
+
+<%= form_for(@job, :url => url_for(:controller => 'jobs', :action => 'create')) do |f| %>
+    <% if @job.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+          <ul>
+            <% @job.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <%= f.hidden_field :student_id %>
+
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :semester %>
+      <%= f.text_field :semester %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
+
+<% @student.documents.all.each do |document| %>
+    <tr>
+      <td><a target="_blank" href="<%= asset_path(document.location)  %>"> <%= document.title %> </a> </td>
+      <td><%= document.student %></td>
+      <td><%= link_to 'Show', document %></td>
+      <td><%= link_to 'Edit', edit_document_path(document) %></td>
+      <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
+    </tr>
+<% end %>
+
+<%= form_for(@document, :url => url_for(:controller => 'documents', :action => 'update')) do |f| %>
+    <div class="field">
+      <%= f.label :File %>
+      <%= f.file_field :location %>
+    </div>
+
+    <%= f.hidden_field :student_id %>
+
+    <div class="field">
+      <%= f.label :Document_Type %>
+      <%= f.select(:title, options_for_select(["Select One",
+                                               "Background Preparation Worksheet",
+                                               "Course Waiver",
+                                               "M.S. Program of Study",
+                                               "Outside Review Option",
+                                               "Request for Appointment of M.S. Committee",
+                                               "Ph.D. Program of Study",
+                                               "Report of Disapproval of Dissertation Proposal",
+                                               "Technical Writing Requirement",
+                                               "Report of Preliminary Research Presentation",
+                                               "Teaching Requirement",
+                                               "Report of Research Discussion",
+                                               "Program Product Requirement"
+                                              ], "Select One")) %>
+    </div>
+
+    <!--<option>Background Preparation Worksheet</option>-->
+    <!--<option>Course Waiver</option>-->
+    <!--<option>M.S. Program of Study</option>-->
+    <!--<option>Outside Review Option</option>-->
+    <!--<option>Request for Appointment of M.S. Committee</option>-->
+    <!--<option>Ph.D. Program of Study</option>-->
+    <!--<option>Report of Disapproval of Dissertation Proposal</option>-->
+    <!--<option>Technical Writing Requirement</option>-->
+    <!--<option>Report of Preliminary Research Presentation</option>-->
+    <!--<option>Teaching Requirement</option>-->
+    <!--<option>Report of Research Discussion</option>-->
+    <!--<option>Program Product Requirement</option>-->
+
+    <div class="actions">
+      <%= f.submit "upload file" %>
+    </div>
+<% end %>
 
 <%= link_to 'Show', @student %> |
 <%= link_to 'Back', students_path %>

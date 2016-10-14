@@ -19,6 +19,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1/edit
   def edit
+    puts "in Document Edit"
   end
 
   # POST /documents
@@ -40,6 +41,13 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
+    uploaded_io = params[:document][:location]
+    folder = "public/uploads/#{@document.student.lastName}"
+    FileUtils.mkdir_p folder
+    File.open(Rails.root.join('public', "uploads/#{@document.student.lastName}", uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    params[:document][:location] = "uploads/#{@document.student.lastName}/#{uploaded_io.original_filename}"
     respond_to do |format|
       if @document.update(document_params)
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
@@ -69,6 +77,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:type, :location, :student_id)
+      params.require(:document).permit(:title, :location, :student_id)
     end
 end

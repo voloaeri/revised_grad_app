@@ -24,5 +24,18 @@
 <% end %>
 
 <br/>
+
+<% @student.documents.all.each do |document| %>
+    <tr>
+      <td><a target="_blank" href="<%= asset_path(document.location)  %>"> <%= document.title %> </a> </td>
+      <td><%= document.student %></td>
+      <td><%= link_to 'Show', document %></td>
+      <td><%= link_to 'Edit', edit_document_path(document) %></td>
+      <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
+    </tr>
+<% end %>
+
+<br/>
+
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>

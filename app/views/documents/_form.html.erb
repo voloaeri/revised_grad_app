@@ -1,32 +1,42 @@
 <%= form_for(document) do |f| %>
-  <% if document.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
-
-      <ul>
-      <% document.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="field">
+      <%= f.label :File %>
+      <%= f.file_field :location %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :type %>
-    <%= f.text_field :type %>
-  </div>
 
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
+    <div class="field">
+      <%= f.label :Document_Type %>
+      <%= f.select(:title, options_for_select(["Select One",
+                                               "Background Preparation Worksheet",
+                                               "Course Waiver",
+                                               "M.S. Program of Study",
+                                               "Outside Review Option",
+                                               "Request for Appointment of M.S. Committee",
+                                               "Ph.D. Program of Study",
+                                               "Report of Disapproval of Dissertation Proposal",
+                                               "Technical Writing Requirement",
+                                               "Report of Preliminary Research Presentation",
+                                               "Teaching Requirement",
+                                               "Report of Research Discussion",
+                                               "Program Product Requirement"
+                                              ], "Select One")) %>
+    </div>
 
-  <div class="field">
-    <%= f.label :student_id %>
-    <%= f.text_field :student_id %>
-  </div>
+    <!--<option>Background Preparation Worksheet</option>-->
+    <!--<option>Course Waiver</option>-->
+    <!--<option>M.S. Program of Study</option>-->
+    <!--<option>Outside Review Option</option>-->
+    <!--<option>Request for Appointment of M.S. Committee</option>-->
+    <!--<option>Ph.D. Program of Study</option>-->
+    <!--<option>Report of Disapproval of Dissertation Proposal</option>-->
+    <!--<option>Technical Writing Requirement</option>-->
+    <!--<option>Report of Preliminary Research Presentation</option>-->
+    <!--<option>Teaching Requirement</option>-->
+    <!--<option>Report of Research Discussion</option>-->
+    <!--<option>Program Product Requirement</option>-->
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit "upload file" %>
+    </div>
 <% end %>
