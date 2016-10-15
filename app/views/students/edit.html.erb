@@ -2,7 +2,80 @@
 
 <%= render 'form', student: @student %>
 
-<% @student.jobs.all.each do |job| %>       <!--Goes to the junction table between student and course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
+<div> Courses </div>
+<% @student.course_descriptions.all.each do |course| %>       <!--Goes to the junction table between student and @course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
+    <tr class="ctable">
+      <td class="ctable"> <%= course.name =%></td>
+      <td class="ctable"> <%= course.number =%></td>
+
+      <td class="ctable"> <%= course.section =%> </td>
+      <td class="ctable"> <%= course.semester =%> </td>
+      <td class=ctable"><%= course.category =%></td>
+      <td><%= link_to 'Edit', edit_course_description_path(course)%></td>
+      <td><%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr> <br/>
+<% end %>
+<br/>
+
+<%= form_for(@course_description, :url => url_for(:controller => 'course_descriptions', :action => 'search'), :remote => true) do |f| %>
+    <% if @course_description.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@course_description.errors.count, "error") %> prohibited this course_description from being saved:</h2>
+
+          <ul>
+            <% @course_description.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :number %>
+      <%= f.number_field :number %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :section %>
+      <%= f.text_field :section %>
+    </div>
+
+    <div class="field">
+      <%= f.label :teacher %>
+      <%= f.text_field :teacher %>
+    </div>
+
+    <div class="field">
+      <%= f.label :semester %>
+      <%= f.text_field :semester %>
+    </div>
+
+    <div class="field">
+      <%= f.label :category %>
+      <%= f.text_field :category %>
+    </div>
+
+    <div class="field">
+      <%= f.label :hours %>
+      <%= f.text_field :hours %>
+    </div>
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%# f.hidden_field :student_id %>
+
+    <div class="actions">
+      <%= f.submit "Search for Course to Add", :data => { :target => "#myModal" , :toggle => "modal"}%>
+    </div>
+<% end %>
+
+
+<div> Jobs </div>
+<% @student.jobs.all.each do |job| %>       <!--Goes to the junction table between student and @course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
     <tr class="ctable">
       <td class="ctable"> <%= job.title =%></td>
       <td class="ctable"> <%= job.semester =%></td>
@@ -12,7 +85,7 @@
 <% end %>
 
 <br/>
-
+<div> Add Job </div>
 <%= form_for(@job, :url => url_for(:controller => 'jobs', :action => 'create')) do |f| %>
     <% if @job.errors.any? %>
         <div id="error_explanation">
@@ -44,7 +117,7 @@
     </div>
 <% end %>
 
-
+<div> Documents </div>
 <% @student.documents.all.each do |document| %>
     <tr>
       <td><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
@@ -52,9 +125,10 @@
     </tr>
 <% end %>
 
+<div> Add Document </div>
 <%= form_for(@document, :url => url_for(:controller => 'documents', :action => 'create')) do |f| %>
     <div class="field">
-      <%= f.label :File %>
+      <%= f.label :Select_File %>
       <%= f.file_field :location %>
     </div>
 
@@ -83,5 +157,28 @@
     </div>
 <% end %>
 <td><%= link_to 'Delete Student', @student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!-- Trigger the modal with a button -->
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Existing Course</h4>
+      </div>
+      <div class="modal-body">
+        <p>Have courses shown here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 <%= link_to 'Show', @student %> |
 <%= link_to 'Back', students_path %>

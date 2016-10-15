@@ -1,0 +1,1 @@
+json.array! @course_descriptions, partial: 'course_descriptions/course_description', as: :course_description

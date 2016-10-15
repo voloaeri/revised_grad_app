@@ -21,9 +21,8 @@ class StudentsController < ApplicationController
   def edit
     puts "in student edit"
     @job = Job.new(student: @student)
-    #@job.student = @student
-    #raise @job.inspect
     @document = Document.new(student: @student)
+    @course_description = CourseDescription.new
   end
 
   # POST /students
