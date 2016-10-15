@@ -10,13 +10,36 @@ class CourseDescriptionsController < ApplicationController
   def search
     puts "in Search!"
 
-    raise params[:course_description].inspect
+    puts  params[:course_description][:number].class
+    puts params[:course_description][:name].class
+    puts params[:course_description][:teacher].class
+
+    param_hash = {}
+    param_hash[:number] = params[:course_description][:number] if params[:course_description][:number].present?
+    param_hash[:name] = params[:course_description][:name] if params[:course_description][:name].present?
+    param_hash[:teacher] = params[:course_description][:teacher] if params[:course_description][:teacher].present?
+    param_hash[:section] = params[:course_description][:section] if params[:course_description][:section].present?
+    param_hash[:category] = params[:course_description][:category] if params[:course_description][:category].present?
+    param_hash[:semester] = params[:course_description][:semester] if params[:course_description][:semester].present?
+
+    #param_hash = param_hash.to_query
+
+    puts param_hash.inspect
+
+    @results = CourseDescription.where(param_hash);
+
+    puts @results.inspect
+    
+
+     @results.all.each do |c|
+       puts c.number
+     end
 
     respond_to do |format|
       format.js {}
       format.html {}
     end
-    render layout: false
+    #render layout: false
   end
 
   # GET /course_descriptions/1

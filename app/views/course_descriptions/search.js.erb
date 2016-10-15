@@ -1,1 +1,12 @@
-alert("hello");
+<% output =  "" %>
+
+<% @results.all.each do |c| %>
+
+<% output += "<p> #{c.number} #{c.name} </p> "%>
+
+<% end %>
+
+$("#class_search_results").empty();
+$("#class_search_results").append("<%= output.html_safe %>");
+
+alert("make these into a table with more columns ");
