@@ -15,6 +15,21 @@
   <%= @student.age %>
 </p>
 
+<div> Courses </div>
+<% @student.course_descriptions.all.each do |course| %>       <!--Goes to the junction table between student and @course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
+    <tr class="ctable">
+      <td class="ctable"> <%= course.name =%></td>
+      <td class="ctable"> <%= course.number =%></td>
+
+      <td class="ctable"> <%= course.section =%> </td>
+      <td class="ctable"> <%= course.semester =%> </td>
+      <td class=ctable"><%= course.category =%></td>
+      <!--#Destroy Course History Here. :course_history =>{:student_id => @student.id, :course_id => course.id  }-->
+    </tr> <br/>
+<% end %>
+<br/>
+
+
 <div> Jobs </div>
 <% @student.jobs.all.each do |job| %>       <!--Goes to the junction table between student and course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
     <tr class="ctable">
