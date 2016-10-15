@@ -15,26 +15,36 @@ class CourseHistoriesController < ApplicationController
   # GET /course_histories/new
   def new
     @course_history = CourseHistory.new
+
   end
 
   # GET /course_histories/1/edit
   def edit
+    puts "in course histories edit"
+    render false
   end
 
   # POST /course_histories
   # POST /course_histories.json
   def create
-    @course_history = CourseHistory.new(course_history_params)
+
+     @course_history = CourseHistory.new(course_history_params)
+
+     puts "hello " + course_history_params[:student_id]
 
     respond_to do |format|
-      if @course_history.save
-        format.html { redirect_to @course_history, notice: 'Course history was successfully created.' }
-        format.json { render :show, status: :created, location: @course_history }
+      if @course_history.save #saves the new course history of student
+       # format.js { render edit_student_path(course_history_params[:student_id]), notice: 'Course history was successfully created.' }
+        format.js {render inline: "location.reload();" } # reloads the page
+         #format.html { redirect_to "/students/#{course_history_params[:student_id]}/edit", notice: 'Course history was successfully created.' }
+        # format.json { render :show, status: :created, location: @course_history }
+        # format.js { redirect_to "/students/#{course_history_params[:student_id]}/edit", notice: 'Course history was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @course_history.errors, status: :unprocessable_entity }
       end
     end
+     #render edit_student_path(course_history_params[:student_id])
   end
 
   # PATCH/PUT /course_histories/1
@@ -53,10 +63,17 @@ class CourseHistoriesController < ApplicationController
 
   # DELETE /course_histories/1
   # DELETE /course_histories/1.json
+
+  def search_and_destroy
+    @course_history = CourseHistory.where(course_history_params).first
+
+    destroy
+  end
+
   def destroy
     @course_history.destroy
     respond_to do |format|
-      format.html { redirect_to course_histories_url, notice: 'Course history was successfully destroyed.' }
+      format.html { redirect_to edit_student_url(course_history_params[:student_id]), notice: 'Course history was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

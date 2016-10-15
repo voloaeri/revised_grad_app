@@ -10,9 +10,7 @@ class CourseDescriptionsController < ApplicationController
   def search
     puts "in Search!"
 
-    puts  params[:course_description][:number].class
-    puts params[:course_description][:name].class
-    puts params[:course_description][:teacher].class
+    @student = Student.find(params[:course_description][:student]);
 
     param_hash = {}
     param_hash[:number] = params[:course_description][:number] if params[:course_description][:number].present?
@@ -21,14 +19,14 @@ class CourseDescriptionsController < ApplicationController
     param_hash[:section] = params[:course_description][:section] if params[:course_description][:section].present?
     param_hash[:category] = params[:course_description][:category] if params[:course_description][:category].present?
     param_hash[:semester] = params[:course_description][:semester] if params[:course_description][:semester].present?
-
+    param_hash[:hours] = params[:course_description][:hours] if params[:course_description][:hours].present?
     #param_hash = param_hash.to_query
 
     puts param_hash.inspect
 
     @results = CourseDescription.where(param_hash);
 
-    puts @results.inspect
+    puts @results.size
     
 
      @results.all.each do |c|
@@ -59,17 +57,20 @@ class CourseDescriptionsController < ApplicationController
   # POST /course_descriptions
   # POST /course_descriptions.json
   def create
-    @course_description = CourseDescription.new(course_description_params)
 
-    respond_to do |format|
-      if @course_description.save
-        format.html { redirect_to @course_description, notice: 'Course description was successfully created.' }
-        format.json { render :show, status: :created, location: @course_description }
-      else
-        format.html { render :new }
-        format.json { render json: @course_description.errors, status: :unprocessable_entity }
-      end
-    end
+    raise params.inspect
+
+    # @course_description = CourseDescription.new(course_description_params)
+    #
+    # respond_to do |format|
+    #   if @course_description.save
+    #     format.html { redirect_to @course_description, notice: 'Course description was successfully created.' }
+    #     format.json { render :show, status: :created, location: @course_description }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @course_description.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /course_descriptions/1

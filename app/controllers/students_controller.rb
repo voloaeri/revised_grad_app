@@ -23,6 +23,10 @@ class StudentsController < ApplicationController
     @job = Job.new(student: @student)
     @document = Document.new(student: @student)
     @course_description = CourseDescription.new
+    @course_description.student = @student.id
+    @course_histories = CourseHistory.where(student_id: @student.id)
+    #raise @course_histories.inspect && @course_description.inspect
+    #puts @course_description.student
   end
 
   # POST /students

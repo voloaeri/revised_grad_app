@@ -11,8 +11,8 @@
       <td class="ctable"> <%= course.section =%> </td>
       <td class="ctable"> <%= course.semester =%> </td>
       <td class=ctable"><%= course.category =%></td>
-      <td><%= link_to 'Edit', edit_course_description_path(course)%></td>
-      <td><%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <!--#Destroy Course History Here. :course_history =>{:student_id => @student.id, :course_id => course.id  }-->
+      <td> <%= link_to "Unenroll", {:controller => :course_histories, :course_history =>{:student_id => @student.id, :course_id => course.id  }}, :method => :delete %> </td>
     </tr> <br/>
 <% end %>
 <br/>
@@ -66,7 +66,13 @@
     </div>
 
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%# f.hidden_field :student_id %>
+
+    <% f.text_field :student %>
+
+    <div class="field">
+
+      <%= f.hidden_field :student %>
+    </div>
 
     <div class="actions">
       <%= f.submit "Search for Course to Add", :data => { :target => "#myModal" , :toggle => "modal"}%>
