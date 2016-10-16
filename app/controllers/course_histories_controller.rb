@@ -28,15 +28,24 @@ class CourseHistoriesController < ApplicationController
   # POST /course_histories.json
   def create
 
-     @course_history = CourseHistory.new(course_history_params)
-
-     puts "hello " + course_history_params[:student_id]
-
     respond_to do |format|
+      @course_history = CourseHistory.new(course_history_params)
+
+      flash[:notice] = "Cannot enroll twice"
+
+      puts "Outside the IF ! "
+      if CourseHistory.where(course_history_params).size > 0
+        puts "Tried to enroll in same class twice!"
+        #render inline: "location.reload();", :notice => "Can't enroll twice!"
+        redirect_to edit_student_path(Student.find(course_history_params[:student_id]))
+        #redirect_to proc {edit_student_path(course_history_params[:student_id])}
+        return
+      end
+
       if @course_history.save #saves the new course history of student
        # format.js { render edit_student_path(course_history_params[:student_id]), notice: 'Course history was successfully created.' }
         format.js {render inline: "location.reload();" } # reloads the page
-         #format.html { redirect_to "/students/#{course_history_params[:student_id]}/edit", notice: 'Course history was successfully created.' }
+         format.html { redirect_to "/students/#{course_history_params[:student_id]}/edit", notice: 'Course history was successfully created.' }
         # format.json { render :show, status: :created, location: @course_history }
         # format.js { redirect_to "/students/#{course_history_params[:student_id]}/edit", notice: 'Course history was successfully created.' }
       else
