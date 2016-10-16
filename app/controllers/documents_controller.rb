@@ -30,8 +30,7 @@ class DocumentsController < ApplicationController
     uploaded_io = params[:document][:location]
     studentName = Student.find(params[:document][:student_id]).lastName
 
-    folder = "public/uploads/#{studentName}"
-    FileUtils.mkdir_p folder
+    FileUtils.mkdir_p  Rails.public_path + "uploads/#{studentName}"
 
     File.open(Rails.root.join('public', "uploads/#{studentName}", uploaded_io.original_filename), 'wb') do |file|
       file.write(uploaded_io.read)
