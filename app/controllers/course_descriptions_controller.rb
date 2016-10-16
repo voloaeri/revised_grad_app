@@ -58,19 +58,17 @@ class CourseDescriptionsController < ApplicationController
   # POST /course_descriptions.json
   def create
 
-    raise params.inspect
+    @course_description = CourseDescription.new(course_description_params)
 
-    # @course_description = CourseDescription.new(course_description_params)
-    #
-    # respond_to do |format|
-    #   if @course_description.save
-    #     format.html { redirect_to @course_description, notice: 'Course description was successfully created.' }
-    #     format.json { render :show, status: :created, location: @course_description }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @course_description.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @course_description.save
+        format.html { redirect_to @course_description, notice: 'Course was successfully created.' }
+        format.json { render :show, status: :created, location: @course_description }
+      else
+        format.html { render :new }
+        format.json { render json: @course_description.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /course_descriptions/1

@@ -1,3 +1,5 @@
+require 'fileutils'
+
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
@@ -25,30 +27,21 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    # @document = Document.new(document_params)
-    #
-    # respond_to do |format|
-    #   if @document.save
-    #     format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully created.' }
-    #     format.json { render :show, status: :created, location: @document }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @document.errors, status: :unprocessable_entity }
-    #   end
-    # end
-
     uploaded_io = params[:document][:location]
     studentName = Student.find(params[:document][:student_id]).lastName
+
     folder = "public/uploads/#{studentName}"
     FileUtils.mkdir_p folder
+
     File.open(Rails.root.join('public', "uploads/#{studentName}", uploaded_io.original_filename), 'wb') do |file|
       file.write(uploaded_io.read)
     end
+
     params[:document][:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
     @document = Document.new(document_params)
     respond_to do |format|
       if @document.save
-        format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully updated.' }
+        format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully uploaded.' }
         format.json { render :show, status: :ok, location: @document }
       else
         format.html { render :edit }
@@ -60,16 +53,16 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
-    uploaded_io = params[:document][:location]
-    folder = "public/uploads/#{@document.student.lastName}"
-    FileUtils.mkdir_p folder
-    File.open(Rails.root.join('public', "uploads/#{@document.student.lastName}", uploaded_io.original_filename), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
-    params[:document][:location] = "uploads/#{@document.student.lastName}/#{uploaded_io.original_filename}"
+    # uploaded_io = params[:document][:location]
+    # folder = "public/uploads/#{@document.student.lastName}"
+    # FileUtils.mkdir_p folder
+    # File.open(Rails.root.join('public', "uploads/#{@document.student.lastName}", uploaded_io.original_filename), 'wb') do |file|
+    #   file.write(uploaded_io.read)
+    # end
+    # params[:document][:location] = "uploads/#{@document.student.lastName}/#{uploaded_io.original_filename}"
     respond_to do |format|
       if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
+        format.html { redirect_to @document, notice: 'Document was successfully uploaded.' }
         format.json { render :show, status: :ok, location: @document }
       else
         format.html { render :edit }
