@@ -1,18 +1,103 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Firstname:</strong>
+  <strong> firstName </strong>
   <%= @student.firstName %>
 </p>
 
 <p>
-  <strong>Lastname:</strong>
+  <strong> lastName </strong>
   <%= @student.lastName %>
 </p>
 
 <p>
-  <strong>Age:</strong>
-  <%= @student.age %>
+  <strong> PID </strong>
+  <%= @student.PID %>
+</p>
+
+<p>
+  <strong> alternativeName </strong>
+  <%= @student.alternativeName %>
+</p>
+
+<p>
+  <strong> gender </strong>
+  <%= @student.gender %>
+</p>
+
+<p>
+  <strong> ethnicity </strong>
+  <%= @student.ethnicity %>
+</p>
+
+<p>
+  <strong> status </strong>
+  <%= @student.status %>
+</p>
+
+<p>
+  <strong> citizenship </strong>
+  <%= @student.citizenship %>
+</p>
+
+<p>
+  <strong> residency </strong>
+  <%= @student.residency %>
+</p>
+
+<p>
+  <strong> enteringStatus </strong>
+  <%= @student.enteringStatus %>
+</p>
+
+<p>
+  <strong> advisor </strong>
+  <%= @student.advisor %>
+</p>
+
+<p>
+  <strong> researchArea </strong>
+  <%= @student.researchArea %>
+</p>
+
+<p>
+  <strong> semesterStartedCS </strong>
+  <%= @student.semesterStartedCS %>
+</p>
+
+<p>
+  <strong> backgroundApproved </strong>
+  <%= @student.backgroundApproved %>
+</p>
+
+<p>
+  <strong> leaveExtension </strong>
+  <%= @student.leaveExtension %>
+</p>
+
+<p>
+  <strong> fundingStatus </strong>
+  <%= @student.fundingStatus %>
+</p>
+
+<p>
+  <strong> fundingEligibility </strong>
+  <%= @student.fundingEligibility %>
+</p>
+
+<p>
+  <strong> intendedDegree </strong>
+  <%= @student.intendedDegree %>
+</p>
+
+<p>
+  <strong> coursesTaken </strong>
+  <%= @student.coursesTaken %>
+</p>
+
+<p>
+  <strong> hoursCompleted </strong>
+  <%= @student.hoursCompleted %>
 </p>
 
 <div> Courses </div>
@@ -33,8 +118,10 @@
 <div> Jobs </div>
 <% @student.jobs.all.each do |job| %>       <!--Goes to the junction table between student and course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
     <tr class="ctable">
-      <td class="ctable"> <%= job.title =%></td>
+      <td class="ctable"> <%= job.position =%></td>
       <td class="ctable"> <%= job.semester =%></td>
+      <td class="ctable"> <%= job.supervisor =%></td>
+      <td class="ctable"> <%= job.course =%></td>
       <br/>
     </tr>
 <% end %>

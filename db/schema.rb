@@ -44,8 +44,10 @@ ActiveRecord::Schema.define(version: 20161014224828) do
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "title"
+    t.string   "position"
     t.string   "semester"
+    t.string   "supervisor"
+    t.string   "course"
     t.integer  "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,9 +57,27 @@ ActiveRecord::Schema.define(version: 20161014224828) do
   create_table "students", force: :cascade do |t|
     t.string   "firstName"
     t.string   "lastName"
-    t.string   "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "PID"
+    t.string   "alternativeName"
+    t.string   "gender"
+    t.string   "ethnicity"
+    t.string   "status"
+    t.string   "citizenship"
+    t.string   "residency"
+    t.string   "enteringStatus"
+    t.string   "advisor"
+    t.string   "researchArea"
+    t.string   "semesterStartedCS"
+    t.string   "backgroundApproved"
+    t.string   "leaveExtension"
+    t.string   "fundingStatus"
+    t.string   "fundingEligibility"
+    t.string   "intendedDegree"
+    t.string   "coursesTaken"
+    t.string   "hoursCompleted"
+    t.string   "imageLocation"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
 end

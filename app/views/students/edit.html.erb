@@ -86,8 +86,10 @@
 <div> Jobs </div>
 <% @student.jobs.all.each do |job| %>       <!--Goes to the junction table between student and @course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
     <tr class="ctable">
-      <td class="ctable"> <%= job.title =%></td>
+      <td class="ctable"> <%= job.position =%></td>
       <td class="ctable"> <%= job.semester =%></td>
+      <td class="ctable"> <%= job.supervisor =%></td>
+      <td class="ctable"> <%= job.course =%></td>
       <%= link_to 'Edit', edit_job_path(job) %> |
       <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
     </tr>
@@ -111,8 +113,8 @@
     <%= f.hidden_field :student_id %>
 
     <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.label :position %>
+      <%= f.text_field :position %>
     </div>
 
     <div class="field">
@@ -120,6 +122,15 @@
       <%= f.text_field :semester %>
     </div>
 
+    <div class="field">
+      <%= f.label :supervisor %>
+      <%= f.text_field :supervisor %>
+    </div>
+
+    <div class="field">
+      <%= f.label :course %>
+      <%= f.text_field :course %>
+    </div>
 
     <div class="actions">
       <%= f.submit %>
