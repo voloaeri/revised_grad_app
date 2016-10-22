@@ -7,6 +7,15 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
+  def revised_edit
+    @student = Student.find(params[:id])
+    @job = Job.new(student: @student)
+    @document = Document.new(student: @student)
+    @course_description = CourseDescription.new
+    @course_description.student = @student.id
+    @course_histories = CourseHistory.where(student_id: @student.id)
+  end
+
   # GET /students/1
   # GET /students/1.json
   def show
@@ -21,6 +30,7 @@ class StudentsController < ApplicationController
   # GET /students/1/edit
   def edit
     puts "in student edit"
+    @student = Student.find(params[:id])
     @job = Job.new(student: @student)
     @document = Document.new(student: @student)
     @course_description = CourseDescription.new
