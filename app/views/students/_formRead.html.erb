@@ -1,0 +1,96 @@
+<%= form_for(student) do |f| %>
+    <% if student.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+          <ul>
+            <% student.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field left">
+      <%= f.label :firstName, 'First Name' %>
+      <%= f.text_field :firstName,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :lastName, 'Last Name' %>
+      <%= f.text_field :lastName,:readonly => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :PID %>
+      <%= f.text_field :PID,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :alternativeName, 'Alternate Name' %>
+      <%= f.text_field :alternativeName,:readonly => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :gender, 'Gender' %>
+      <%= f.text_field :gender,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :ethnicity, 'Ethnicity' %>
+      <%= f.text_field :ethnicity,:readonly => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :status, 'Status' %>
+      <%= f.text_field :status,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :citizenship, 'Citizenship' %>
+      <%= f.text_field :citizenship,:readonly => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :residency, 'Residency' %>
+      <%= f.text_field :residency,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :enteringStatus, 'Entering Status' %>
+      <%= f.text_field :enteringStatus,:readonly => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :advisor, 'Advisor' %>
+      <%= f.text_field :advisor,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :researchArea, 'Research Area' %>
+      <%= f.text_field :researchArea,:readonly => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :semesterStartedCS, 'Semester started at UNC' %>
+      <%= f.text_field :semesterStartedCS,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :backgroundApproved, 'Background Approved' %>
+      <%= f.text_field :backgroundApproved,:readonly => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :leaveExtension, 'Leave Extension' %>
+      <%= f.text_field :leaveExtension,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :fundingStatus, 'Funding Status' %>
+      <%= f.text_field :fundingStatus,:readonly => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :fundingEligibility, 'Funding Eligibility' %>
+      <%= f.text_field :fundingEligibility,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :intendedDegree, 'Intended Degree' %>
+      <%= f.text_field :intendedDegree,:readonly => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :coursesTaken, 'Number of Courses Taken' %>
+      <%= f.text_field :coursesTaken,:readonly => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :hoursCompleted, 'Number of Hours Completed' %>
+      <%= f.text_field :hoursCompleted,:readonly => true %>
+    </div>
+
+
+<% end %>

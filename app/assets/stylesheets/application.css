@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+.touch a {
+    color:red;
+}
 .container {
     float: right;
     width: 80%;
