@@ -7,14 +7,24 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
 
+    @pdfError = false
+    @selectError = false
+
     respond_to do |format|
 
     @document = Document.new(document_params)
     
     uploaded_io = params[:document][:location]
 
+    if document_params[:title] == "Select One"
+      @selectError = true
+      puts "SLECT DLFJSDLKF"
+      format.js { }
+      return
+    end
+
     if uploaded_io.content_type != "application/pdf"
-      @error = true
+      @pdfError = true
       format.js { }
       return
     end

@@ -417,10 +417,12 @@
             <table id="documents_table" class="ctable" style="width:75%">
               <tr class="ctable">
                 <th class="ctable">Document Type</th>
+                <th class="ctable"> Last Update</th>
               </tr>
               <% @student.documents.all.each do |document| %>
                   <tr class="ctable">
-                    <td class="ctable"><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
+                    <td class="ctable doc_title"><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
+                    <td class="ctable"><a> <%= document.updated_at %> </a> </td>
                     <td class="ctable touch"><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>
               <% end %>
