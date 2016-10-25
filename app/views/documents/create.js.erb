@@ -1,0 +1,10 @@
+
+<% html = "<tr class='ctable'> <td class='ctable'><a target='_blank' href='#{asset_path(@document.location)}'> #{@document.title} </a> </td> <td class='ctable touch'>#{link_to 'Delete', @document, method: :delete, data: { confirm: 'Are you sure?' }}</td> </tr>" %>
+<% puts html.gsub("\"", "'") %>
+
+$("#documents_table").append("'<%= html.gsub("\"", "'") %>");
+
+$("#documents ul.nav li:nth-child(1) a").tab('show');
+
+
+$(".alerts").append("<%= "<div class='alert alert-success'> Document Successfully Uploaded </div>"%>");

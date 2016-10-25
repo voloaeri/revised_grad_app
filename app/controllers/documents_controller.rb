@@ -3,32 +3,21 @@ require 'fileutils'
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
-  # GET /documents
-  # GET /documents.json
-  def index
-    @documents = Document.all
-  end
-
-  # GET /documents/1
-  # GET /documents/1.json
-  def show
-    puts "in Document Edit"
-  end
-
-  # GET /documents/new
-  def new
-    @document = Document.new
-  end
-
-  # GET /documents/1/edit
-  def edit
-    puts "in Document Edit"
-  end
-
   # POST /documents
   # POST /documents.json
   def create
+
+    respond_to do |format|
+
+    @document = Document.new(document_params)
+    
     uploaded_io = params[:document][:location]
+
+    if uploaded_io.content_type != "application/pdf"
+      @error = true
+      format.js { }
+      return
+    end
     studentName = Student.find(params[:document][:student_id]).lastName
 
     FileUtils.mkdir_p  Rails.public_path + "uploads/#{studentName}"
@@ -38,35 +27,16 @@ class DocumentsController < ApplicationController
     end
 
     params[:document][:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
-    @document = Document.new(document_params)
-    respond_to do |format|
-      if @document.save
-        format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully uploaded.' }
-        format.json { render :show, status: :ok, location: @document }
-      else
-        format.html { render :edit }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  # PATCH/PUT /documents/1
-  # PATCH/PUT /documents/1.json
-  def update
-    # uploaded_io = params[:document][:location]
-    # folder = "public/uploads/#{@document.student.lastName}"
-    # FileUtils.mkdir_p folder
-    # File.open(Rails.root.join('public', "uploads/#{@document.student.lastName}", uploaded_io.original_filename), 'wb') do |file|
-    #   file.write(uploaded_io.read)
-    # end
-    # params[:document][:location] = "uploads/#{@document.student.lastName}/#{uploaded_io.original_filename}"
-    respond_to do |format|
-      if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully uploaded.' }
-        format.json { render :show, status: :ok, location: @document }
+      if @document.save
+        
+        format.js { }
+        format.html { raise "HTML... again" }
+        #format.html { redirect_to edit_student_url(@document.student_id), :flash => {success: 'Document was successfully uploaded.'}}
       else
-        format.html { render :edit }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
+        # format.html { render :edit }
+        # format.json { render json: @document.errors, status: :unprocessable_entity }
+        format.js {}
       end
     end
   end

@@ -7,16 +7,15 @@
     <div class="bottom-border"></div>
   </div>
   <ul class="nav nav-pills">
-    <li class="active"><a id="personal" data-toggle="pill" href="#basic_info">Personal Information</a></li>
-    <li><a id="reqs" data-toggle="pill" href="#requirements"> Degree Requirements </a></li>
-    <li><a id="history" data-toggle="pill" href="#course_history"> Course History </a></li>
-    <li><a id="docs" data-toggle="pill" href="#documents">Documents</a></li>
-    <li><a id="work" data-toggle="pill" href="#jobs">Jobs</a></li>
+    <li class="active"><a class='click' id="personal" data-toggle="pill" href="#basic_info">Personal Information</a></li>
+    <li><a id="reqs" class='click' data-toggle="pill" href="#requirements"> Degree Requirements </a></li>
+    <li><a id="history" class='click' data-toggle="pill" href="#course_history"> Course History </a></li>
+    <li><a id="docs" class='click' data-toggle="pill" href="#documents">Documents</a></li>
+    <li><a id="work" class='click' data-toggle="pill" href="#jobs">Jobs</a></li>
   </ul>
 </div>
 <!-- SIDE BAR ends -->
 <div class="container">
-  <!--<p id="notice"><%= notice %></p>-->
   <div class="tab-content">
 
     <div id="basic_info" class="tab-pane fade in active">
@@ -29,12 +28,14 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <%= render 'form', student: @student %>
+           
           </div>
         </div>
       </div>
       <div id="upload_picture" class="tab-pane fade">
         <div class="panel panel-default">
           <div class="panel-body">
+            <div class="alert alert-danger"> <%= notice %> </div>
             <%= render 'upload_photo', student: @student %>
         </div>
         </div>
@@ -362,8 +363,8 @@
 
     <div id="course_history" class="tab-pane fade">
       <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#courses">Course History</a></li>
-        <li><a data-toggle="tab" href="#enroll">Enroll</a></li>
+        <li class="active"><a class='click' data-toggle="tab" href="#courses">Course History</a></li>
+        <li><a class='click' data-toggle="tab" href="#enroll">Enroll</a></li>
       </ul>
       <div class="tab-content">
         <div id="courses" class="tab-pane fade in active">
@@ -385,7 +386,7 @@
                     <td class="ctable"> <%= course.section =%> </td>
                     <td class="ctable"> <%= course.semester =%> </td>
                     <td class="ctable"><%= course.category =%></td>
-                    <td class ="ctable touch"> <%= link_to "Unenroll", {:controller => :course_histories, :course_history =>{:student_id => @student.id, :course_description_id => course.id  }}, :method => :delete %> </td>
+                    <td class ="ctable touch"> <%= link_to "Unenroll", {:controller => :course_histories, :course_history =>{:student_id => @student.id, :course_description_id => course.id  }}, :method => :delete, :data => { confirm: 'Are you sure?' }  %> </td>
                   </tr>
               <% end %>
               </table>
@@ -395,6 +396,7 @@
         <div id="enroll" class="tab-pane fade">
           <div class="panel panel-default">
             <div class="panel-body">
+              <div class="alert alert-danger"> <%= notice %> </div>
               <%= render 'course_descriptions/search_courses', course_description: @course_description %>
             </div>
           </div>
@@ -404,23 +406,22 @@
 
     <div id="documents" class="tab-pane fade in">
       <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#documents_tab"> Documents </a></li>
-        <li ><a data-toggle="tab" href="#upload_doc"> Upload </a></li>
+        <li id="doc_tab" class="active"><a class="click" data-toggle="tab" href="#documents_tab"> Documents </a></li>
+        <li id="doc_upload_tab"><a class="click" data-toggle="tab" href="#upload_doc"> Upload </a></li>
       </ul>
       <div class="tab-content">
         <div id="documents_tab" class="tab-pane fade in active">
         <div class="panel panel-default">
           <div class="panel-body">
-            <table class="ctable" style="width:75%">
+            <div class="alerts"> </div>
+            <table id="documents_table" class="ctable" style="width:75%">
               <tr class="ctable">
                 <th class="ctable">Document Type</th>
-
               </tr>
               <% @student.documents.all.each do |document| %>
                   <tr class="ctable">
                     <td class="ctable"><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
-
-                    <td class="ctable touch"><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
+                    <td class="ctable touch"><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   </tr>
               <% end %>
               </table>
@@ -430,6 +431,11 @@
             <div id="upload_doc" class="tab-pane fade">
               <div class="panel panel-default">
                 <div class="panel-body">
+                  <% flash.each do |key, value| %>
+                      <div class="<%= flash_class(key.to_sym) %>">
+                        <%= value %>
+                      </div>
+                  <% end %>
                 <h2> Add a Document </h2>
                 <%= render 'documents/form', document: @document %>
             </div>
@@ -471,6 +477,7 @@
         <div id="add_job" class="tab-pane fade">
               <div class="panel panel-default">
                 <div class="panel-body">
+                  <div class="alert alert-danger"> <%= notice %> </div>
                    <%= render 'jobs/form', job: @job %>
                 </div>
              </div>

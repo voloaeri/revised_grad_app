@@ -1,10 +1,12 @@
-<%= form_for(document, :url => url_for(:controller => 'documents', :action => 'create')) do |f| %>
+<%= form_for(@document, :remote => true, :url => url_for(:controller => 'documents', :action => 'create')) do |f| %>
     <div class="field">
       <%= f.label :Select_File %>
       <%= f.file_field :location %>
     </div>
 
     <%= f.hidden_field :student_id %>
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
     <div class="field">
       <%= f.label :Document_Type %>

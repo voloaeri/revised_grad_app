@@ -25,4 +25,13 @@ $(document).ready(function(){
     $("#work").click(function(){
         window.location.hash = "jobs";
     });
+    $("#button").click(function(){
+        $("#documents ul.nav li:nth-child(1) a").tab('show');
+    });
+
+    $(".click").click(function(){
+        $(".alerts").html("");
+        $(".alert").html("");
+    });
 });
+

@@ -70,10 +70,27 @@ class StudentsController < ApplicationController
 
   def upload_photo
 
-   # raise student_params.inspect
+    @student = Student.find(student_params[:id])
 
     uploaded_io = student_params[:imageLocation]
-    @student = Student.find(student_params[:id])
+
+
+    if (student_params[:imageLocation].tempfile.size.to_f / 1024000) > 1.5
+      flash[:notice] = "Please upload an image less than 1.5 megabytes!"
+      redirect_to edit_student_url(@student)
+      return
+    end
+
+    imageTypes = {"image/png" => true, "image/jpeg" => true }
+
+   # raise student_params.inspect
+    if !imageTypes[uploaded_io.content_type]
+      flash[:notice] = "Please upload a PNG or JPEG image"
+      redirect_to edit_student_url(@student)
+      return
+    end
+
+
     pid = @student.PID
 
     FileUtils.mkdir_p  Rails.public_path + "uploads/#{pid}"
