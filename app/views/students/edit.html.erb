@@ -431,6 +431,7 @@
             <div id="upload_doc" class="tab-pane fade">
               <div class="panel panel-default">
                 <div class="panel-body">
+                  <div class="alerts"> </div>
                   <% flash.each do |key, value| %>
                       <div class="<%= flash_class(key.to_sym) %>">
                         <%= value %>
