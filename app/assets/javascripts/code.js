@@ -34,10 +34,16 @@ $(document).ready(function(){
         $(".alert").html("");
     });
 
-    $(".docDelete").click(function(){
+    // $(".docDelete").click(function(){
+    //     $(this).closest("tr").remove();
+    //     console.log('deleted');
+    //     //$(".alerts").append("<div class='alert alert-success'> Document Successfully Deleted </div>");
+    // });
+
+    $("tbody").unbind('click').on("click",'a', function(){
         $(this).closest("tr").remove();
         console.log('deleted');
-        //$(".alerts").append("<div class='alert alert-success'> Document Successfully Deleted </div>");
+        $(".alerts").html("<div class='alert alert-success'> Document Successfully Deleted </div>");
     });
 
 });
