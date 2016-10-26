@@ -16,6 +16,7 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
 
     uploaded_io = params[:document][:location]
+    uploaded_io.original_filename = document_params[:title].to_s + ".pdf"
 
     studentName = Student.find(params[:document][:student_id]).lastName
 
@@ -47,6 +48,8 @@ class DocumentsController < ApplicationController
       format.js { }
       return
     end
+
+     #raise uploaded_io.original_filename.inspect
 
     FileUtils.mkdir_p  Rails.public_path + "uploads/#{studentName}"
 
