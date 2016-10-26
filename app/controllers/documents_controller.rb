@@ -28,6 +28,7 @@ class DocumentsController < ApplicationController
       @warning = true;
       @subDoc = @results.first
       @dupQuery[:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
+      #raise @subDoc.inspect
       format.js { }
     end
 

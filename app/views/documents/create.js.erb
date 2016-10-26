@@ -2,8 +2,11 @@ $(".alerts").html("");
 
 if(<%= @warning %>){
   if(confirm("You'll be overwriting a older upload. That ok?")){
-   <%= @subDoc.update(@dupQuery) %>
+   <%  @subDoc.respond_to?(:update) ? @subDoc.update(@dupQuery) : nil %>
+
     $(".alerts").append("<%= "<div class='alert alert-success'> Document Successfully Uploaded </div>"%>");
+
+    $("#documents ul.nav li:nth-child(1) a").tab('show');
 
   }
 } else if(<%= @pdfError %>){
@@ -19,9 +22,6 @@ if(<%= @warning %>){
   <% puts html.gsub("\"", "'") %>
 
   $("#documents_table").append("'<%= html.gsub("\"", "'") %>");
-
-  $("#documents ul.nav li:nth-child(1) a").tab('show');
-
 
   $(".alerts").append("<%= "<div class='alert alert-success'> Document Successfully Uploaded </div>"%>");
 
