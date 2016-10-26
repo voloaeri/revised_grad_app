@@ -38,18 +38,54 @@ $(document).ready(function(){
 
 });
 
-function validateDocs(){
+function validateDocs(e){
+    // var selected =($("#document_title option:selected").text());
+    // console.log(" s  " + selected)
+    // $( ".doc_title" ).each(function( index ) {
+    //     console.log(selected == $(this).text());
+    //     var text = $( this ).text();
+    //     if(selected.replace(/\s+/g, '') === text.replace(/\s+/g, '')){
+    //          if(confirm("Note that uploading this file will overwrite an existing one!")){
+    //              console.log("true");
+    //              return true;
+    //          } else {
+    //              e.preventDefault();
+    //              console.log("false");
+    //              return false;
+    //          }
+    //     }
+    // });
 
-    var selected =($("#document_title option:selected").text());
-    console.log(" s  " + selected)
-    $( ".doc_title" ).each(function( index ) {
-        console.log(selected == $(this).text());
-        var text = $( this ).text();
-        if(selected.replace(/\s+/g, '') === text.replace(/\s+/g, '')){
-            return confirm("Note that uploading this file will overwrite an existing one!");
-        }
-    });
+    if(confirm("you sure")){
+        console.log("is true");
+        return true;
+    } else {
+        console.log("is false");
+        return false;
+    }
 
-    return true;
+
+
+   // return false;
 }
+
+// $('#someFormId').submit(function(){
+//     alert("in valid");
+//     var selected =($("#document_title option:selected").text());
+//     console.log(" s  " + selected)
+//     $( ".doc_title" ).each(function( index ) {
+//         console.log(selected == $(this).text());
+//         var text = $( this ).text();
+//         if(selected.replace(/\s+/g, '') === text.replace(/\s+/g, '')){
+//              if(confirm("Note that uploading this file will overwrite an existing one!")){
+//                  console.log("true");
+//                  return true;
+//              } else {
+//                  e.preventDefault();
+//                  console.log("false");
+//                  return false;
+//              }
+//         }
+//     });
+// });
 

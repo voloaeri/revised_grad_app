@@ -9,16 +9,30 @@ class DocumentsController < ApplicationController
 
     @pdfError = false
     @selectError = false
+    @warning = false;
 
     respond_to do |format|
 
     @document = Document.new(document_params)
-    
+
     uploaded_io = params[:document][:location]
+
+    studentName = Student.find(params[:document][:student_id]).lastName
+
+    @dupQuery = Hash.new
+    @dupQuery[:student_id] =  @document[:student_id]
+    @dupQuery[:title] =  @document[:title]
+
+    @results = Document.where(@dupQuery)
+    if @results.size >= 1
+      @warning = true;
+      @subDoc = @results.first
+      @dupQuery[:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
+      format.js { }
+    end
 
     if document_params[:title] == "Select One"
       @selectError = true
-      puts "SLECT DLFJSDLKF"
       format.js { }
       return
     end
@@ -28,7 +42,6 @@ class DocumentsController < ApplicationController
       format.js { }
       return
     end
-    studentName = Student.find(params[:document][:student_id]).lastName
 
     FileUtils.mkdir_p  Rails.public_path + "uploads/#{studentName}"
 
@@ -37,6 +50,7 @@ class DocumentsController < ApplicationController
     end
 
     params[:document][:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
+
 
       if @document.save
         

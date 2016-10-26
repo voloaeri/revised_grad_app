@@ -1,6 +1,12 @@
 $(".alerts").html("");
 
-if(<%= @pdfError %>){
+if(<%= @warning %>){
+  if(confirm("You'll be overwriting a older upload. That ok?")){
+   <%= @subDoc.update(@dupQuery) %>
+    $(".alerts").append("<%= "<div class='alert alert-success'> Document Successfully Uploaded </div>"%>");
+
+  }
+} else if(<%= @pdfError %>){
 
   $(".alerts").append("<%= "<div class='alert alert-danger'> Looks Like You Didn't Upload a PDF! </div>"%>");
 
