@@ -33,8 +33,16 @@ $(document).ready(function(){
         $(".alerts").html("");
         $(".alert").html("");
     });
-    
+
+    $(".docDelete").click(function(){
+        $(this).closest("tr").remove();
+        console.log('deleted');
+        //$(".alerts").append("<div class='alert alert-success'> Document Successfully Deleted </div>");
+    });
+
 });
+
+
 
 
 

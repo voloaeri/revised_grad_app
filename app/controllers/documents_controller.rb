@@ -19,6 +19,8 @@ class DocumentsController < ApplicationController
 
     studentName = Student.find(params[:document][:student_id]).lastName
 
+    @document[:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
+
     @dupQuery = Hash.new
     @dupQuery[:student_id] =  @document[:student_id]
     @dupQuery[:title] =  @document[:title]
@@ -27,9 +29,11 @@ class DocumentsController < ApplicationController
     if @results.size >= 1
       @warning = true;
       @subDoc = @results.first
+     # raise @subDoc.inspect
       @dupQuery[:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
       #raise @subDoc.inspect
       format.js { }
+      return
     end
 
     if document_params[:title] == "Select One"
@@ -54,7 +58,7 @@ class DocumentsController < ApplicationController
 
 
       if @document.save
-        
+        puts "Just saved"
         format.js { }
         format.html { raise "HTML... again" }
         #format.html { redirect_to edit_student_url(@document.student_id), :flash => {success: 'Document was successfully uploaded.'}}
@@ -71,8 +75,9 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully destroyed.' }
-      format.json { head :no_content }
+        format.js {}
+      # format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully destroyed.' }
+      # format.json { head :no_content }
     end
   end
 
