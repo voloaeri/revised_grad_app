@@ -420,7 +420,7 @@
                 <th class="ctable"> Last Update</th>
               </tr>
               <% @student.documents.all.each do |document| %>
-                  <tr class="ctable">
+                  <tr id=<%= "doc_row_#{document.id}" %> class="ctable">
                     <td class="ctable doc_title"><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
                     <td class="ctable"><a> <%= document.updated_at %> </a> </td>
                     <td class="ctable touch"><%= link_to 'Delete', document, method: :delete, :class => "docDelete", :data => {:remote => true,:format => "js", :confirm => "you sure?"} %></td>

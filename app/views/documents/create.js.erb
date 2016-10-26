@@ -5,9 +5,7 @@ if(<%= @warning %>){
    <%  @subDoc.respond_to?(:update) ? @subDoc.update(@dupQuery) : nil %>
 
     $("#documents ul.nav li:nth-child(1) a").tab('show');
-
-    $(".alerts").append("<%# "<div class='alert alert-success'> Document Successfully Uploaded </div>"%>");
-
+    
   }
 } else if(<%= @pdfError %>){
 
