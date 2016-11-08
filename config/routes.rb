@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :faculties
   root "students#show_home"
 
   resources :course_histories

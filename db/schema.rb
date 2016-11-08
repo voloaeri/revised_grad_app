@@ -10,14 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014224828) do
+ActiveRecord::Schema.define(version: 20161108052558) do
 
   create_table "course_descriptions", force: :cascade do |t|
     t.integer  "number"
     t.string   "name"
-    t.string   "section"
-    t.string   "teacher"
-    t.string   "semester"
     t.string   "category"
     t.string   "hours"
     t.datetime "created_at", null: false
@@ -28,9 +25,13 @@ ActiveRecord::Schema.define(version: 20161014224828) do
     t.integer  "student_id"
     t.integer  "course_description_id"
     t.string   "grade"
+    t.string   "section"
+    t.integer  "faculty_id"
+    t.string   "semester"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["course_description_id"], name: "index_course_histories_on_course_description_id"
+    t.index ["faculty_id"], name: "index_course_histories_on_faculty_id"
     t.index ["student_id"], name: "index_course_histories_on_student_id"
   end
 
@@ -41,6 +42,16 @@ ActiveRecord::Schema.define(version: 20161014224828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_documents_on_student_id"
+  end
+
+  create_table "faculties", force: :cascade do |t|
+    t.string   "firstName"
+    t.string   "lastName"
+    t.string   "sectionNumber"
+    t.string   "PID"
+    t.string   "isAdmin"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "jobs", force: :cascade do |t|

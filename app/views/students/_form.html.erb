@@ -30,24 +30,11 @@
     </div>
     <div class="field left">
       <%= f.label :gender, 'Gender' %>
-      <!--%= f.text_field :gender %-->
-      <%= f.select(:gender, options_for_select([
-                                                   "Male",
-                                                   "Female",
-                                                   "Unknown",
-                                               ])) %>
+      <%= f.select(:gender, ["Male", "Female","Unknown"]) %>
     </div>
     <div class="field right">
       <%= f.label :ethnicity, 'Ethnicity' %>
-      <!--%= f.text_field :ethnicity %-->
-      <%= f.select(:ethnicity, options_for_select([
-                                                      "American Indian or Alaska Native",
-                                                      "Asian",
-                                                      "Black or African American",
-                                                      "Hispanic or Latino",
-                                                      "Native Hawaiian or Other Pacific",
-                                                      "White",
-                                                  ])) %>
+      <%= f.select(:ethnicity,["American Indian or Alaska Native", "Asian", "Black or African American", "Hispanic or Latino", "Native Hawaiian or Other Pacific", "White"]) %>
     </div>
     <div class="field left">
       <%= f.label :enteringStatus, 'Entering Funding Status' %>
@@ -67,7 +54,6 @@
     </div>
     <div class="field left">
       <%= f.label :residency, 'NC Residency' %>
-      <!--%= f.text_field :residency %-->
       <%= f.select(:residency, options_for_select(%w(No Yes))) %>
     </div>
 
@@ -83,7 +69,6 @@
       <%= f.label :semesterStartedCS, 'Semester started at UNC' %>
       <%= f.select(:semester,%w(Fall Spring Summer)) %>
       <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
-
     </div>
     <div class="field left">
       <%= f.label :backgroundApproved, 'Background Approved' %>

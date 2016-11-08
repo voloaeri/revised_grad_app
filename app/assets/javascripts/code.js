@@ -46,6 +46,28 @@ $(document).ready(function(){
         $(".alerts").html("<div class='alert alert-success'> Successfully Deleted </div>");
     });
 
+
+    $('#student_firstName').on('keyup',function(){
+        var text = $(this).val();
+        $(".side_bar .user h2").html(text);
+    });
+
+    // $('#student_lastName').on('keyup',function(){
+    //     var text = $(this).val();
+    //     //var firstName = $(".side_bar .user h2").text();
+    //     $(".side_bar .user h2").html(firstName + " " + text);
+    // });
+
+    $('#student_PID').on('keyup',function(){
+        var text = $(this).val();
+        $(".side_bar .user h6").html(text);
+    });
+
+    $('#student_intendedDegree').on('keyup',function(){
+        var text = $(this).val();
+        $(".side_bar .user h5").html(text);
+    });
+
 });
 
 

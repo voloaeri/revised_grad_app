@@ -20,7 +20,8 @@
 
     <div class="field right">
       <%= f.label :semester %>
-      <%= f.text_field :semester, :value => "" %>
+      <%= f.select(:semester,%w(Fall Spring Summer)) %>
+      <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
     </div>
 
     <div class="field left">
