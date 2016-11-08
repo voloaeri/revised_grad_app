@@ -33,13 +33,21 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    @student = Student.new
+    #Defaults: Current Year and Semester and United States (Most students are probably USA citizens)
+    year = Date.today.strftime("%Y");
+    semester = getSemester(Date.today.strftime("%B"));
+    @student = Student.new({:citizenship => "United States", :year => year, :semester => semester})
   end
 
   # GET /students/1/edit
   def edit
-    puts "in student edit"
     @student = Student.find(params[:id])
+
+    @student.semester = @student.semesterStartedCS.split(" ")[0]
+    @student.year = @student.semesterStartedCS.split(" ")[1]
+
+    #raise @student.year.inspect
+
     @job = Job.new(student: @student)
     @document = Document.new(student: @student)
     @course_description = CourseDescription.new
@@ -54,6 +62,10 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
 
+    @student.semesterStartedCS = student_params[:semester] + " "  + student_params[:year]
+
+    #raise @student.inspect
+
     respond_to do |format|
       if @student.save
         format.html { redirect_to edit_student_url(@student), notice: 'Student was successfully created.' }
@@ -65,15 +77,12 @@ class StudentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /students/1
-  # PATCH/PUT /students/1.json
 
   def upload_photo
 
     @student = Student.find(student_params[:id])
 
     uploaded_io = student_params[:imageLocation]
-
 
     if (student_params[:imageLocation].tempfile.size.to_f / 1024000) > 1.5
       flash[:notice] = "Please upload an image less than 1.5 megabytes!"
@@ -83,7 +92,6 @@ class StudentsController < ApplicationController
 
     imageTypes = {"image/png" => true, "image/jpeg" => true }
 
-   # raise student_params.inspect
     if !imageTypes[uploaded_io.content_type]
       flash[:notice] = "Please upload a PNG or JPEG image"
       redirect_to edit_student_url(@student)
@@ -114,6 +122,7 @@ class StudentsController < ApplicationController
   end
 
   def update
+    @student.semesterStartedCS = student_params[:semester] + " "  + student_params[:year]
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to edit_student_url(@student), notice: 'Student was successfully updated.' }
@@ -143,6 +152,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:firstName, :lastName, :PID, :alternativeName, :gender, :ethnicity, :status, :citizenship, :residency, :enteringStatus, :advisor, :researchArea, :semesterStartedCS, :backgroundApproved, :leaveExtension, :fundingStatus, :fundingEligibility, :intendedDegree, :coursesTaken, :hoursCompleted, :imageLocation, :id)
+      params.require(:student).permit(:firstName, :lastName, :PID, :alternativeName, :gender, :ethnicity, :status, :citizenship, :residency, :enteringStatus, :advisor, :researchArea, :year, :semester, :backgroundApproved, :leaveExtension, :fundingStatus, :fundingEligibility, :intendedDegree, :coursesTaken, :hoursCompleted, :imageLocation, :id)
     end
 end

@@ -27,12 +27,55 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     #raise params.inspect
-    @job = Job.new(job_params)
+    @posError=false;
+    @semError=false;
+    @superError=false;
+    @courseError=false;
+    @ok=false
+
 
     respond_to do |format|
+      @job = Job.new(job_params)
+      @position= job_params[:position]
+      @semester= job_params[:semester]
+      @supervisor= job_params[:supervisor]
+      @course = job_params[:course]
+
+
+
+      if job_params[:position] == ""
+        @posError=true
+        format.js { }
+        return
+      end
+
+      if job_params[:semester] == ""
+        @semError=true
+        format.js { }
+        return
+      end
+
+      if job_params[:supervisor] == ""
+        @superError=true
+        format.js { }
+        return
+
+      end
+
+      if job_params[:course] == ""
+        @courseError=true
+        format.js { }
+        return
+
+      end
+
       if @job.save
+        @ok=true
+        @id= @job.id
+
         format.html { redirect_to edit_student_url(@job.student_id), notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
+        format.js {  }
       else
         format.html { render :new }
         format.json { render json: @job.errors, status: :unprocessable_entity }
@@ -58,10 +101,7 @@ class JobsController < ApplicationController
   # DELETE /jobs/1.json
   def destroy
     @job.destroy
-    respond_to do |format|
-      format.html { redirect_to edit_student_url(@job.student_id), notice: 'Job was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
   end
 
   private

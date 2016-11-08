@@ -43,7 +43,7 @@ $(document).ready(function(){
     $("tbody").unbind('click').on("click",'.touch a', function(){
         $(this).closest("tr").remove();
         console.log('deleted');
-        $(".alerts").html("<div class='alert alert-success'> Document Successfully Deleted </div>");
+        $(".alerts").html("<div class='alert alert-success'> Successfully Deleted </div>");
     });
 
 });

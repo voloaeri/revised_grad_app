@@ -422,8 +422,8 @@
               <% @student.documents.all.each do |document| %>
                   <tr id=<%= "doc_row_#{document.id}" %> class="ctable">
                     <td class="ctable doc_title"><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
-                    <td class="ctable"><a> <%= document.updated_at %> </a> </td>
-                    <td class="ctable touch"><%= link_to 'Delete', document, method: :delete, :class => "docDelete", :data => {:remote => true,:format => "js", :confirm => "you sure?"} %></td>
+                    <td class="ctable"><a> <%= document.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p") %> </a> </td>
+                    <td class="ctable touch"><%= link_to 'Delete', document, method: :delete, :class => "docDelete", :data => {:remote => true,:format => "js"} %></td>
                   </tr>
               <% end %>
               </table>
@@ -449,14 +449,15 @@
 
     <div id="jobs" class="tab-pane fade in">
       <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#jobs_tab">Jobs</a></li>
-        <li><a data-toggle="tab" href="#add_job">Add New Job</a></li>
+        <li class="active"><a class="click"data-toggle="tab" href="#jobs_tab">Jobs</a></li>
+        <li><a data-toggle="tab" class="click" href="#add_job">Add New Job</a></li>
       </ul>
       <div class="tab-content">
         <div id="jobs_tab" class="tab-pane fade in active">
          <div class="panel panel-default">
-          <div class="panel-body">
-            <table class="ctable" style="width:75%">
+          <div class="panel-body noBreaks">
+            <div class="alerts"> </div>
+            <table id="jobs_table" class="ctable" style="width:75%">
               <tr class="ctable">
                 <th class="ctable">Position</th>
                 <th class="ctable">Semester</th>
@@ -469,8 +470,8 @@
                     <td class="ctable"> <%= job.semester =%></td>
                     <td class="ctable"> <%= job.supervisor =%></td>
                     <td class="ctable"> <%= job.course =%></td>
-                    <td class="ctable touch"><%= link_to 'Edit', edit_job_path(job) %> </td>
-                    <td class="ctable touch"><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
+
+                    <td class="ctable touch"><%= link_to 'Destroy', job, method: :delete %></td> <br/>
                   </tr>
               <% end %>
               </table>
@@ -480,7 +481,13 @@
         <div id="add_job" class="tab-pane fade">
               <div class="panel panel-default">
                 <div class="panel-body">
-                  <div class="alert alert-danger"> <%= notice %> </div>
+                  <div class="alerts"> </div>
+                  <% flash.each do |key, value| %>
+                      <div class="<%= flash_class(key.to_sym) %>">
+                        <%= value %>
+                      </div>
+                  <% end %>
+
                    <%= render 'jobs/form', job: @job %>
                 </div>
              </div>

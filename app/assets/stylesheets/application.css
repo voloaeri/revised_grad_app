@@ -16,6 +16,9 @@
 .touch a {
     color:red;
 }
+.noBreaks br {
+    display: none;
+}
 .container {
     float: right;
     width: 80%;
@@ -26,6 +29,8 @@
 
 
 }
+
+
 .right {
     float:right;
     width:40%;

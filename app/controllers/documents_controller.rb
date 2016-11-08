@@ -13,51 +13,53 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
 
-    @document = Document.new(document_params)
+      @document = Document.new(document_params)
 
-    uploaded_io = params[:document][:location]
-    uploaded_io.original_filename = document_params[:title].to_s + ".pdf"
+      uploaded_io = params[:document][:location]
+      uploaded_io.original_filename = document_params[:title].to_s + ".pdf"
 
-    studentName = Student.find(params[:document][:student_id]).lastName
+      studentName = Student.find(params[:document][:student_id]).lastName
 
-    @document[:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
+      @document[:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
 
-    @dupQuery = Hash.new
-    @dupQuery[:student_id] =  @document[:student_id]
-    @dupQuery[:title] =  @document[:title]
+      @dupQuery = Hash.new
+      @dupQuery[:student_id] =  @document[:student_id]
+      @dupQuery[:title] =  @document[:title]
 
-    @results = Document.where(@dupQuery)
-    if @results.size >= 1
-      @warning = true;
-      @subDoc = @results.first
-     # raise @subDoc.inspect
-      @dupQuery[:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
-      #raise @subDoc.inspect
-      format.js { }
-      return
-    end
+      @results = Document.where(@dupQuery)
+      if @results.size >= 1
+        @warning = true;
+        @subDoc = @results.first
+        @dupQuery[:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
+        @uploaded_io = uploaded_io
+        @studentName = studentName
+        @dupQuery[:updated_at] = Time.now
 
-    if document_params[:title] == "Select One"
-      @selectError = true
-      format.js { }
-      return
-    end
+        format.js { }
+        return
+      end
 
-    if uploaded_io.content_type != "application/pdf"
-      @pdfError = true
-      format.js { }
-      return
-    end
+      if document_params[:title] == "Select One"
+        @selectError = true
+        format.js { }
+        return
+      end
 
-     #raise uploaded_io.original_filename.inspect
+      if uploaded_io.content_type != "application/pdf"
+        @pdfError = true
+        format.js { }
+        return
+      end
 
-    FileUtils.mkdir_p  Rails.public_path + "uploads/#{studentName}"
+      #raise uploaded_io.original_filename.inspect
 
-    File.open(Rails.root.join('public', "uploads/#{studentName}", uploaded_io.original_filename), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
+      FileUtils.mkdir_p  Rails.public_path + "uploads/#{studentName}"
 
-    params[:document][:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
+      File.open(Rails.root.join('public', "uploads/#{studentName}", uploaded_io.original_filename), 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+
+      params[:document][:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
 
 
       if @document.save
@@ -78,20 +80,20 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     respond_to do |format|
-        format.js {}
+      format.js {}
       # format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully destroyed.' }
       # format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_document
-      @document = Document.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_document
+    @document = Document.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def document_params
-      params.require(:document).permit(:title, :location, :student_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def document_params
+    params.require(:document).permit(:title, :location, :student_id)
+  end
 end
