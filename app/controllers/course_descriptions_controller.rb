@@ -95,13 +95,20 @@ class CourseDescriptionsController < ApplicationController
   # GET /things/typeahead/:query
   def typeahead
     puts "hello type"
-    render json: @search.results
+    puts search_params[:query].class
+    #@suggestions = CourseDescription.where("name LIKE" => "%#{search_params[:query]}%")
+    @suggestions = CourseDescription.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:name) #Select the data you want to load on the typeahead.
+    #raise @suggestions.all.inspect
+    #render json: @suggestions.all
+    respond_to do |format|
+      format.json { render json: @suggestions }
+    end
   end
 
   private
 
     def search_params
-      params[:thing_search] || {}
+      params.permit(:query) || {}
     end
 
     # Use callbacks to share common setup or constraints between actions.

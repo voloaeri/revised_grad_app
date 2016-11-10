@@ -59,26 +59,27 @@ $(function(){
 var bestPictures = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    //prefetch: '../data/films/post_1960.json',
+    prefetch: document.location.origin + '/course_descriptions/suggestions.json',
     remote: {
         url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
-        wildcard: '%QUERY'
+        wildcard: '%QUERY',
+        filter: function(response) {
+            console.log("Anser blow");
+            console.log(response);
+            return response;
+        }
     },
     limit : 10
 });
 
-//bestPictures.initalize();
-
-$('#course_description_category').typeahead(null, {
-    name: 'best-pictures',
-    display: 'value',
-    source: bestPictures.ttAdapter()
-});
-
 $(function(){
     $('#course_description_category').typeahead(null, {
-        name: 'best-pictures',
-        display: 'value',
-        source: bestPictures
+        name: 'countries',
+        displayKey: function(countries) {
+            console.log("display");
+            console.log(countries);
+            return countries;
+        },
+        source: bestPictures.ttAdapter()
     });
 })
