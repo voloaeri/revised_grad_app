@@ -379,13 +379,13 @@
                   <th class="ctable">Semester</th>
                   <th class="ctable">Category</th>
                 </tr>
-              <% @student.course_descriptions.all.each do |course| %>
+              <% @student.course_histories.all.each do |course| %>
                   <tr class="ctable">
-                    <td class="ctable"> <%= course.name =%></td>
-                    <td class="ctable"> <%= course.number =%></td>
-                    <td class="ctable"> <%= course.section =%> </td>
-                    <td class="ctable"> <%= course.semester =%> </td>
-                    <td class="ctable"><%= course.category =%></td>
+                    <td class="ctable"> <%= course.course_description.name %></td>
+                    <td class="ctable"> <%= course.course_description.number %></td>
+                    <td class="ctable"> <%= course.section %></td>
+                    <td class="ctable"> <%= course.semester %></td>
+                    <td class="ctable"><%= course.course_description.category %></td>
                     <td class ="ctable touch"> <%= link_to "Unenroll", {:controller => :course_histories, :course_history =>{:student_id => @student.id, :course_description_id => course.id  }}, :method => :delete, :data => { confirm: 'Are you sure?' }  %> </td>
                   </tr>
               <% end %>

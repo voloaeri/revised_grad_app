@@ -8,17 +8,10 @@ $("#class_search_results").append("Look like we couldn't find that course. Did y
 
 <% @results.all.each do |c| %>
 
-<% output = "#{c.number} #{c.name} #{c.teacher} #{c.section} #{c.category} #{c.hours}"%>
+<% output = "#{c.number} #{c.name}#{c.category} #{c.hours}"%>
 
 $("#class_search_results").append('<%= link_to(output, { :controller => :course_histories, :action => :create, :course_history => {:course_description_id => c, :student_id => @student.id}, :remote => false}, :method => :post).to_s %>' + '<br/>');
 
-//course_histories_path(@student)
-//{ :controller => :course_histories, :method => :post, :action => :create, :student => @student.id }
-
 <% end %>
-
- //, { :controller => :course_histories, :action => :create }
-
-//alert("make these into a table with more columns ");
 
 <% puts link_to(output).to_s  %>
