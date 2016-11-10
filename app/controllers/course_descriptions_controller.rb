@@ -92,7 +92,18 @@ class CourseDescriptionsController < ApplicationController
     end
   end
 
+  # GET /things/typeahead/:query
+  def typeahead
+    puts "hello type"
+    render json: @search.results
+  end
+
   private
+
+    def search_params
+      params[:thing_search] || {}
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_course_description
       @course_description = CourseDescription.find(params[:id])
