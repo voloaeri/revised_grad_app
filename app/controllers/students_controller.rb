@@ -41,6 +41,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
     @student = Student.find(params[:id])
 
     @student.semester = @student.semesterStartedCS.split(" ")[0]

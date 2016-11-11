@@ -38,9 +38,10 @@ ActiveRecord::Schema.define(version: 20161108052558) do
   create_table "documents", force: :cascade do |t|
     t.string   "title"
     t.string   "location"
+    t.boolean  "background_sheet", default: false
     t.integer  "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["student_id"], name: "index_documents_on_student_id"
   end
 

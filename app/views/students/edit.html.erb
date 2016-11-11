@@ -118,15 +118,16 @@
                   <div class="checklist">
                     <!-- TODO: Finish the rest of the Requirements! -->
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %>>
                       <div class="requirement_description">
-                        Background Preparation Worksheet (CS-01)
+                        Background Preparation Worksheet
                       </div>
                     </div>
+                    <%# raise @doc_titles.inspect %>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if @doc_titles.include? "M.S. Program of Study" then "checked" else "" end %>>
                       <div class="requirement_description">
-                        MS Program of Study (CS-03)
+                        M.S. Program of Study (CS-03)
                       </div>
                     </div>
                     <div class="requirement">

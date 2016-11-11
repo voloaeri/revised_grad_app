@@ -96,6 +96,9 @@ class CourseDescriptionsController < ApplicationController
   def typeahead
     puts "hello type"
     puts search_params[:query].class
+    if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.  
+      return
+    end
     #@suggestions = CourseDescription.where("name LIKE" => "%#{search_params[:query]}%")
     @suggestions = CourseDescription.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:name) #Select the data you want to load on the typeahead.
     #raise @suggestions.all.inspect

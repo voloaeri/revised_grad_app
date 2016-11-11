@@ -15,6 +15,8 @@ class DocumentsController < ApplicationController
 
       @document = Document.new(document_params)
 
+      #raise @document.inspect
+
       uploaded_io = params[:document][:location]
       uploaded_io.original_filename = document_params[:title].to_s + ".pdf"
 
@@ -60,6 +62,8 @@ class DocumentsController < ApplicationController
       end
 
       params[:document][:location] = "uploads/#{studentName}/#{uploaded_io.original_filename}"
+
+
 
 
       if @document.save

@@ -59,12 +59,11 @@ $(function(){
 var bestPictures = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: document.location.origin + '/course_descriptions/suggestions.json',
+    prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
     remote: {
         url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
         wildcard: '%QUERY',
         filter: function(response) {
-            console.log("Anser blow");
             console.log(response);
             return response;
         }
@@ -76,7 +75,6 @@ $(function(){
     $('#course_description_category').typeahead(null, {
         name: 'countries',
         displayKey: function(countries) {
-            console.log("display");
             console.log(countries);
             return countries;
         },
