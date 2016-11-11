@@ -42,7 +42,9 @@
     </div>
     <div class="field right">
       <%= f.label :fundingEligibility, 'Funding Eligibility' %>
-      <%= f.text_field :fundingEligibility %>
+      <!--%= f.text_field :fundingEligibility %-->
+      <%= f.select(:fundingEligibility, options_for_select(%w(No Yes))) %>
+
     </div>
     <div class="field right">
       <%= f.label :status, 'Funding Status' %>
@@ -72,7 +74,10 @@
     </div>
     <div class="field left">
       <%= f.label :backgroundApproved, 'Background Approved' %>
+      <!--%= f.select(:approvsemester,%w(Fall Spring Summer)) %-->
+      <!--%= f.select :approvyear, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %-->
       <%= f.text_field :backgroundApproved %>
+
     </div>
     <div class="field right">
       <%= f.label :leaveExtension, 'Leave Extension' %>
@@ -82,7 +87,9 @@
 
     <div class="field left">
       <%= f.label :intendedDegree, 'Intended Degree' %>
-      <%= f.text_field :intendedDegree %>
+      <!--%= f.text_field :intendedDegree %-->
+      <%= f.select(:intendedDegree, options_for_select(%w(PhD Master's))) %>
+
     </div>
 
     <div class="actions right right">

@@ -46,6 +46,8 @@ class StudentsController < ApplicationController
     @student.semester = @student.semesterStartedCS.split(" ")[0]
     @student.year = @student.semesterStartedCS.split(" ")[1]
 
+    #@student.approvsemester = @student.backgroundApproved.split(" ")[0]
+    #@student.approvyear = @student.backgroundApproved.split(" ")[1]
     #raise @student.year.inspect
 
     @job = Job.new(student: @student)
@@ -61,10 +63,11 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
-
     @student.semesterStartedCS = student_params[:semester] + " "  + student_params[:year]
+    #@student.backgroundApproved = student_params[:approvsemester] + " "  + student_params[:approvyear]
 
     #raise @student.inspect
+    @nameError=false;
 
     respond_to do |format|
       if @student.save
@@ -74,6 +77,13 @@ class StudentsController < ApplicationController
         format.html { render :new }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
+
+      if student_params[:firstName] == ""
+        @nameError=true
+        format.js { }
+        return
+      end
+
     end
   end
 
@@ -123,6 +133,8 @@ class StudentsController < ApplicationController
 
   def update
     @student.semesterStartedCS = student_params[:semester] + " "  + student_params[:year]
+    #@student.backgroundApproved = student_params[:approvsemester] + " "  + student_params[:approvyear]
+
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to edit_student_url(@student), notice: 'Student was successfully updated.' }
@@ -152,6 +164,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:firstName, :lastName, :PID, :alternativeName, :gender, :ethnicity, :status, :citizenship, :residency, :enteringStatus, :advisor, :researchArea, :year, :semester, :backgroundApproved, :leaveExtension, :fundingStatus, :fundingEligibility, :intendedDegree, :coursesTaken, :hoursCompleted, :imageLocation, :id)
+      params.require(:student).permit(:firstName, :lastName, :PID, :alternativeName, :gender, :ethnicity, :status, :citizenship, :residency, :enteringStatus, :advisor, :researchArea, :year, :semester, :backgroundApproved, :approvsemester,:approvyear,:leaveExtension, :fundingStatus, :fundingEligibility, :intendedDegree, :coursesTaken, :hoursCompleted, :imageLocation, :id)
     end
 end

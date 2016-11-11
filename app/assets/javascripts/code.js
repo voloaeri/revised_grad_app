@@ -68,6 +68,7 @@ $(document).ready(function(){
         $(".side_bar .user h5").html(text);
     });
 
+    
 });
 
 

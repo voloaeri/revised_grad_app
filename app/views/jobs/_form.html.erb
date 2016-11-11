@@ -19,14 +19,15 @@
     </div>
 
     <div class="field right">
-      <%= f.label :semester %>
-      <%= f.select(:semester,%w(Fall Spring Summer)) %>
-      <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
+      <%= f.label :supervisor %>
+      <%= f.text_field :supervisor, :value => "" %>
     </div>
 
     <div class="field left">
-      <%= f.label :supervisor %>
-      <%= f.text_field :supervisor, :value => "" %>
+      <%= f.label :semester %>
+      <%= f.select(:sem,%w(Fall Spring Summer)) %>
+      <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
+
     </div>
 
     <div class="field right">
@@ -34,7 +35,7 @@
       <%= f.text_field :course, :value => "" %>
     </div>
 
-    <div class="actions left">
+    <div class="actions left  ">
       <%= f.submit %>
     </div>
 <% end %>

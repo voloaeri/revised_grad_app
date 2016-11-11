@@ -27,6 +27,7 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     #raise params.inspect
+    job_params.permit(:student_id,:position,:supervisor,:sem,:year,:course)
     @posError=false;
     @semError=false;
     @superError=false;
@@ -37,10 +38,11 @@ class JobsController < ApplicationController
     respond_to do |format|
       @job = Job.new(job_params)
       @position= job_params[:position]
-      @semester= job_params[:semester]
+      @semester= job_params[:sem]+job_params[:year]
       @supervisor= job_params[:supervisor]
       @course = job_params[:course]
-
+      @job.position=job_params[:sem]+job_params[:year]
+      raise @job.inspect
 
 
       if job_params[:position] == ""
