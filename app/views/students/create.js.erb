@@ -1,0 +1,11 @@
+
+
+if(<%= @nameError %>){
+  $(".alerts").append("<div class='alert alert-danger'> Your first name field is empty. </div>");
+}
+
+alert("<%= @success %> jjjj");
+
+if(<%= @success %>){
+  $(".alerts").append("<div class='alert alert-success'> Student was successfully created </div>");
+}

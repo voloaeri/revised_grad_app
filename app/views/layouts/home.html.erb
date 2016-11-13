@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grades</title>
+  <%= csrf_meta_tags %>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: Helvetica;
+    }
+    .main {
+      background-image: url(/assets/background.jpg);
+      position: absolute;
+      background-size: cover;
+      width: 80%;
+      height: 100%;
+      margin-left: 10%;
+    }
+
+    .main .container{
+      background-color: transparent;
+      width: 100%;
+    }
+
+    .container{
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      background-color: rgba(240, 240, 240, 0.6);
+      height: auto;
+    }
+
+
+    h1 {
+      font-size: 6vw;
+      padding: 100px 0 0 0;
+      margin: 0;
+      font-family: Book Antiqua;
+    }
+
+
+    .info{
+      position: absolute;
+      top: 85%;
+      width: 100%;
+    }
+
+    .label{
+      text-align: center;
+      font-size: 30px;
+      width: 100%;
+      min-width: 400px;
+    }
+
+    .info ul {
+      list-style: none;
+      text-align: center;
+      padding: 0;
+      width: 100%;
+      min-width: 400px;
+    }
+
+    .names li{
+      font-size: 20px;
+      float: left;
+      width: 25%;
+      min-width: 100px;
+      height: inherit;
+    }
+
+    i{
+      display: block;
+    }
+
+    .first {
+      margin-top: 100px;
+    }
+
+    .sprints{
+      margin-top: 70px;
+    }
+
+    .sprints h2{
+      padding-top: 10px;
+      width: 100%;
+      color: black;
+      border-top: 1px solid black;
+      text-decoration: none;
+    }
+
+    .sprints a:hover{
+      color: red;
+    }
+
+    .sprint {
+      text-decoration: none;
+    }
+
+    .meeting{
+      padding: 40px 0 20px 0;
+    }
+
+    a {
+      display: block;
+    }
+
+    .description {
+      width: 70%;
+      margin: 0 auto;
+    }
+    .rules{
+      padding: 20px 0;
+    }
+
+    .rules li{
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<%= yield %>
+</body>
+</html>

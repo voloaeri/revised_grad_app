@@ -1,0 +1,41 @@
+<%= form_for(@job, :remote => true, :url => url_for(:controller => 'jobs', :action => 'create')) do |f| %>
+    <% if @job.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+          <ul>
+            <% @job.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <%= f.hidden_field :student_id %>
+
+    <div class="field left">
+      <%= f.label :position %>
+      <%= f.text_field :position, :value => "" %>
+    </div>
+
+    <div class="field right">
+      <%= f.label :supervisor %>
+      <%= f.text_field :supervisor, :value => "" %>
+    </div>
+
+    <div class="field left">
+      <%= f.label :semester %>
+      <%= f.select(:semester,%w(Fall Spring Summer)) %>
+      <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
+
+    </div>
+
+    <div class="field right">
+      <%= f.label :course %>
+      <%= f.text_field :course, :value => "" %>
+    </div>
+
+    <div class="actions left  ">
+      <%= f.submit %>
+    </div>
+<% end %>

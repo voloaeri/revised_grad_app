@@ -1,0 +1,42 @@
+$(".alerts").html("");
+
+if(<%= @warning %>){
+  if(confirm("You'll be overwriting a older upload. That ok?")){
+    <%  @subDoc.respond_to?(:update) ? @subDoc.update(@dupQuery) : nil %>
+    <% if !@uploaded_io.nil? %>
+    <% File.open(Rails.root.join('public', "uploads/#{@studentName}", @uploaded_io.original_filename), 'wb') do |file| %>
+    <%  file.write(@uploaded_io.read)  %>
+    <% end %>
+    <% end %>
+
+    <% if @dupQuery && @subDoc %>
+    $("#doc_row_<%=@subDoc.id if @subDoc %> td:nth-child(2)").html("<%= "<a>#{@dupQuery[:updated_at].strftime("%m/%d/%Y %I:%M %p") } </a>" %>");
+    <% end %>
+
+    $("#documents ul.nav li:nth-child(1) a").tab('show');
+
+    $(".alerts").append("<%= "<div class='alert alert-success'> Document Successfully Uploaded </div>"%>");
+
+  }
+} else if(<%= @pdfError %>){
+
+  $(".alerts").append("<%= "<div class='alert alert-danger'> Looks Like You Didn't Upload a PDF! </div>"%>");
+
+} else if(<%= @selectError %>){
+
+  $(".alerts").append("<%= "<div class='alert alert-warning'> Please Select the Type of Document! </div>"%>");
+
+} else {
+
+  <% html = "<tr class='ctable'> <td class='ctable'><a target='_blank' href='#{asset_path(@document.location)}'> #{@document.title} </a>  </td><td class=\"ctable\"><a> #{@document.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p") if @document.updated_at.respond_to?(:localtime)} </a> </td>  <td class='ctable touch'>#{link_to 'Delete', @document, method: :delete, data: { remote: 'true', format: 'js' }}</td> </tr>" %>
+  <% puts html.gsub("\"", "'") %>
+
+  $("#documents_table").append("'<%= html.gsub("\"", "'") %>");
+
+  $("#documents ul.nav li:nth-child(1) a").tab('show');
+
+  $(".alerts").append("<%= "<div class='alert alert-success'> Document Successfully Uploaded </div>"%>");
+
+
+
+}

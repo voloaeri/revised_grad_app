@@ -1,0 +1,46 @@
+<%= form_for(@course_description, :url => url_for(:controller => 'course_descriptions', :action => 'search'), :remote => true) do |f| %>
+    <% if @course_description.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@course_description.errors.count, "error") %> prohibited this course_description from being saved:</h2>
+
+          <ul>
+            <% @course_description.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field left">
+      <%= f.label :number %>
+      <%= f.number_field :number %>
+    </div>
+
+    <div class="field right">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    
+    <div class="field right">
+      <%= f.label :category %>
+      <%= f.text_field :category %>
+    </div>
+
+    <div class="field left">
+      <%= f.label :hours %>
+      <%= f.text_field :hours %>
+    </div>
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <% f.text_field :student %>
+
+    <div class="field right">
+
+      <%= f.hidden_field :student %>
+    </div>
+
+    <div class="actions right">
+      <%= f.submit "Search for Course to Add", :data => { :target => "#myModal" , :toggle => "modal"}%>
+    </div>
+<% end %>
