@@ -21657,3 +21657,779 @@ Processing by StudentsController#index as HTML
 Completed 200 OK in 28ms (Views: 24.5ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/students/" for 152.23.190.15 at 2016-11-14 18:06:08 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (5.3ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (239.3ms)
+Completed 200 OK in 473ms (Views: 380.9ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:06:11 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (40.9ms)
+  Rendered students/_upload_photo.html.erb (16.1ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.3ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (10.9ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (14.0ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (9.2ms)
+  Rendered students/edit.html.erb within layouts/application (154.6ms)
+Completed 200 OK in 227ms (Views: 171.4ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/students" for 152.23.190.15 at 2016-11-14 18:06:40 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 31ms (Views: 27.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/faculties/" for 152.23.190.15 at 2016-11-14 18:10:14 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by FacultiesController#index as HTML
+  Rendering faculties/index.html.erb within layouts/application
+  [1m[36mFaculty Load (0.7ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties"[0m
+  Rendered faculties/index.html.erb within layouts/application (39.9ms)
+Completed 200 OK in 69ms (Views: 58.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/student/1" for 152.23.190.15 at 2016-11-14 18:10:36 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/student/1"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered collection of /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [53 times] (37.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.0ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (79.8ms)
+Started GET "/student/" for 152.23.190.15 at 2016-11-14 18:10:38 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/student"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered collection of /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [53 times] (24.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (56.8ms)
+Started GET "/studens" for 152.23.190.15 at 2016-11-14 18:10:41 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/studens"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered collection of /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [53 times] (23.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (54.9ms)
+Started GET "/students/" for 152.23.190.15 at 2016-11-14 18:10:43 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.6ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:10:47 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (14.7ms)
+  Rendered students/_upload_photo.html.erb (2.4ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (5.7ms)
+  [1m[36mDocument Load (0.2ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (11.5ms)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (5.2ms)
+  Rendered students/edit.html.erb within layouts/application (58.7ms)
+Completed 200 OK in 79ms (Views: 73.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/course_descriptions/" for 152.23.190.15 at 2016-11-14 18:11:19 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#index as HTML
+  Rendering course_descriptions/index.html.erb within layouts/application
+  [1m[36mCourseDescription Load (0.3ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions"[0m
+  Rendered course_descriptions/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 30ms (Views: 27.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:12:19 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (27.0ms)
+  Rendered students/_upload_photo.html.erb (2.4ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (6.6ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (12.3ms)
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (6.5ms)
+  Rendered students/edit.html.erb within layouts/application (73.3ms)
+Completed 200 OK in 421ms (Views: 415.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/course_descriptions/typeahead/S" for 152.23.190.15 at 2016-11-14 18:12:25 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#typeahead as JSON
+  Parameters: {"query"=>"S"}
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "course_descriptions"."name", "course_descriptions"."number", "course_descriptions"."hours", "course_descriptions"."category" FROM "course_descriptions" WHERE (name LIKE '%S%')[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/course_descriptions/typeahead/N" for 152.23.190.15 at 2016-11-14 18:12:31 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#typeahead as JSON
+  Parameters: {"query"=>"N"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "course_descriptions"."name", "course_descriptions"."number", "course_descriptions"."hours", "course_descriptions"."category" FROM "course_descriptions" WHERE (name LIKE '%N%')[0m
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:15:11 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (1.4ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (21.2ms)
+  Rendered students/_upload_photo.html.erb (3.2ms)
+  [1m[36mCourseHistory Load (0.4ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (6.4ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (13.6ms)
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (6.7ms)
+  Rendered students/edit.html.erb within layouts/application (77.8ms)
+Completed 200 OK in 110ms (Views: 97.0ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.190.15 at 2016-11-14 18:15:20 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"431", "name"=>"Networking", "category"=>"Applications", "hours"=>"3", "student"=>"1", "teacher"=>"Diane Pozefsky", "semester"=>"Fall", "year"=>"2006"}, "authenticity_token"=>"lyGZmiVzCB2egB1AbtSWm/E0fGVd3g9dRTrB2yv0OVXcI1ugVhdmAj5S8vXgZ5k2ZHSjaF/M+RX8HQn+V855+A==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.5ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Networking"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "Diane"], ["lastName", "Pozefsky"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (4.6ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 3], ["faculty_id", 1], ["semester", "Fall 2006"], ["created_at", 2016-11-14 18:15:20 UTC], ["updated_at", 2016-11-14 18:15:20 UTC]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (1.1ms)
+Completed 200 OK in 30ms (Views: 3.9ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:15:41 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.9ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (20.8ms)
+  Rendered students/_upload_photo.html.erb (3.4ms)
+  [1m[36mCourseHistory Load (0.4ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (6.5ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (10.4ms)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (4.3ms)
+  Rendered students/edit.html.erb within layouts/application (72.3ms)
+Completed 200 OK in 94ms (Views: 85.5ms | ActiveRecord: 2.3ms)
+
+
+Started DELETE "/course_histories?course_history%5Bid%5D=1&course_history%5Bstudent_id%5D=1" for 152.23.190.15 at 2016-11-14 18:15:47 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseHistoriesController#search_and_destroy as HTML
+  Parameters: {"authenticity_token"=>"bPKfyNIcNkqShmO0VlIlnrMgv63bwynTz/PSY6dwr5En8F3yoXhYVTJUjAHY4SozJmBgoNnR35t21BpG20rvPA==", "course_history"=>{"id"=>"1", "student_id"=>"1"}}
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT  "course_histories".* FROM "course_histories" WHERE "course_histories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[31mDELETE FROM "course_histories" WHERE "course_histories"."id" = ?[0m  [["id", 1]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://findgrade.me/students/1/edit
+Completed 302 Found in 13ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:15:48 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (28.9ms)
+  Rendered students/_upload_photo.html.erb (2.3ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (6.9ms)
+  [1m[36mDocument Load (0.4ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (12.7ms)
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (5.7ms)
+  Rendered students/edit.html.erb within layouts/application (78.7ms)
+Completed 200 OK in 98ms (Views: 91.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/course_descriptions/typeahead/N" for 152.23.190.15 at 2016-11-14 18:16:14 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#typeahead as JSON
+  Parameters: {"query"=>"N"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "course_descriptions"."name", "course_descriptions"."number", "course_descriptions"."hours", "course_descriptions"."category" FROM "course_descriptions" WHERE (name LIKE '%N%')[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/jobs" for 152.23.190.15 at 2016-11-14 18:16:27 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by JobsController#create as JS
+  Parameters: {"utf8"=>"✓", "job"=>{"student_id"=>"1", "position"=>"Teaching Assistant", "supervisor"=>"Baruah S", "semester"=>"Fall", "year"=>"2017", "course"=>"Networking"}, "commit"=>"Create Job"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "jobs" ("position", "supervisor", "course", "student_id", "current", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["position", "Teaching Assistant"], ["supervisor", "Baruah S"], ["course", "Networking"], ["student_id", 1], ["current", "Fall 2017"], ["created_at", 2016-11-14 18:16:27 UTC], ["updated_at", 2016-11-14 18:16:27 UTC]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  Rendering jobs/create.js.erb
+  Rendered jobs/create.js.erb (0.9ms)
+Completed 200 OK in 21ms (Views: 3.6ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/course_descriptions/typeahead/S" for 152.23.190.15 at 2016-11-14 18:18:27 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#typeahead as JSON
+  Parameters: {"query"=>"S"}
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "course_descriptions"."name", "course_descriptions"."number", "course_descriptions"."hours", "course_descriptions"."category" FROM "course_descriptions" WHERE (name LIKE '%S%')[0m
+Completed 200 OK in 14ms (Views: 0.6ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.190.15 at 2016-11-14 18:18:48 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"523", "name"=>"Software Engineering", "category"=>"Applications", "hours"=>"4", "student"=>"1", "teacher"=>"Diane Pozefsky", "semester"=>"Spring", "year"=>"2015"}, "authenticity_token"=>"1CjuxorR/kZssC83WR77bBn5aOquUN3nGry5BjseBQifKiz8+bWQWcxiwILXrfTBjLm356xCK6+jm3EjRyRFpQ==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (0.7ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (1.3ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Software Engineering"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "Diane"], ["lastName", "Pozefsky"]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (4.9ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 2], ["faculty_id", 1], ["semester", "Spring 2015"], ["created_at", 2016-11-14 18:18:48 UTC], ["updated_at", 2016-11-14 18:18:48 UTC]]
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (2.3ms)
+Completed 200 OK in 47ms (Views: 5.9ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:19:31 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.9ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (21.3ms)
+  Rendered students/_upload_photo.html.erb (2.8ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (6.5ms)
+  [1m[36mDocument Load (0.4ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (12.0ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (5.9ms)
+  Rendered students/edit.html.erb within layouts/application (76.1ms)
+Completed 200 OK in 103ms (Views: 92.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/students/" for 152.23.190.15 at 2016-11-14 18:20:12 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (1.1ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 30ms (Views: 23.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:21:05 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.8ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (21.0ms)
+  Rendered students/_upload_photo.html.erb (3.4ms)
+  [1m[36mCourseHistory Load (0.4ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (7.5ms)
+  [1m[36mDocument Load (0.4ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (12.7ms)
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (6.5ms)
+  Rendered students/edit.html.erb within layouts/application (79.8ms)
+Completed 200 OK in 151ms (Views: 137.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 152.23.124.198 at 2016-11-14 18:21:11 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#show_home as HTML
+  Rendering students/show_home.html.erb within layouts/home
+  Rendered students/show_home.html.erb within layouts/home (1.2ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 152.23.124.198 at 2016-11-14 18:21:11 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#show_home as HTML
+  Rendering students/show_home.html.erb within layouts/home
+  Rendered students/show_home.html.erb within layouts/home (1.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/students" for 152.23.124.198 at 2016-11-14 18:21:14 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/students/" for 152.23.190.15 at 2016-11-14 18:21:20 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/" for 152.23.190.15 at 2016-11-14 18:21:55 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/students/" for 152.23.190.15 at 2016-11-14 18:22:20 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/course_descriptions/typeahead/suggestions.json" for 152.23.190.15 at 2016-11-14 18:22:21 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#typeahead as JSON
+  Parameters: {"query"=>"suggestions"}
+Unpermitted parameter: format
+Unpermitted parameter: format
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "course_descriptions"."name", "course_descriptions"."number", "course_descriptions"."hours", "course_descriptions"."category" FROM "course_descriptions" WHERE (name LIKE '%suggestions%')[0m
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:23:03 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (13.8ms)
+  Rendered students/_upload_photo.html.erb (2.2ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (5.3ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (11.5ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (5.2ms)
+  Rendered students/edit.html.erb within layouts/application (58.2ms)
+Completed 200 OK in 76ms (Views: 70.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/students/1/" for 152.23.190.15 at 2016-11-14 18:23:12 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/show.html.erb within layouts/application
+  Rendered students/_formRead.html.erb (8.6ms)
+  Rendered students/_upload_photo.html.erb (2.6ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (12.0ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered students/show.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 65ms (Views: 58.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/students/1/" for 152.23.190.15 at 2016-11-14 18:23:15 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/show.html.erb within layouts/application
+  Rendered students/_formRead.html.erb (7.5ms)
+  Rendered students/_upload_photo.html.erb (2.0ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (11.9ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered students/show.html.erb within layouts/application (39.7ms)
+Completed 200 OK in 58ms (Views: 52.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/students/1/edit" for 152.23.190.15 at 2016-11-14 18:24:01 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (21.5ms)
+  Rendered students/_upload_photo.html.erb (3.2ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (7.7ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (12.9ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (5.1ms)
+  Rendered students/edit.html.erb within layouts/application (78.7ms)
+Completed 200 OK in 128ms (Views: 117.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/students/" for 152.23.190.15 at 2016-11-14 18:24:19 +0000
+Cannot render console from 152.23.190.15! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.7ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 40ms (Views: 37.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/students/1/edit" for 152.23.124.198 at 2016-11-14 18:26:03 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (3.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (21.5ms)
+  Rendered students/_upload_photo.html.erb (3.2ms)
+  [1m[36mCourseHistory Load (0.4ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (7.5ms)
+  [1m[36mDocument Load (0.4ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (12.7ms)
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (7.7ms)
+  Rendered students/edit.html.erb within layouts/application (99.1ms)
+Completed 200 OK in 146ms (Views: 126.7ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/students/1/upload_photo" for 152.23.124.198 at 2016-11-14 18:26:14 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#upload_photo as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"46Mag17uh773gjUvz+GSxIrrfmLkY0/VFhG6vfHryIkin3cc+Ax3WjcQXjG0BKQ/PdowyCB/Jxz4IWT9+0hPFA==", "student"=>{"imageLocation"=>#<ActionDispatch::Http::UploadedFile:0x007f60028b3940 @tempfile=#<Tempfile:/tmp/RackMultipart20161114-4905-1jsjmlh.jpg>, @original_filename="unc-old-well.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"student[imageLocation]\"; filename=\"unc-old-well.jpg\"\r\nContent-Type: image/jpeg\r\n">, "id"=>"1"}, "commit"=>"Upload Profile Picture", "id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[33mUPDATE "students" SET "imageLocation" = ?, "updated_at" = ? WHERE "students"."id" = ?[0m  [["imageLocation", "uploads/727727272/unc-old-well.jpg"], ["updated_at", 2016-11-14 18:26:14 UTC], ["id", 1]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://findgrade.me/students/1/edit
+Completed 302 Found in 34ms (ActiveRecord: 7.6ms)
+
+
+Started GET "/students/1/edit" for 152.23.124.198 at 2016-11-14 18:26:14 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (14.3ms)
+  Rendered students/_upload_photo.html.erb (2.4ms)
+  [1m[36mCourseHistory Load (0.6ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (6.9ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (13.2ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (6.2ms)
+  Rendered students/edit.html.erb within layouts/application (64.5ms)
+Completed 200 OK in 86ms (Views: 79.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/students/1/edit" for 152.23.124.198 at 2016-11-14 18:26:15 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (19.4ms)
+  Rendered students/_upload_photo.html.erb (5.1ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (7.0ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (22.1ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (19.2ms)
+  Rendered students/edit.html.erb within layouts/application (100.1ms)
+Completed 200 OK in 127ms (Views: 121.5ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/students/1/upload_photo" for 152.23.124.198 at 2016-11-14 18:26:20 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#upload_photo as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Mf6Zvy+fcXZ/WJ8nJ/nlVJtb36U4A5/pL15nV4Xbr9VmvPSCZj7oh8Y5M8prO55klmHrYfHKQGtqjUBazx9aIQ==", "student"=>{"imageLocation"=>#<ActionDispatch::Http::UploadedFile:0x00000004d428b8 @tempfile=#<Tempfile:/tmp/RackMultipart20161114-4905-13hwlhj.jpg>, @original_filename="Fred-Brooks (1).jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"student[imageLocation]\"; filename=\"Fred-Brooks (1).jpg\"\r\nContent-Type: image/jpeg\r\n">, "id"=>"1"}, "commit"=>"Upload Profile Picture", "id"=>"1"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[33mUPDATE "students" SET "imageLocation" = ?, "updated_at" = ? WHERE "students"."id" = ?[0m  [["imageLocation", "uploads/727727272/Fred-Brooks (1).jpg"], ["updated_at", 2016-11-14 18:26:20 UTC], ["id", 1]]
+  [1m[35m (9.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://findgrade.me/students/1/edit
+Completed 302 Found in 26ms (ActiveRecord: 12.8ms)
+
+
+Started GET "/students/1/edit" for 152.23.124.198 at 2016-11-14 18:26:20 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (21.2ms)
+  Rendered students/_upload_photo.html.erb (2.5ms)
+  [1m[36mCourseHistory Load (0.4ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (6.1ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (12.0ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (5.8ms)
+  Rendered students/edit.html.erb within layouts/application (92.1ms)
+Completed 200 OK in 117ms (Views: 106.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/students/1/edit" for 152.23.124.198 at 2016-11-14 18:26:22 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (21.1ms)
+  Rendered students/_upload_photo.html.erb (2.5ms)
+  [1m[36mCourseHistory Load (0.4ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (7.7ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (14.0ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (9.9ms)
+  Rendered students/edit.html.erb within layouts/application (79.9ms)
+Completed 200 OK in 103ms (Views: 96.9ms | ActiveRecord: 1.6ms)
+
+
+Started PATCH "/students/1" for 152.23.124.198 at 2016-11-14 18:26:29 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#update as JS
+  Parameters: {"utf8"=>"✓", "student"=>{"firstName"=>"Fred", "lastName"=>"Brooks", "PID"=>"727727273", "alternativeName"=>"", "gender"=>"Male", "ethnicity"=>"White", "enteringStatus"=>"Funded", "fundingEligibility"=>"No", "status"=>"Funded", "citizenship"=>"United States", "residency"=>"No", "advisor"=>"Ahalt S", "researchArea"=>"Software Engineering", "startedSemester"=>"Fall", "startedYear"=>"2016", "approvedSemester"=>"Fall", "approvedYear"=>"2016", "leaveExtension"=>"", "intendedDegree"=>"PhD"}, "commit"=>"Update Student", "id"=>"1"}
+  [1m[36mStudent Load (1.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (7.8ms)[0m  [1m[33mUPDATE "students" SET "PID" = ?, "residency" = ?, "fundingEligibility" = ?, "updated_at" = ? WHERE "students"."id" = ?[0m  [["PID", "727727273"], ["residency", "No"], ["fundingEligibility", "No"], ["updated_at", 2016-11-14 18:26:29 UTC], ["id", 1]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://findgrade.me/students/1/edit
+Completed 200 OK in 46ms (ActiveRecord: 14.2ms)
+
+
+Started GET "/students/1/edit" for 152.23.124.198 at 2016-11-14 18:26:29 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (16.8ms)
+  Rendered students/_upload_photo.html.erb (4.1ms)
+  [1m[36mCourseHistory Load (0.4ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (7.6ms)
+  [1m[36mDocument Load (0.4ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (12.2ms)
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (6.1ms)
+  Rendered students/edit.html.erb within layouts/application (73.1ms)
+Completed 200 OK in 97ms (Views: 89.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/students/1/edit" for 152.23.124.198 at 2016-11-14 18:26:30 +0000
+Cannot render console from 152.23.124.198! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (13.8ms)
+  Rendered students/_upload_photo.html.erb (2.0ms)
+  [1m[36mCourseHistory Load (0.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (5.4ms)
+  [1m[36mDocument Load (0.2ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (11.3ms)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (6.0ms)
+  Rendered students/edit.html.erb within layouts/application (58.3ms)
+Completed 200 OK in 80ms (Views: 74.7ms | ActiveRecord: 1.6ms)
+
+

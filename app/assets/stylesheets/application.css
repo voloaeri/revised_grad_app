@@ -188,7 +188,7 @@ html, body {
     background-color: #B2D0E6;
     height: 100vh;
     text-align: center;
-    position: fixed;
+   /* position: fixed; */
 }
 
 .side_bar ul{
