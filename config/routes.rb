@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   delete "/course_histories" => "course_histories#search_and_destroy"
   post "students/:id/upload_photo" => "students#upload_photo"
   get 'course_descriptions/typeahead/:query' => 'course_descriptions#typeahead'
+  get 'faculties/typeahead/:query' => 'faculties#typeahead'
 end

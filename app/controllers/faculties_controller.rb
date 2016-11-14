@@ -62,7 +62,26 @@ class FacultiesController < ApplicationController
     end
   end
 
+  # GET /things/typeahead/:query
+  def typeahead
+
+    if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.
+      return
+    end
+    #@suggestions = CourseDescription.where("name LIKE" => "%#{search_params[:query]}%")
+    @suggestions = Faculty.where('lastName LIKE ?', "%#{search_params[:query]}%").pluck(:lastName, :firstName).map{ |s| s[0] + ", " + s[1] } #Select the data you want to load on the typeahead.
+    #@suggestions.map{ |s| {name: s[0], number: s[1], hours: s[2]}}
+    puts @suggestions
+    respond_to do |format|
+      format.json { render json: @suggestions.to_json }
+    end
+  end
+
   private
+    def search_params
+      params.permit(:query) || {}
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_faculty
       @faculty = Faculty.find(params[:id])
