@@ -79,6 +79,7 @@ var bestPictures = new Bloodhound({
     limit : 5
 });
 
+
 $(function(){
     $('#course_description_name').typeahead(null, {
         name: 'countries',
@@ -91,7 +92,7 @@ $(function(){
 })
 
 $(function(){
-    $('#course_description_name').bind('typeahead:select', function(ev, suggestion) {
+    $('#job_course').bind('typeahead:select', function(ev, suggestion) {
          console.log(dropDown[0]);
          console.log('Selection: ' + suggestion);
         for(var i = 0; i < dropDown.length; i++){
@@ -108,4 +109,14 @@ $(function(){
 })
 
 
+$(function(){
+    $('#job_course').typeahead(null, {
+        name: 'countries',
+        displayKey: function(countries) {
+            console.log(countries);
+            return countries;
+        },
+        source: bestPictures.ttAdapter()
+    });
+})
 

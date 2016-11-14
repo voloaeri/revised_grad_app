@@ -26,7 +26,6 @@ class FacultiesController < ApplicationController
   def create
     @faculty = Faculty.new(faculty_params)
 
-    raise @faculty.inspect
 
     respond_to do |format|
       if @faculty.save
