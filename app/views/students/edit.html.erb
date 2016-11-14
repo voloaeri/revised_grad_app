@@ -1,10 +1,12 @@
 <div class="side_bar">
+  
   <div class="user">
     <img class="img-circle" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120">
     <h2> <%= @student.firstName + " " + @student.lastName %> </h2>
     <h5> <%=@student.intendedDegree + " Student" %> </h5>
     <h6> <%= @student.PID  %> </h6>
     <div class="bottom-border"></div>
+
   </div>
   <ul class="nav nav-pills">
     <li class="active"><a class='click' id="personal" data-toggle="pill" href="#basic_info">Personal Information</a></li>
@@ -12,7 +14,10 @@
     <li><a id="history" class='click' data-toggle="pill" href="#course_history"> Course History </a></li>
     <li><a id="docs" class='click' data-toggle="pill" href="#documents">Documents</a></li>
     <li><a id="work" class='click' data-toggle="pill" href="#jobs">Jobs</a></li>
+    <li><%= link_to('Back to Homepage', students_path) %></li>
+
   </ul>
+
 </div>
 <!-- SIDE BAR ends -->
 <div class="container">
@@ -34,7 +39,7 @@
                   </div>
               <% end %>
             </div>
-            <%= render 'form', student: @student %>
+            <%= render 'form', student: @student, function: "update" %>
            
           </div>
         </div>
@@ -42,7 +47,7 @@
       <div id="upload_picture" class="tab-pane fade">
         <div class="panel panel-default">
           <div class="panel-body">
-            <div class="alert alert-danger"> <%= notice %> </div>
+            <div class="alerts"> </div>
             <%= render 'upload_photo', student: @student %>
         </div>
         </div>
@@ -404,7 +409,7 @@
         <div id="enroll" class="tab-pane fade">
           <div class="panel panel-default">
             <div class="panel-body">
-              <div class="alert alert-danger"> <%= notice %> </div>
+              
               <%= render 'course_descriptions/search_courses', course_description: @course_description %>
             </div>
           </div>
@@ -495,7 +500,6 @@
                         <%= value %>
                       </div>
                   <% end %>
-
                    <%= render 'jobs/form', job: @job %>
                 </div>
              </div>

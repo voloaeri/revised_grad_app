@@ -14,8 +14,15 @@
  *= require_tree .
  *= require_self
  */
+.navigaters {
 
-#bottomSetter {
+    border-radius: 4px;
+    position: relative;
+    display: block;
+
+
+}
+.bottomSetter {
     margin-bottom: 5%;
 }
 
@@ -130,7 +137,14 @@ html, body {
     min-height: 100%;
 
 }
-
+#back {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 10%;
+}
 .user{
     background: #B2D0E6; /* For browsers that do not support gradients #d2e1fe */
     background: -webkit-linear-gradient(white, #B2D0E6); /* For Safari 5.1 to 6.0 */
@@ -186,9 +200,7 @@ html, body {
     width: 100%;
 }
 
-.tab-content{
-    padding-top: 5px;
-}
+
 
 #expand a:hover {
     background-color: red;

@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require jquery.remotipart
 //= require typeahead
-//= require_tree .
+//= require bootstrap
+//= require things

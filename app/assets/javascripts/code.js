@@ -68,6 +68,10 @@ $(document).ready(function(){
         $(".side_bar .user h5").html(text);
     });
 
+    $("#jobs_button").click(function(){
+        $("#jobs ul.nav li:nth-child(1) a").tab('show');
+    });
+
     
 });
 

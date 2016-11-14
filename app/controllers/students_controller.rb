@@ -69,6 +69,7 @@ class StudentsController < ApplicationController
     #raise @student.inspect
     @nameError = false
     @success = false
+    @pidError = false;
 
     respond_to do |format|
 
@@ -79,6 +80,29 @@ class StudentsController < ApplicationController
         return
       end
 
+      if student_params[:lastName] == ""
+        @nameError=true
+        puts "name error"
+        format.js { }
+        return
+      end
+
+      if student_params[:PID] == ""
+        @pidError=true
+        puts "pid error"
+        format.js { }
+        return
+      elsif !/\A\d+\z/.match(student_params[:PID])
+        @pidError=true
+        puts "pid error"
+        format.js { }
+        return
+      elsif student_params[:PID].length!=9
+        @pidError=true
+        puts "pid error"
+        format.js { }
+        return
+      end
 
       if @student.save
         @success = true

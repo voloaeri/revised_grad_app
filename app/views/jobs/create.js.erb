@@ -1,6 +1,5 @@
 $(".alerts").html("");
 
-
 if(<%= @posError %>) {
 
   $(".alerts").append("<div class='alert alert-danger'> Your position field is empty </div>");
@@ -36,6 +35,7 @@ else {
     $("#jobs ul.nav li:nth-child(1) a").tab('show');
 
     $(".alerts").append("<div class='alert alert-success'> Job Successfully Uploaded </div>");
+
   }
 
 }

@@ -64,8 +64,9 @@ var bestPictures = new Bloodhound({
         url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
         wildcard: '%QUERY',
         filter: function(response) {
-            console.log(response);
-            return response;
+            console.log("helloo in ");
+            console.log("JSON.stringify " +(response[0][0]));
+            return response[0];
         }
     },
     limit : 10
@@ -81,3 +82,12 @@ $(function(){
         source: bestPictures.ttAdapter()
     });
 })
+
+$(function(){
+    $('#course_description_category').bind('typeahead:select', function(ev, suggestion) {
+        console.log('Selection: ' + suggestion);
+    });
+})
+
+
+

@@ -1,33 +1,33 @@
 <div class="side_bar">
+
   <img class="img-circle" src="<%= asset_path("uploads/djsakjda/unc-old-well.jpg") %>" height="120">
   <div id="searchBottom">
     <h2> Search Students</h2>
     <input id="search" type="text" name="search" placeholder="Search..">
-    <ul class="nav nav-pills">
-      <li class="searchButton"><a href="/students/new">Advanced Search Filters</a></li><br>
-      <li class="searchButton"><a href="#">Search</a></li>
+    <ul class="nav nav-pills navigaters">
+      <li class="searchButton navigaters"><a class='click' data-toggle="pill" href="/students/new">Advanced Search Filters</a></li><br>
+      <li class="searchButton navigaters"><a class='click' data-toggle="pill" href="#">Search</a></li>
 
     </ul>
-
   </div>
   <h2> Add Student(s)</h2>
   <ul class="searchAdd">
 
-    <ul class="nav nav-pills">
-      <li class="addButton"><a href="/students/new">Add a Student</a></li><br>
-      <li id="bottomSetter" class="addButton"><a href="#">Add Students</a></li>
+    <ul class="nav nav-pills navigaters">
+      <li class="addButton navigaters"><a href="/students/new">Add a Student</a></li><br>
+      <li id="bottomSetter" class="addButton navigaters"><a href="#">Add Students</a></li>
 
     </ul>
   </ul>
   <div id="addCourses">
     <h2> Add Course</h2>
-    <ul class="searchAdd">
+    <ul class="searchAdd navigaters">
 
 
 
 
-      <ul class="nav nav-pills">
-        <li class="addButton"><a href="/course_descriptions/new">Add a Course</a></li><br>
+      <ul class="nav nav-pills navigaters">
+        <li class="addButton navigaters"><a href="/course_descriptions/new">Add a Course</a></li><br>
 
 
       </ul>
@@ -47,7 +47,7 @@
           <td class="stable"><%= student.firstName %> <%= student.lastName %></td>
           <td class="stable"><%= link_to 'Show', student %></td>
           <td class="stable"><%= link_to 'Edit', edit_student_path(student) %></td>
-          <td class="stable"><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="stable"><%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
     </tbody>

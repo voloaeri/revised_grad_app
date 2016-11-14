@@ -1,5 +1,42 @@
-<h1>New Course Description</h1>
+<div class="side_bar">
+  <div class="user">
+    <img class="img-circle" src="<%= asset_path("uploads/djsakjda/unc-old-well.jpg") %>" height="120">
+    <h2>Adding New Course </h2>
 
-<%= render 'form', course_description: @course_description %>
+    <div class="bottom-border"></div>
+  </div>
+  <ul class="nav nav-pills">
+    <li class="active"><a class='click' id="course" data-toggle="pill" href="#course">Add a Course</a></li>
+  </ul>
+</div>
+<!-- SIDE BAR ends -->
+<div class="container">
+  <div class="tab-content">
 
-<%= link_to 'Back', course_descriptions_path %>
+    <div id="course" class="tab-pane fade in active">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#course_info">Add a new Course</a></li>
+
+      </ul>
+      <div class="tab-content">
+        <div id="course_info" class="tab-pane fade in active">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="alerts"> </div>
+              <%= render 'form', course_description: @course_description %>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+

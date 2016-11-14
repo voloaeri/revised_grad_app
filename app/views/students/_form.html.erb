@@ -1,4 +1,5 @@
-<%= form_for(student,:remote => true, :url => url_for(:controller => 'students', :format => 'js')) do |f| %>
+
+<%= form_for(student,:remote => true) do |f| %>
     <% if student.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
@@ -37,7 +38,9 @@
     </div>
     <div class="field left">
       <%= f.label :enteringStatus, 'Entering Funding Status' %>
-      <%= f.text_field :enteringStatus %>
+      <!--%= f.text_field :enteringStatus %-->
+      <%= f.select(:enteringStatus, options_for_select(%w(Funded Non-Funded)))%>
+
     </div>
     <div class="field right">
       <%= f.label :fundingEligibility, 'Funding Eligibility' %>
@@ -47,7 +50,9 @@
     </div>
     <div class="field right">
       <%= f.label :status, 'Funding Status' %>
-      <%= f.text_field :status %>
+      <!--%= f.text_field :status %-->
+      <%= f.select(:status, options_for_select(%w(Funded Non-Funded)))%>
+
     </div>
     <div class="field left">
       <%= f.label :citizenship, 'Citizenship' %>
@@ -55,12 +60,14 @@
     </div>
     <div class="field left">
       <%= f.label :residency, 'NC Residency' %>
-      <%= f.select(:residency, options_for_select(%w(No Yes))) %>
+      <%= f.select(:residency, options_for_select(%w(No Yes Applied))) %>
     </div>
 
     <div class="field right">
       <%= f.label :advisor, 'Advisor' %>
-      <%= f.text_field :advisor %>
+      <!--%= f.text_field :advisor %-->
+      <%=f.select(:advisor,["Ahalt S","Aikat J","Alterovitz R","Anderson J","Bansal M","Baruah S","Berg A","Berg T","Biship G","Dewan P","Fern M","Frahm J","Fuchs H","Jeffay K","Jojic V","Jordan K","Joseph-Nicholas T","Kaur J","Lastra A","Lin M","Manocha D","Mayer-Patel K","McMillan L","Monrose F","Niethammer M","Nirjon S","Pizer S","Plaisted D","Porter D","Pozefsky D","Prins J","Reiter M","Singh M","Smith F","Snoeyink J","Stotts D","Sturton C","Styner M","Whitton M"])%>
+
     </div>
     <div class="field left">
       <%= f.label :researchArea, 'Research Area' %>
@@ -71,26 +78,27 @@
       <%= f.select(:startedSemester,%w(Fall Spring Summer)) %>
       <%= f.select :startedYear, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
     </div>
-    <div class="field left">
+    <div class="field right">
       <%= f.label :backgroundApproved, 'Background Approved' %>
       <%= f.select(:approvedSemester,%w(Fall Spring Summer)) %>
       <%= f.select :approvedYear, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
 
     </div>
-    <div class="field right">
+
+    <div class="field left">
       <%= f.label :leaveExtension, 'Leave Extension' %>
       <%= f.text_field :leaveExtension %>
     </div>
 
 
-    <div class="field left">
+    <div class="field right">
       <%= f.label :intendedDegree, 'Intended Degree' %>
       <!--%= f.text_field :intendedDegree %-->
       <%= f.select(:intendedDegree, options_for_select(%w(PhD Master's))) %>
 
     </div>
 
-    <div class="actions right right">
+    <div class="actions right left">
       <%= f.submit %>
     </div>
 <% end %>

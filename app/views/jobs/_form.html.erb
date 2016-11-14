@@ -20,22 +20,22 @@
 
     <div class="field right">
       <%= f.label :supervisor %>
-      <%= f.text_field :supervisor, :value => "" %>
+      <%=f.select(:supervisor,["Ahalt S","Aikat J","Alterovitz R","Anderson J","Bansal M","Baruah S","Berg A","Berg T","Biship G","Dewan P","Fern M","Frahm J","Fuchs H","Jeffay K","Jojic V","Jordan K","Joseph-Nicholas T","Kaur J","Lastra A","Lin M","Manocha D","Mayer-Patel K","McMillan L","Monrose F","Niethammer M","Nirjon S","Pizer S","Plaisted D","Porter D","Pozefsky D","Prins J","Reiter M","Singh M","Smith F","Snoeyink J","Stotts D","Sturton C","Styner M","Whitton M"])%>
     </div>
 
-    <div class="field left">
+    <div class="field right">
       <%= f.label :semester %>
       <%= f.select(:semester,%w(Fall Spring Summer)) %>
       <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
 
     </div>
 
-    <div class="field right">
+    <div class="field left">
       <%= f.label :course %>
       <%= f.text_field :course, :value => "" %>
     </div>
 
-    <div class="actions left  ">
+    <div class="actions right  ">
       <%= f.submit %>
     </div>
 <% end %>
