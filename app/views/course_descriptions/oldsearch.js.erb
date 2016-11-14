@@ -1,0 +1,17 @@
+<% output =  "" %>
+
+$("#class_search_results").empty(); //output.html_safe
+
+<%  if @results.size == 0 %>
+$("#class_search_results").append("Look like we couldn't find that course. Did you search for it correctly? Or have you not added the course to the database yet? ");
+<% end %>
+
+<% @results.all.each do |c| %>
+
+<% output = "#{c.number} #{c.name}#{c.category} #{c.hours}"%>
+
+$("#class_search_results").append('<%= link_to(output, { :controller => :course_histories, :action => :create, :course_history => {:course_description_id => c, :student_id => @student.id}, :remote => false}, :method => :post).to_s %>' + '<br/>');
+
+<% end %>
+
+<% puts link_to(output).to_s  %>

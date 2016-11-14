@@ -1,17 +1,16 @@
-<% output =  "" %>
 
-$("#class_search_results").empty(); //output.html_safe
+console.log('in search js');
 
-<%  if @results.size == 0 %>
-$("#class_search_results").append("Look like we couldn't find that course. Did you search for it correctly? Or have you not added the course to the database yet? ");
-<% end %>
+var name= "<td class='ctable'> <%=@course.name %></td>";
+var number= "<td class='ctable'> <%= puts @course.number; @course.number%></td>";
+var time= "<td class='ctable'> <%= @time %></td>";
+var category= "<td class='ctable'> <%= @course.category %></td>";
+var destroy=  "<td class='ctable touch'><a data-method='delete' href='/jobs/<%=@id %>'>Destroy</a> </td>";
 
-<% @results.all.each do |c| %>
 
-<% output = "#{c.number} #{c.name}#{c.category} #{c.hours}"%>
 
-$("#class_search_results").append('<%= link_to(output, { :controller => :course_histories, :action => :create, :course_history => {:course_description_id => c, :student_id => @student.id}, :remote => false}, :method => :post).to_s %>' + '<br/>');
+$("#course_table").append("<tr class='temp'>"+name+number+time+category+"</tr>");
 
-<% end %>
+$("#course_history ul.nav li:nth-child(1) a").tab('show');
 
-<% puts link_to(output).to_s  %>
+$(".alerts").append("<div class='alert alert-success'> Student Successfully Enrolled  </div>");

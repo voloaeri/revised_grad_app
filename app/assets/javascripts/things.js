@@ -33,15 +33,15 @@ var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
 
-$('#course_description_hours').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 1
-    },
-    {
-        name: 'states',
-        source: substringMatcher(states)
-    });
+// $('#course_description_hours').typeahead({
+//         hint: true,
+//         highlight: true,
+//         minLength: 1
+//     },
+//     {
+//         name: 'states',
+//         source: substringMatcher(states)
+//     });
 
 $(function(){
     $('#course_description_hours').typeahead({
@@ -56,6 +56,8 @@ $(function(){
 })
 
 
+var dropDown;
+
 var bestPictures = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -64,16 +66,21 @@ var bestPictures = new Bloodhound({
         url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
         wildcard: '%QUERY',
         filter: function(response) {
-            console.log("helloo in ");
-            console.log("JSON.stringify " +(response[0][0]));
-            return response[0];
+            var results = [];
+            dropDown = response;
+            console.log(JSON.stringify(response));
+            for(var i = 0; i < response.length; i++){
+                results.push(response[i].name);
+            }
+            console.log(JSON.stringify(results));
+            return results;
         }
     },
-    limit : 10
+    limit : 5
 });
 
 $(function(){
-    $('#course_description_category').typeahead(null, {
+    $('#course_description_name').typeahead(null, {
         name: 'countries',
         displayKey: function(countries) {
             console.log(countries);
@@ -84,8 +91,19 @@ $(function(){
 })
 
 $(function(){
-    $('#course_description_category').bind('typeahead:select', function(ev, suggestion) {
-        console.log('Selection: ' + suggestion);
+    $('#course_description_name').bind('typeahead:select', function(ev, suggestion) {
+         console.log(dropDown[0]);
+         console.log('Selection: ' + suggestion);
+        for(var i = 0; i < dropDown.length; i++){
+            console.log(dropDown[i][suggestion]);
+           if(dropDown[i].name == suggestion){
+               $("#course_description_number").val(dropDown[i].number);
+               $("#course_description_category").val(dropDown[i].category);
+               $("#course_description_hours").val(dropDown[i].hours);
+
+           }
+        }
+
     });
 })
 

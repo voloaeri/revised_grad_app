@@ -8,27 +8,50 @@ class CourseDescriptionsController < ApplicationController
   end
 
   def search
-    puts "in Search!"
+    # puts "in Search!"
+    #
+    student = Student.find(params[:course_description][:student])
+    puts student.inspect
+    #
+    # param_hash = {}
+    # param_hash[:number] = params[:course_description][:number] if params[:course_description][:number].present?
+    # param_hash[:name] = params[:course_description][:name] if params[:course_description][:name].present?
+    # param_hash[:category] = params[:course_description][:category] if params[:course_description][:category].present?
+    # param_hash[:hours] = params[:course_description][:hours] if params[:course_description][:hours].present?
+    # #param_hash = param_hash.to_query
+    #
+    # puts param_hash.inspect
+    #
+    # @results = CourseDescription.where(param_hash);
+    #
+    # puts @results.size
+    #
+    #
+    #  @results.all.each do |c|
+    #    puts c.number
+    #  end
 
-    @student = Student.find(params[:course_description][:student]);
+    @course = CourseDescription.where({name: params[:course_description][:name]})[0]
 
-    param_hash = {}
-    param_hash[:number] = params[:course_description][:number] if params[:course_description][:number].present?
-    param_hash[:name] = params[:course_description][:name] if params[:course_description][:name].present?
-    param_hash[:category] = params[:course_description][:category] if params[:course_description][:category].present?
-    param_hash[:hours] = params[:course_description][:hours] if params[:course_description][:hours].present?
-    #param_hash = param_hash.to_query
+    puts @course.inspect
 
-    puts param_hash.inspect
+    firstName = params[:course_description][:teacher].split(' ')[0];
 
-    @results = CourseDescription.where(param_hash);
+    puts firstName
 
-    puts @results.size
-    
+    lastName = params[:course_description][:teacher].split(' ')[1];
 
-     @results.all.each do |c|
-       puts c.number
-     end
+    puts lastName
+
+    teacher = Faculty.where({firstName: firstName, lastName: lastName}).pluck(:id)
+
+    puts teacher.inspect
+
+    @time = params[:course_description][:semester] + " " + params[:course_description][:year]
+
+    @history = CourseHistory.new({course_description_id: @course.id, student_id: student.id, faculty_id: teacher[0], semester: @time})
+
+    @history.save()
 
     respond_to do |format|
       format.js {}
@@ -100,11 +123,12 @@ class CourseDescriptionsController < ApplicationController
       return
     end
     #@suggestions = CourseDescription.where("name LIKE" => "%#{search_params[:query]}%")
-    @suggestions = CourseDescription.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number, :hours) #Select the data you want to load on the typeahead.
+    @suggestions = CourseDescription.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number, :hours, :category).map{ |s| {name: s[0], number: s[1], hours: s[2], category: s[3]}} #Select the data you want to load on the typeahead.
+    #@suggestions.map{ |s| {name: s[0], number: s[1], hours: s[2]}}
     #raise @suggestions.all.inspect
-    #render json: @suggestions.all
+    puts @suggestions
     respond_to do |format|
-      format.json { render json: @suggestions }
+      format.json { render json: @suggestions.to_json }
     end
   end
 
