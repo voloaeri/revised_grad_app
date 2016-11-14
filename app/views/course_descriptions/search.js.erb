@@ -4,12 +4,13 @@ console.log('in search js');
 var name= "<td class='ctable'> <%=@course.name %></td>";
 var number= "<td class='ctable'> <%= puts @course.number; @course.number%></td>";
 var time= "<td class='ctable'> <%= @time %></td>";
+var section= "<td class='ctable'> </td>";
 var category= "<td class='ctable'> <%= @course.category %></td>";
 var destroy=  "<td class='ctable touch'><a data-method='delete' href='/jobs/<%=@id %>'>Destroy</a> </td>";
 
+console.log("<tr class='ctable'>"+name+number+time+category+"</tr>");
 
-
-$("#course_table").append("<tr class='temp'>"+name+number+time+category+"</tr>");
+$(".course_table").append("<tr class='ctable'>"+name+number+section+time+category+"</tr>");//<tr class='temp'>"+name+number+time+category+"</tr>
 
 $("#course_history ul.nav li:nth-child(1) a").tab('show');
 

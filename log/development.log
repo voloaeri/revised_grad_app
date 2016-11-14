@@ -16758,3 +16758,583 @@ Processing by CourseDescriptionsController#search as JS
   Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Spring", "year"=>"2019"}, "authenticity_token"=>"J+XTatpzGAZW8Z4qkNRfP2gcAKIoA8Zr7BIa9BUh890HI86or2im8ivb7mIpTSvA2yUTynNP+f6YQwQT+a4X9Q==", "commit"=>"Enroll in Course"}
   [1m[36mStudent Load (111.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mCourseDescription Load (331.7ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+Started GET "/" for 152.23.247.121 at 2016-11-14 05:26:55 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#show_home as HTML
+  Rendering students/show_home.html.erb within layouts/home
+  Rendered students/show_home.html.erb within layouts/home (7.2ms)
+Completed 200 OK in 27ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:27:00 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.7ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (149.6ms)
+  Rendered students/_upload_photo.html.erb (81.2ms)
+  [1m[36mCourseHistory Load (5.7ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (5.4ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (45.4ms)
+  [1m[36mDocument Load (5.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (22.9ms)
+  [1m[36mJob Load (4.6ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (18.5ms)
+  Rendered students/edit.html.erb within layouts/application (646.5ms)
+Started GET "/" for 152.23.247.121 at 2016-11-14 05:27:18 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#show_home as HTML
+  Rendering students/show_home.html.erb within layouts/home
+  Rendered students/show_home.html.erb within layouts/home (6.8ms)
+Completed 200 OK in 24ms (Views: 13.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/students" for 152.23.247.121 at 2016-11-14 05:27:21 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#index as HTML
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Load (0.6ms)[0m  [1m[34mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (35.0ms)
+Completed 200 OK in 207ms (Views: 189.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:27:25 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (16.5ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (240.7ms)
+  Rendered students/_upload_photo.html.erb (65.7ms)
+  [1m[36mCourseHistory Load (13.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (1.9ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (2.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.3ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (402.8ms)
+  [1m[36mDocument Load (310.9ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:28:18 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (31.5ms)
+  Rendered students/_upload_photo.html.erb (7.4ms)
+  [1m[36mCourseHistory Load (1.0ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (21.9ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (13.7ms)
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (9.3ms)
+  Rendered students/edit.html.erb within layouts/application (433.1ms)
+Completed 200 OK in 706ms (Views: 577.5ms | ActiveRecord: 6.7ms)
+
+
+Started DELETE "/course_histories?course_history%5Bcourse_description_id%5D=13&course_history%5Bstudent_id%5D=1" for 152.23.247.121 at 2016-11-14 05:28:29 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseHistoriesController#search_and_destroy as HTML
+  Parameters: {"authenticity_token"=>"B7QEhkINE959XDwXJChXBkvLxbd47if1vNZcCz/5ulknchlENxatKgB2TF+dsSP5+PLW3yOiGGDIh0Ls03ZecQ==", "course_history"=>{"course_description_id"=>"13", "student_id"=>"1"}}
+  [1m[36mCourseHistory Load (3.1ms)[0m  [1m[34mSELECT  "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ? AND "course_histories"."course_description_id" = ? ORDER BY "course_histories"."id" ASC LIMIT ?[0m  [["student_id", 1], ["course_description_id", 13], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 3.1ms)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/course_histories_controller.rb:83:in `destroy'
+app/controllers/course_histories_controller.rb:79:in `search_and_destroy'
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:28:54 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (59.0ms)
+  Rendered students/_upload_photo.html.erb (5.2ms)
+  [1m[36mCourseHistory Load (0.7ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (13.3ms)
+  [1m[36mDocument Load (0.2ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (17.1ms)
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (8.7ms)
+  Rendered students/edit.html.erb within layouts/application (406.2ms)
+Completed 200 OK in 672ms (Views: 545.2ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/course_descriptions/typeahead/f" for 152.23.247.121 at 2016-11-14 05:29:27 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#typeahead as JSON
+  Parameters: {"query"=>"f"}
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "course_descriptions"."name", "course_descriptions"."number", "course_descriptions"."hours", "course_descriptions"."category" FROM "course_descriptions" WHERE (name LIKE '%f%')[0m
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/course_descriptions/typeahead/a" for 152.23.247.121 at 2016-11-14 05:29:29 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#typeahead as JSON
+  Parameters: {"query"=>"a"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "course_descriptions"."name", "course_descriptions"."number", "course_descriptions"."hours", "course_descriptions"."category" FROM "course_descriptions" WHERE (name LIKE '%a%')[0m
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.247.121 at 2016-11-14 05:29:40 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Fall", "year"=>"2006"}, "authenticity_token"=>"1LgedlAI6w3Tg0g/zPQ9Qrytd5FOWawTIBmX2kjSqc/0fgO0JRNV+a6pOHd1bUm9D5Rk+RUVk4ZUSIk9pF1N5w==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (3.6ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (8.7ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "A"], ["lastName", "B"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (0.6ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (11.9ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 1], ["faculty_id", 1], ["semester", "Fall 2006"], ["created_at", 2016-11-14 05:29:40 UTC], ["updated_at", 2016-11-14 05:29:40 UTC]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (1.4ms)
+Completed 200 OK in 73ms (Views: 5.5ms | ActiveRecord: 30.1ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.247.121 at 2016-11-14 05:29:52 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Spring", "year"=>"2014"}, "authenticity_token"=>"1LgedlAI6w3Tg0g/zPQ9Qrytd5FOWawTIBmX2kjSqc/0fgO0JRNV+a6pOHd1bUm9D5Rk+RUVk4ZUSIk9pF1N5w==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (3.3ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (1.4ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "A"], ["lastName", "B"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (6.1ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 1], ["faculty_id", 1], ["semester", "Spring 2014"], ["created_at", 2016-11-14 05:29:52 UTC], ["updated_at", 2016-11-14 05:29:52 UTC]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (7.3ms)
+Completed 200 OK in 59ms (Views: 10.9ms | ActiveRecord: 16.3ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.247.121 at 2016-11-14 05:32:20 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Spring", "year"=>"2014"}, "authenticity_token"=>"1LgedlAI6w3Tg0g/zPQ9Qrytd5FOWawTIBmX2kjSqc/0fgO0JRNV+a6pOHd1bUm9D5Rk+RUVk4ZUSIk9pF1N5w==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (2.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.6ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "A"], ["lastName", "B"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 1], ["faculty_id", 1], ["semester", "Spring 2014"], ["created_at", 2016-11-14 05:32:20 UTC], ["updated_at", 2016-11-14 05:32:20 UTC]]
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (3.1ms)
+Completed 200 OK in 51ms (Views: 6.7ms | ActiveRecord: 10.1ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.247.121 at 2016-11-14 05:33:42 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Spring", "year"=>"2006"}, "authenticity_token"=>"1LgedlAI6w3Tg0g/zPQ9Qrytd5FOWawTIBmX2kjSqc/0fgO0JRNV+a6pOHd1bUm9D5Rk+RUVk4ZUSIk9pF1N5w==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (2.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.7ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "A"], ["lastName", "B"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 1], ["faculty_id", 1], ["semester", "Spring 2006"], ["created_at", 2016-11-14 05:33:42 UTC], ["updated_at", 2016-11-14 05:33:42 UTC]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (2.2ms)
+Completed 200 OK in 45ms (Views: 5.3ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:36:10 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (2.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (24.8ms)
+  Rendered students/_upload_photo.html.erb (11.1ms)
+  [1m[36mCourseHistory Load (4.5ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (34.9ms)
+  [1m[36mDocument Load (5.9ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (31.0ms)
+  [1m[36mJob Load (7.6ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (42.3ms)
+  Rendered students/edit.html.erb within layouts/application (341.4ms)
+Completed 200 OK in 1034ms (Views: 990.2ms | ActiveRecord: 21.2ms)
+
+
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:37:11 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (40.3ms)
+  Rendered students/_upload_photo.html.erb (7.1ms)
+  [1m[36mCourseHistory Load (1.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.3ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (12.0ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (14.9ms)
+  [1m[36mJob Load (0.6ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (11.9ms)
+  Rendered students/edit.html.erb within layouts/application (506.1ms)
+Completed 200 OK in 813ms (Views: 687.2ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.247.121 at 2016-11-14 05:37:23 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Spring", "year"=>"2007"}, "authenticity_token"=>"KOt0Ad+ABadc+mdmKaaC0gKNuJXoMsQtbUExbscSSVYILWnDqpu7UyHQFy6QP/YtsbSr/bN++7gZEC+JK52tfg==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (4.4ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (114.0ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+  [1m[35m (9.2ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "A"], ["lastName", "B"]]
+  [1m[35m (1.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (12.5ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (3.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (127.3ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 1], ["faculty_id", 1], ["semester", "Spring 2007"], ["created_at", 2016-11-14 05:37:24 UTC], ["updated_at", 2016-11-14 05:37:24 UTC]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (5.1ms)
+Completed 200 OK in 1005ms (Views: 25.2ms | ActiveRecord: 290.1ms)
+
+
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:40:47 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (2.9ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (105.0ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:40:59 +0000
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:41:27 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (70.5ms)
+  Rendered students/_upload_photo.html.erb (5.8ms)
+  [1m[36mCourseHistory Load (0.9ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.3ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (1.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (22.6ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (14.3ms)
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (10.7ms)
+  Rendered students/edit.html.erb within layouts/application (485.6ms)
+Completed 200 OK in 805ms (Views: 638.7ms | ActiveRecord: 10.3ms)
+
+
+Started DELETE "/course_histories?course_history%5Bcourse_description_id%5D=2&course_history%5Bstudent_id%5D=1" for 152.23.247.121 at 2016-11-14 05:41:36 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseHistoriesController#search_and_destroy as HTML
+  Parameters: {"authenticity_token"=>"iXCOwem6oL/eqAaMl1dy53inOx3TkaylncbVlWrDwAeptpMDnKEeS6OCdsQuzgYYy54odYjdkzDpl8tyhkwkLw==", "course_history"=>{"course_description_id"=>"2", "student_id"=>"1"}}
+  [1m[36mCourseHistory Load (5.5ms)[0m  [1m[34mSELECT  "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ? AND "course_histories"."course_description_id" = ? ORDER BY "course_histories"."id" ASC LIMIT ?[0m  [["student_id", 1], ["course_description_id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 5.5ms)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/course_histories_controller.rb:83:in `destroy'
+app/controllers/course_histories_controller.rb:79:in `search_and_destroy'
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:42:07 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (31.5ms)
+  Rendered students/_upload_photo.html.erb (5.5ms)
+  [1m[36mCourseHistory Load (1.3ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.4ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (9.1ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (11.9ms)
+  [1m[36mJob Load (0.5ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (5.2ms)
+  Rendered students/edit.html.erb within layouts/application (436.9ms)
+Completed 200 OK in 672ms (Views: 543.3ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/course_descriptions/typeahead/a" for 152.23.247.121 at 2016-11-14 05:42:20 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#typeahead as JSON
+  Parameters: {"query"=>"a"}
+  [1m[35m (5.8ms)[0m  [1m[34mSELECT "course_descriptions"."name", "course_descriptions"."number", "course_descriptions"."hours", "course_descriptions"."category" FROM "course_descriptions" WHERE (name LIKE '%a%')[0m
+Completed 200 OK in 24ms (Views: 0.3ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:44:23 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (3.4ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (22.1ms)
+  Rendered students/_upload_photo.html.erb (18.0ms)
+  [1m[36mCourseHistory Load (4.8ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (6.8ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.3ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.9ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (36.1ms)
+  [1m[36mDocument Load (2.4ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (38.9ms)
+  [1m[36mJob Load (2.7ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (155.0ms)
+  Rendered students/edit.html.erb within layouts/application (1669.9ms)
+Started GET "/students/1/edit" for 152.23.247.121 at 2016-11-14 05:45:40 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.8ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "documents"."title" FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students/edit.html.erb within layouts/application
+  Rendered students/_form.html.erb (33.2ms)
+  Rendered students/_upload_photo.html.erb (8.6ms)
+  [1m[36mCourseHistory Load (1.0ms)[0m  [1m[34mSELECT "course_histories".* FROM "course_histories" WHERE "course_histories"."student_id" = ?[0m  [["student_id", 1]]
+  [1m[36mCourseDescription Load (0.3ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.2ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (0.1ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered course_descriptions/_search_courses.html.erb (12.9ms)
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered documents/_form.html.erb (13.7ms)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."student_id" = ?[0m  [["student_id", 1]]
+  Rendered jobs/_form.html.erb (11.3ms)
+  Rendered students/edit.html.erb within layouts/application (480.1ms)
+Completed 200 OK in 801ms (Views: 654.2ms | ActiveRecord: 7.8ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.247.121 at 2016-11-14 05:45:50 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Fall", "year"=>"2006"}, "authenticity_token"=>"jeIBJBhWj73TFQC7XhdAjsFQZd+yQEWoAu2bU/ZKXEytJBzmbU0xSa4/cPPnjjRxcml2t+kMej12vIW0GsW4ZA==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (4.0ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (18.7ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "A"], ["lastName", "B"]]
+  [1m[35m (3.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (3.9ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (3.6ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (43.8ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 1], ["faculty_id", 1], ["semester", "Fall 2006"], ["created_at", 2016-11-14 05:45:50 UTC], ["updated_at", 2016-11-14 05:45:50 UTC]]
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (15.4ms)
+Completed 200 OK in 290ms (Views: 27.3ms | ActiveRecord: 88.1ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.247.121 at 2016-11-14 05:46:38 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Fall", "year"=>"2006"}, "authenticity_token"=>"jeIBJBhWj73TFQC7XhdAjsFQZd+yQEWoAu2bU/ZKXEytJBzmbU0xSa4/cPPnjjRxcml2t+kMej12vIW0GsW4ZA==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (9.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (9.6ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "A"], ["lastName", "B"]]
+  [1m[35m (1.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (8.1ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (2.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (27.3ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 1], ["faculty_id", 1], ["semester", "Fall 2006"], ["created_at", 2016-11-14 05:46:39 UTC], ["updated_at", 2016-11-14 05:46:39 UTC]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (16.3ms)
+Completed 200 OK in 497ms (Views: 38.3ms | ActiveRecord: 65.0ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.247.121 at 2016-11-14 05:47:07 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Fall", "year"=>"2006"}, "authenticity_token"=>"jeIBJBhWj73TFQC7XhdAjsFQZd+yQEWoAu2bU/ZKXEytJBzmbU0xSa4/cPPnjjRxcml2t+kMej12vIW0GsW4ZA==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (3.3ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (2.4ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "A"], ["lastName", "B"]]
+  [1m[35m (2.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (3.3ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (1.9ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (57.4ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 1], ["faculty_id", 1], ["semester", "Fall 2006"], ["created_at", 2016-11-14 05:47:08 UTC], ["updated_at", 2016-11-14 05:47:08 UTC]]
+  [1m[35m (11.9ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (7.6ms)
+Completed 200 OK in 1441ms (Views: 131.5ms | ActiveRecord: 85.4ms)
+
+
+Started POST "/course_descriptions/search" for 152.23.247.121 at 2016-11-14 05:48:20 +0000
+Cannot render console from 152.23.247.121! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CourseDescriptionsController#search as JS
+  Parameters: {"utf8"=>"✓", "course_description"=>{"number"=>"550", "name"=>"Algorithms", "category"=>"Theory", "hours"=>"3", "student"=>"1", "teacher"=>"A B", "semester"=>"Fall", "year"=>"2006"}, "authenticity_token"=>"jeIBJBhWj73TFQC7XhdAjsFQZd+yQEWoAu2bU/ZKXEytJBzmbU0xSa4/cPPnjjRxcml2t+kMej12vIW0GsW4ZA==", "commit"=>"Enroll in Course"}
+  [1m[36mStudent Load (4.2ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (215.7ms)[0m  [1m[34mSELECT "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."name" = ?[0m  [["name", "Algorithms"]]
+  [1m[35m (105.3ms)[0m  [1m[34mSELECT "faculties"."id" FROM "faculties" WHERE "faculties"."firstName" = ? AND "faculties"."lastName" = ?[0m  [["firstName", "A"], ["lastName", "B"]]
+  [1m[35m (209.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Load (106.3ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCourseDescription Load (108.0ms)[0m  [1m[34mSELECT  "course_descriptions".* FROM "course_descriptions" WHERE "course_descriptions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (227.7ms)[0m  [1m[32mINSERT INTO "course_histories" ("student_id", "course_description_id", "faculty_id", "semester", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["student_id", 1], ["course_description_id", 1], ["faculty_id", 1], ["semester", "Fall 2006"], ["created_at", 2016-11-14 05:48:24 UTC], ["updated_at", 2016-11-14 05:48:24 UTC]]
+  [1m[35m (1230.3ms)[0m  [1m[36mcommit transaction[0m
+  Rendering course_descriptions/search.js.erb
+  Rendered course_descriptions/search.js.erb (324.7ms)
+Completed 200 OK in 11104ms (Views: 2298.4ms | ActiveRecord: 2206.9ms)
+
+
