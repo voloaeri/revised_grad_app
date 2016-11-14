@@ -74,15 +74,15 @@ class CourseHistoriesController < ApplicationController
   # DELETE /course_histories/1.json
 
   def search_and_destroy
-    @course_history = CourseHistory.where(course_history_params).first
-
-    destroy
+    @course_history = CourseHistory.find(course_history_params[:id])
+    destroy()
   end
 
   def destroy
+    #raise @course_history.inspect
     @course_history.destroy
     respond_to do |format|
-      format.html { redirect_to edit_student_url(course_history_params[:student_id]), notice: 'Course history was successfully destroyed.' }
+      format.html { redirect_to edit_student_url(course_history_params[:student_id]), notice: 'Successfully unenrolled from Course' }
       format.json { head :no_content }
     end
   end
@@ -95,6 +95,6 @@ class CourseHistoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_history_params
-      params.require(:course_history).permit(:student_id, :course_description_id, :grade, :section, :faculty_id, :semester)
+      params.require(:course_history).permit(:id, :student_id, :course_description_id, :grade, :section, :faculty_id, :semester)
     end
 end

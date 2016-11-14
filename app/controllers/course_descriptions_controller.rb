@@ -10,8 +10,8 @@ class CourseDescriptionsController < ApplicationController
   def search
     # puts "in Search!"
     #
-    student = Student.find(params[:course_description][:student])
-    puts student.inspect
+    @student = Student.find(params[:course_description][:student])
+
     #
     # param_hash = {}
     # param_hash[:number] = params[:course_description][:number] if params[:course_description][:number].present?
@@ -49,7 +49,7 @@ class CourseDescriptionsController < ApplicationController
 
     @time = params[:course_description][:semester] + " " + params[:course_description][:year]
 
-    @history = CourseHistory.new({course_description_id: @course.id, student_id: student.id, faculty_id: teacher[0], semester: @time})
+    @history = CourseHistory.new({course_description_id: @course.id, student_id: @student.id, faculty_id: teacher[0], semester: @time})
 
     @history.save()
 
