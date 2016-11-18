@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108052558) do
+ActiveRecord::Schema.define(version: 20161116191648) do
 
   create_table "course_descriptions", force: :cascade do |t|
     t.integer  "number"
@@ -24,14 +24,12 @@ ActiveRecord::Schema.define(version: 20161108052558) do
   create_table "course_histories", force: :cascade do |t|
     t.integer  "student_id"
     t.integer  "course_description_id"
+    t.integer  "semester_id"
     t.string   "grade"
-    t.string   "section"
-    t.integer  "faculty_id"
-    t.string   "semester"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["course_description_id"], name: "index_course_histories_on_course_description_id"
-    t.index ["faculty_id"], name: "index_course_histories_on_faculty_id"
+    t.index ["semester_id"], name: "index_course_histories_on_semester_id"
     t.index ["student_id"], name: "index_course_histories_on_student_id"
   end
 
@@ -64,6 +62,20 @@ ActiveRecord::Schema.define(version: 20161108052558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_jobs_on_student_id"
+  end
+
+  create_table "semesters", force: :cascade do |t|
+    t.integer  "course_description_id"
+    t.integer  "faculty_id"
+    t.integer  "year"
+    t.string   "semester"
+    t.string   "secondary_title"
+    t.integer  "section_override"
+    t.integer  "category_override"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["course_description_id"], name: "index_semesters_on_course_description_id"
+    t.index ["faculty_id"], name: "index_semesters_on_faculty_id"
   end
 
   create_table "students", force: :cascade do |t|

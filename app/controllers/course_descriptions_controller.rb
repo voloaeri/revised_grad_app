@@ -31,25 +31,40 @@ class CourseDescriptionsController < ApplicationController
     #    puts c.number
     #  end
 
-    @course = CourseDescription.where({name: params[:course_description][:name]})[0]
 
-    puts @course.inspect
+   # second way
+    # @course = CourseDescription.where({name: params[:course_description][:name]})[0]
+    #
+    # puts @course.inspect
+    #
+    # firstName = params[:course_description][:teacher].split(' ')[0];
+    #
+    # puts firstName
+    #
+    # lastName = params[:course_description][:teacher].split(' ')[1];
+    #
+    # puts lastName
+    #
+    # teacher = Faculty.where({firstName: firstName, lastName: lastName}).pluck(:id)
+    #
+    # puts teacher.inspect
+    #
+    # @time = params[:course_description][:semester] + " " + params[:course_description][:year]
+    #
+    # @history = CourseHistory.new({course_description_id: @course.id, student_id: @student.id, faculty_id: teacher[0], semester: @time})
+    #
+    # @history.save()
 
-    firstName = params[:course_description][:teacher].split(' ')[0];
 
-    puts firstName
+    #diane's way
 
-    lastName = params[:course_description][:teacher].split(' ')[1];
+    @course = CourseDescription.where({number: params[:course_description][:number]}).first
 
-    puts lastName
+    @semester = Semester.where(course_description_params.slice(:semester, :year).merge({course_description_id: @course.id}))
 
-    teacher = Faculty.where({firstName: firstName, lastName: lastName}).pluck(:id)
+    @history = CourseHistory.new({course_description_id: @course.id, student_id: @student.id, semester_id: @semester})
 
-    puts teacher.inspect
-
-    @time = params[:course_description][:semester] + " " + params[:course_description][:year]
-
-    @history = CourseHistory.new({course_description_id: @course.id, student_id: @student.id, faculty_id: teacher[0], semester: @time})
+    raise @history.inspect
 
     @history.save()
 
@@ -78,7 +93,16 @@ class CourseDescriptionsController < ApplicationController
   # POST /course_descriptions.json
   def create
 
-    @course_description = CourseDescription.new(course_description_params)
+    #raise course_description_params.except(:teacher, :year, :semester).inspect
+
+    @course_description = CourseDescription.find_or_create_by(course_description_params.except(:teacher, :year, :semester))
+
+    firstName = course_description_params[:teacher].split(" ")[0]
+    lastName = course_description_params[:teacher].split(" ")[1]
+
+    faculty = Faculty.where({firstName: firstName, lastName: lastName}).pluck(:id).first
+
+    @semester = Semester.find_or_create_by(course_description_params.slice(:year, :semester).merge({faculty_id: faculty, course_description_id: @course_description.id}))
 
     respond_to do |format|
       if @course_description.save
@@ -95,13 +119,13 @@ class CourseDescriptionsController < ApplicationController
   # PATCH/PUT /course_descriptions/1.json
   def update
     respond_to do |format|
-      if @course_description.update(course_description_params)
+      # if @course_description.update(course_description_params)
         format.html { redirect_to @course_description, notice: 'Course description was successfully updated.' }
         format.json { render :show, status: :ok, location: @course_description }
-      else
-        format.html { render :edit }
-        format.json { render json: @course_description.errors, status: :unprocessable_entity }
-      end
+      # else
+      #   format.html { render :edit }
+      #   format.json { render json: @course_description.errors, status: :unprocessable_entity }
+      # end
     end
   end
 
@@ -145,6 +169,6 @@ class CourseDescriptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_description_params
-      params.require(:course_description).permit(:number, :name, :category, :hours)
+      params.require(:course_description).permit(:number, :name, :category, :hours, :teacher, :semester, :year)
     end
 end

@@ -398,7 +398,6 @@
                   <tr class="ctable">
                     <td class="ctable"> <%= course.course_description.name %></td>
                     <td class="ctable"> <%= course.course_description.number %></td>
-                    <td class="ctable"> <%= course.section %></td>
                     <td class="ctable"> <%= course.semester %></td>
                     <td class="ctable"><%= course.course_description.category %></td>
                     <td class ="ctable touch"> <%= link_to "Unenroll", {:controller => :course_histories, :course_history =>{:id => course.id, :student_id => @student.id}}, :method => :delete, :data => { confirm: 'Are you sure?' }  %> </td>
