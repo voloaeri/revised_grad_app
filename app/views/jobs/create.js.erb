@@ -1,0 +1,43 @@
+$(".alerts").html("");
+
+if(<%= @posError %>) {
+
+  $(".alerts").append("<div class='alert alert-danger'> Your position field is empty </div>");
+
+}
+
+else if(<%= @semError %>){
+
+  $(".alerts").append("<div class='alert alert-danger'> Your semester field is empty </div>");
+
+}
+
+else if(<%= @superError %>) {
+
+  $(".alerts").append("<div class='alert alert-danger'> Your supervisor field is empty </div>");
+}
+
+else if(<%= @courseError %>) {
+
+  $(".alerts").append("<div class='alert alert-danger'> Your course field is empty </div>");
+}
+
+else {
+  if(<%= @ok %>) {
+    var position= "<td class='ctable'> <%=@position %></td>";
+    var semester= "<td class='ctable'> <%= @semester %></td>";
+    var supervisor= "<td class='ctable'> <%=@supervisor %></td>";
+    var course= "<td class='ctable'> <%= @course %></td>";
+    var destroy=  "<td class='ctable touch'><a data-method='delete' href='/jobs/<%=@id %>'>Destroy</a> </td>";
+
+    $("#jobs_table").append("<tr class='temp'>"+position+semester+supervisor+course+destroy+"</tr>");
+
+    $("#jobs ul.nav li:nth-child(1) a").tab('show');
+
+    $(".alerts").append("<div class='alert alert-success'> Job Successfully Uploaded </div>");
+
+    $('#new_job')[0].reset();
+
+  }
+
+}

@@ -1,0 +1,104 @@
+
+<%= form_for(student,:remote => true) do |f| %>
+    <% if student.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+          <ul>
+            <% student.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field left">
+      <%= f.label :firstName, 'First Name' %>
+      <%= f.text_field :firstName %>
+    </div>
+    <div class="field right">
+      <%= f.label :lastName, 'Last Name' %>
+      <%= f.text_field :lastName %>
+    </div>
+    <div class="field left">
+      <%= f.label :PID %>
+      <%= f.text_field :PID %>
+    </div>
+    <div class="field right">
+      <%= f.label :alternativeName, 'Alternate Name' %>
+      <%= f.text_field :alternativeName %>
+    </div>
+    <div class="field left">
+      <%= f.label :gender, 'Gender' %>
+      <%= f.select(:gender, ["Male", "Female","Unknown"]) %>
+    </div>
+    <div class="field right">
+      <%= f.label :ethnicity, 'Ethnicity' %>
+      <%= f.select(:ethnicity,["American Indian or Alaska Native", "Asian", "Black or African American", "Hispanic or Latino", "Native Hawaiian or Other Pacific", "White"]) %>
+    </div>
+    <div class="field left">
+      <%= f.label :enteringStatus, 'Entering Funding Status' %>
+      <!--%= f.text_field :enteringStatus %-->
+      <%= f.select(:enteringStatus, options_for_select(%w(Funded Non-Funded)))%>
+
+    </div>
+    <div class="field right">
+      <%= f.label :fundingEligibility, 'Funding Eligibility' %>
+      <!--%= f.text_field :fundingEligibility %-->
+      <%= f.select(:fundingEligibility, options_for_select(%w(No Yes))) %>
+
+    </div>
+    <div class="field right">
+      <%= f.label :status, 'Funding Status' %>
+      <!--%= f.text_field :status %-->
+      <%= f.select(:status, options_for_select(%w(Funded Non-Funded)))%>
+
+    </div>
+    <div class="field left">
+      <%= f.label :citizenship, 'Citizenship' %>
+      <%= f.select(:citizenship, ["Afghanistan", "Albania", "Algeria", "American Samoa", "Angola", "Anguilla", "Antartica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Ashmore and Cartier Island", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Clipperton Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czeck Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Europa Island", "Falkland Islands (Islas Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern and Antarctic Lands", "Gabon", "Gambia, The", "Gaza Strip", "Georgia", "Germany", "Ghana", "Gibraltar", "Glorioso Islands", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Holy See (Vatican City)", "Honduras", "Hong Kong", "Howland Island", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Ireland, Northern", "Israel", "Italy", "Jamaica", "Jan Mayen", "Japan", "Jarvis Island", "Jersey", "Johnston Atoll", "Jordan", "Juan de Nova Island", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia, Former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Man, Isle of", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Midway Islands", "Moldova", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcaim Islands", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romainia", "Russia", "Rwanda", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Scotland", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and South Sandwich Islands", "Spain", "Spratly Islands", "Sri Lanka", "Sudan", "Suriname", "Svalbard", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Tobago", "Toga", "Tokelau", "Tonga", "Trinidad", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "United States", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands", "Wales", "Wallis and Futuna", "West Bank", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"]) %>
+    </div>
+    <div class="field left">
+      <%= f.label :residency, 'NC Residency' %>
+      <%= f.select(:residency, options_for_select(%w(No Yes Applied))) %>
+    </div>
+
+    <div class="field right">
+      <%= f.label :advisor, 'Advisor' %>
+      <!--%= f.text_field :advisor %-->
+      <%=f.select(:advisor,["Ahalt S","Aikat J","Alterovitz R","Anderson J","Bansal M","Baruah S","Berg A","Berg T","Biship G","Dewan P","Fern M","Frahm J","Fuchs H","Jeffay K","Jojic V","Jordan K","Joseph-Nicholas T","Kaur J","Lastra A","Lin M","Manocha D","Mayer-Patel K","McMillan L","Monrose F","Niethammer M","Nirjon S","Pizer S","Plaisted D","Porter D","Pozefsky D","Prins J","Reiter M","Singh M","Smith F","Snoeyink J","Stotts D","Sturton C","Styner M","Whitton M"])%>
+
+    </div>
+    <div class="field left">
+      <%= f.label :researchArea, 'Research Area' %>
+      <%= f.text_field :researchArea %>
+    </div>
+    <div class="field right">
+      <%= f.label :semesterStartedCS, 'Semester started at UNC' %>
+      <%= f.select(:startedSemester,%w(Fall Spring Summer)) %>
+      <%= f.select :startedYear, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
+    </div>
+    <div class="field right">
+      <%= f.label :backgroundApproved, 'Background Approved' %>
+      <%= f.select(:approvedSemester,%w(Fall Spring Summer)) %>
+      <%= f.select :approvedYear, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
+
+    </div>
+
+    <div class="field left">
+      <%= f.label :leaveExtension, 'Leave Extension' %>
+      <%= f.text_field :leaveExtension %>
+    </div>
+
+
+    <div class="field right">
+      <%= f.label :intendedDegree, 'Intended Degree' %>
+      <!--%= f.text_field :intendedDegree %-->
+      <%= f.select(:intendedDegree, options_for_select(%w(PhD Master's))) %>
+
+    </div>
+
+    <div class="actions right left">
+      <%= f.submit %>
+    </div>
+<% end %>

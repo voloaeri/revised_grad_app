@@ -1,0 +1,112 @@
+<!-- NEW SIDE BAR BEGINS -->
+<div class="side_bar">
+
+  <!-- PROFILE IMAGE -->
+  <img class="img-circle" src="<%= asset_path("defaults/oldwell.png") %>" height="120">
+
+  <div><a class="click" data-toggle="pill" href="/course_descriptions/new">+ Add a course</a></div>
+
+  <div><a href="/students/new">+ Add students</a></div>
+
+  <h2>Search Students</h2>
+
+  <!-- SEARCH TEXT BOXES -->
+  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
+  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
+  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
+  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
+  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
+  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
+  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
+  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
+  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
+  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
+  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
+  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
+  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
+  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
+  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
+  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
+
+  <!-- SEARCH STUDENT CONTROLS -->
+
+  <a class='click' data-toggle="pill" href="/students/new">Advanced Search Filters</a>
+  <a href="#">Add Students (No function yet)</a>
+
+  <a href="/course_descriptions/new">/course_description/new</a>
+
+  <!-- "SCROLL FOR MORE" OVERLAY -->
+  <div id="scroll_for_more_overlay">Scroll For More</div>
+</div>
+<!-- NEW SIDE BAR ENDS -->
+
+<!-- SIDE BAR BEGINS -->
+<!--
+<div class="side_bar">
+
+  <div id="searchBottom">
+
+    <h2> Search Students</h2>
+
+    <input id="search" type="text" name="searchName" placeholder="Student name...">
+    <input id="search" type="text" name="searchID" placeholder="Student PID...">
+
+    <ul class="nav nav-pills navigaters">
+      <li class="searchButton navigaters"><a class='click' data-toggle="pill" href="/students/new">Advanced Search Filters</a></li><br>
+      <li class="searchButton navigaters"><a class='click' data-toggle="pill" href="#">Search ></a></li>
+    </ul>
+
+  </div>
+
+
+  <h2> Add Student(s)</h2>
+
+  <ul class="searchAdd">
+
+    <ul class="nav nav-pills navigaters">
+      <li class="addButton navigaters"><a href="/students/new">Add a Student</a></li><br>
+      <li id="bottomSetter" class="addButton navigaters"><a href="#">Add Students</a></li>
+    </ul>
+
+  </ul>
+
+
+  <div id="addCourses">
+
+    <h2> Add Course</h2>
+
+    <ul class="searchAdd navigaters">
+
+      <ul class="nav nav-pills navigaters">
+
+        <li class="addButton navigaters"><a href="/course_descriptions/new">Add a Course</a></li><br>
+
+      </ul>
+    </ul>
+
+  </div>
+
+
+</div>
+-->
+<!-- SIDE BAR ENDS -->
+
+<!-- SEARCH RESULTS CONTAINER BEGINS -->
+<div class="container">
+  <h2 id="searchResults"> Search Results</h2>
+  <table class="stable srow">
+
+
+    <tbody>
+    <% @students.each do |student| %>
+        <tr class="stable srow">
+          <td class="stable"><%= student.firstName %> <%= student.lastName %></td>
+          <td class="stable"><%= link_to 'Show', student %></td>
+          <td class="stable"><%= link_to 'Edit', edit_student_path(student) %></td>
+          <td class="stable"><%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- SEARCH RESULTS CONTAINER ENDS -->

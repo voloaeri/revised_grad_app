@@ -1,0 +1,91 @@
+<%= form_for(student) do |f| %>
+    <% if student.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+          <ul>
+            <% student.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field left">
+      <%= f.label :firstName, 'First Name' %>
+      <%= f.text_field :firstName,:disabled => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :lastName, 'Last Name' %>
+      <%= f.text_field :lastName,:disabled => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :PID %>
+      <%= f.text_field :PID,:disabled => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :alternativeName, 'Alternate Name' %>
+      <%= f.text_field :alternativeName,:disabled => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :gender, 'Gender' %>
+      <%= f.text_field :gender,:disabled => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :ethnicity, 'Ethnicity' %>
+      <%= f.text_field :ethnicity,:disabled => true %>
+      
+
+    </div>
+    <div class="field left">
+      <%= f.label :status, 'Entering Funding Status' %>
+      <%= f.text_field :status,:disabled => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :fundingEligibility, 'Funding Eligibility' %>
+      <%= f.text_field :fundingEligibility,:disabled => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :citizenship, 'Citizenship' %>
+      <%= f.text_field :citizenship,:disabled => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :fundingStatus, 'Funding Status' %>
+      <%= f.text_field :fundingStatus,:disabled => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :residency, 'NC Residency' %>
+      <%= f.text_field :residency,:disabled => true %>
+    </div>
+
+    <div class="field right">
+      <%= f.label :advisor, 'Advisor' %>
+      <%= f.text_field :advisor,:disabled => true %>
+    </div>
+    <div class="field left">
+      <%= f.label :researchArea, 'Research Area' %>
+      <%= f.text_field :researchArea,:disabled => true %>
+    </div>
+    <div class="field right">
+      <%= f.label :semesterStartedCS, 'Semester started at UNC' %>
+      <%= f.text_field :semesterStartedCS,:disabled => true %>
+
+
+    </div>
+    <div class="field right">
+      <%= f.label :backgroundApproved, 'Background Approved' %>
+      <%= f.text_field :backgroundApproved,:disabled => true %>
+    </div>
+    <div class="field left ">
+      <%= f.label :leaveExtension, 'Leave Extension' %>
+      <%= f.text_field :leaveExtension,:disabled => true %>
+    </div>
+
+
+    <div class="field left">
+      <%= f.label :intendedDegree, 'Intended Degree' %>
+      <%= f.text_field :intendedDegree,:disabled => true %>
+    </div>
+   
+
+<% end %>

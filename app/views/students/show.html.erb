@@ -1,0 +1,486 @@
+<div class="side_bar">
+  <div class="user">
+    <img class="img-circle" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120">
+    <h2> <%= @student.firstName + " " + @student.lastName %> </h2>
+    <h5> <%=@student.intendedDegree + " Student" %> </h5>
+    <h6> <%= @student.PID  %> </h6>
+    <div class="bottom-border"></div>
+  </div>
+  <ul class="nav nav-pills">
+    <li class="active"><a id="personal" data-toggle="pill" href="#basic_info">Personal Information</a></li>
+    <li><a id="reqs" data-toggle="pill" href="#requirements"> Degree Requirements </a></li>
+    <li><a id="history" data-toggle="pill" href="#course_history"> Course History </a></li>
+    <li><a id="docs" data-toggle="pill" href="#documents">Documents</a></li>
+    <li><a id="work" data-toggle="pill" href="#jobs">Jobs</a></li>
+  </ul>
+</div>
+<!-- SIDE BAR ends -->
+<div class="container">
+  <!--<p id="notice"><%= notice %></p>-->
+  <div class="tab-content">
+
+    <div id="basic_info" class="tab-pane fade in active">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#personal_info">Personal Information</a></li>
+        <li><a data-toggle="tab" href="#upload_picture">Upload Profile Picture</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="personal_info" class="tab-pane fade in active">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <%= render 'formRead', student: @student %>
+            </div>
+          </div>
+        </div>
+        <div id="upload_picture" class="tab-pane fade">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <%= render 'upload_photo', student: @student %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="requirements" class="tab-pane fade in">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#masters">Masters</a></li>
+        <li><a data-toggle="tab" href="#PhD">Ph.D</a></li>
+        <li><a id="expand" onclick="expandAll()"> Expand All </a></li>
+      </ul>
+      <div class="tab-content">
+        <!-- Masters TAB BEGINS -->
+        <div id="masters" class="tab-pane fade in active">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#course_work">
+                    Course Work</a>
+                </h4>
+              </div>
+              <div id="course_work" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <div class="checklist">
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Minimum 30 hours total of courses conferring graduate credit. <b>[ Credit Hours Remaining: 14 ]</b>
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Minimum 18 hours of COMP courses. (excluding 990, 991 sections)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Minimum 3 hours of COMP 992 or COMP 993 (formal thesis) - maximum of 6 hours
+                      </div>
+                    </div>
+                    <div class="breadth"> Breadth Requirements [Note: At most one course in the set can be at the 500 level. The other courses must be at the 600 level or above.] </div>
+                    <div class="wrapper">
+                      <div class="requirement">
+                        <input type="checkbox">
+                        <div class="requirement_description">
+                          One Theory & Formal Thinking Course
+                        </div>
+                      </div>
+                      <div class="requirement">
+                        <input type="checkbox">
+                        <div class="requirement_description">
+                          One Systems & Hardware Course
+                        </div>
+                      </div>
+                      <div class="requirement">
+                        <input type="checkbox">
+                        <div class="requirement_description">
+                          One Applications Course
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#program_requirements">
+                    Program Requirements</a>
+                </h4>
+              </div>
+              <div id="program_requirements" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="checklist">
+                    <!-- TODO: Finish the rest of the Requirements! -->
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Background Preparation Worksheet (CS-01)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        MS Program of Study (CS-03)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Program Product Requirement (CS-13)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Writing Requirement (CS-08 or CS-04)
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#other_requirements">
+                    Other Graduation Requirements</a>
+                </h4>
+              </div>
+              <div id="other_requirements" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="checklist">
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        CS Forms turned in to student services coordinator (due the last day of classes)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Incomplete's or  AB's must be changed to permanent grades
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Apply for Degree in ConnectCarolina
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Masters TAB ENDS -->
+        <!-- Ph.D TAB BEGINS -->
+        <div id="PhD" class="tab-pane fade">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                    Course Work</a>
+                </h4>
+              </div>
+              <div id="collapse1" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <div class="checklist">
+                    <!-- TODO: Change the names and values! -->
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Minimum 30 hours total of courses conferring graduate credit. <b>[ Credit Hours Remaining: 14 ]</b>
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Minimum 18 hours of COMP courses. (excluding 990, 991 sections)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Minimum 3 hours of COMP 992 or COMP 993 (formal thesis) - maximum of 6 hours
+                      </div>
+                    </div>
+
+                    <div class="breadth"> Breadth Requirements [Note: At most one course in the set can be at the 500 level. The other courses must be at the 600 level or above.] </div>
+                    <div class="wrapper">
+                      <div class="requirement">
+                        <input type="checkbox">
+                        <div class="requirement_description">
+                          Theory & Formal Thinking Courses (1 of 2 complete)
+                        </div>
+                        <ul>
+                          <li>COMP 999</li>
+                        </ul>
+                      </div>
+                      <div class="requirement">
+                        <input type="checkbox">
+                        <div class="requirement_description">
+                          Systems & Hardware Courses (1 of 2 complete)
+                        </div>
+                        <ul>
+                          <li>COMP 998</li>
+                        </ul>
+                      </div>
+                      <div class="requirement">
+                        <input type="checkbox">
+                        <div class="requirement_description">
+                          Applications Courses (0 of 2 complete)
+                        </div>
+                        <ul></ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                    Ph.D Program Requirements</a>
+                </h4>
+              </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="checklist">
+                    <!-- TODO: Finish the rest of the Requirements! -->
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Background Preparation Worksheet (CS-01)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Program Product Requirement (CS-13)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Writing Requirement (CS-08)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        PhD Program of Study (CS-06)
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Proposal Approval and Committee Meeting
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        PhD Oral Comprehensive Exam
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                    Dissertation</a>
+                </h4>
+              </div>
+              <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div class="checklist">
+                    <!-- TODO: Finish the rest of the Requirements! -->
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Dissertation defense
+                      </div>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Title of Dissertation
+                      </div>
+                      <ul>
+                        <li>A Novel Scoring Method to Assess Associations Between Dietary Variety and Body Adiposity among a Sample of U.S. Adults</li>
+                      </ul>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Dissertation Adviser/Chair
+                      </div>
+                      <ul>
+                        <li>Fred Brooks</li>
+                      </ul>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Committee Members
+                      </div>
+                      <ul>
+                        <li>Jodie Gregoritsch</li>
+                        <li>Diane Pozefsky</li>
+                        <li>Fred Brooks</li>
+                      </ul>
+                    </div>
+                    <div class="requirement">
+                      <input type="checkbox">
+                      <div class="requirement_description">
+                        Dissertation Submission Date
+                      </div>
+                      <div>
+                        <input type="date">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Ph.D TAB ENDS -->
+      </div>
+    </div>
+
+    <div id="course_history" class="tab-pane fade">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#courses">Course History</a></li>
+
+      </ul>
+      <div class="tab-content">
+        <div id="courses" class="tab-pane fade in active">
+          <div class="panel panel-default">
+            <div class="panel-body">
+
+              <table class="ctable" style="width:75%">
+                <tr class="ctable">
+                  <th class="ctable">Course Name</th>
+                  <th class="ctable">Course Number</th>
+                  <th class="ctable">Section</th>
+                  <th class="ctable">Semester</th>
+                  <th class="ctable">Category</th>
+                </tr>
+                <% @student.course_histories.all.each do |course| %>
+                    <tr class="ctable">
+                      <td class="ctable"> <%= course.course_description.name %></td>
+                      <td class="ctable"> <%= course.course_description.number %></td>
+                      <td class="ctable"> <%= course.section %></td>
+                      <td class="ctable"> <%= course.semester %></td>
+                      <td class="ctable"><%= course.course_description.category %></td>
+                      <td class ="ctable touch"> <%= link_to "Unenroll", {:controller => :course_histories, :course_history =>{:student_id => @student.id, :course_description_id => course.id  }}, :method => :delete, :data => { confirm: 'Are you sure?' }  %> </td>
+                    </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="documents" class="tab-pane fade in">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#documents_tab"> Documents </a></li>
+        <li ><a data-toggle="tab" href="#upload_doc"> Upload </a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="documents_tab" class="tab-pane fade in active">
+          <div class="panel panel-default">
+            <div class="panel-body noBreaks">
+              <table class="ctable" style="width:75%">
+                <tr class="ctable">
+                  <th class="ctable">Document Type</th>
+                </tr>
+                <% @student.documents.all.each do |document| %>
+                    <tr class="ctable">
+                      <td class="ctable"><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
+
+                      <td class="ctable touch"><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
+                    </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div id="upload_doc" class="tab-pane fade">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h2> Add a Document </h2>
+              <%= render 'documents/form', document: @document %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="jobs" class="tab-pane fade in">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#jobs_tab">Jobs</a></li>
+
+      </ul>
+      <div class="tab-content">
+        <div id="jobs_tab" class="tab-pane fade in active">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="ctable" style="width:75%">
+                <tr class="ctable">
+                  <th class="ctable">Position</th>
+                  <th class="ctable">Semester</th>
+                  <th class="ctable">Supervisor</th>
+                  <th class="ctable">Class</th>
+                </tr>
+                <% @student.jobs.all.each do |job| %>       <!--Goes to the junction table between student and @course_descriptions and gets all the courses a student has taken and puts each one into a row respectively with the below format -->
+                    <tr class="ctable">
+                      <td class="ctable"> <%= job.position =%></td>
+                      <td class="ctable"> <%= job.current =%></td>
+                      <td class="ctable"> <%= job.supervisor =%></td>
+                      <td class="ctable"> <%= job.course =%></td>
+                    </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Existing Course</h4>
+      </div>
+      <div  id="class_search_results"class="modal-body">
+        <p>Have courses shown here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

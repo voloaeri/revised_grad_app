@@ -1,0 +1,335 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ *= require_tree .
+ *= require_self
+ */
+
+/*.OSX {*/
+    /*zoom: 100%;*/
+/*}*/
+
+html { height: 100% }
+body { min-height: 100% }
+.navigaters {
+
+    border-radius: 4px;
+    position: relative;
+    display: block;
+
+
+}
+.bottomSetter {
+    margin-bottom: 5%;
+}
+
+/* Search text fields */
+.searchBox {
+    width: 80%;
+    margin-top: 5%;
+    padding: 5px;
+}
+
+#addCourses {
+    border-top: 1px solid black;
+}
+
+.searchButton {
+    margin-top: 1%;
+    border: 1px solid black;
+
+    background-color: white;
+    text-color: black;
+}
+
+#searchBottom {
+    height: 30%;
+    border-bottom: 1px solid black;
+}
+.addButton {
+    margin-top: 7%;
+    border: 1px solid black;
+
+    background-color: white;
+   text-color: black;
+
+}
+
+#searchResults {
+    margin: auto;
+    width: 30%;
+    margin-top: 1.5%;
+}
+
+.stable {
+    margin-top: 3%;
+    margin-left: 6%;
+    border: 1px solid black;
+    width: 80%;
+    background-color: white;
+    padding: 2%;
+    text-align: center;
+    font-size: 125%;
+}
+
+
+.touch a {
+    color:red;
+}
+.noBreaks br {
+    display: none;
+}
+.container {
+    float: right;
+    width: 80%;
+    height: 100vh;
+    /*background-color: rgba(247, 240, 49,.2);*/
+    background-color: white;
+
+    min-height: 100vh;
+
+
+}
+
+
+.right {
+    float:right;
+    width:40%;
+}
+
+.form-group {
+    width:100%;
+
+}
+
+.form-check-inline {
+    margin-right: 2%;
+}
+
+.panel-heading {
+
+}
+
+.title {
+    font-family: "Helvetica";
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+
+}
+
+.left {
+    float:left;
+    width:40%;
+    margin-left: 8%;
+}
+
+.panel-body{
+    background:white;
+    border: 1px solid #ddd;
+
+}
+.panel {
+    /*background-color: lightblue;*/
+    border: none !important;
+    box-shadow: none !important;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+
+}
+#back {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 10%;
+}
+.user{
+    background: #B2D0E6; /* For browsers that do not support gradients #d2e1fe */
+    background: -webkit-linear-gradient(white, #B2D0E6); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, #B2D0E6); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, #B2D0E6); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, #B2D0E6); /* Standard syntax */
+}
+
+.bottom-border{
+    border-bottom: 1px solid black;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.ctable {
+    border-spacing: 5px;
+    margin-top: 2%;
+    margin-left: 5%;
+    background-color: white;
+    border: 1px solid black;
+    padding: 1%;
+    text-align: center;
+}
+.part {
+    margin-left: 2%;
+}
+.cform {
+    width: 100%;
+}
+
+.img-circle {
+    border-radius: 50%;
+    margin: auto; /* Center image horizontally */
+    margin-top: 5%; /* Translate image down */
+    display: block;
+    box-shadow: 0px 0px 5px black;
+}
+
+.side_bar{
+    float: left;
+    overflow-y: scroll;
+    width: 20%;
+    /*background-color: #B2D0E6;*/
+    background-color: #e66113;
+    color: #FFFFFF;
+    height: 100vh;
+    text-align: center;
+    position: fixed;
+}
+
+.side_bar > * {
+    margin-top: 10px; /* Vertical spacing between items within side bar */
+}
+
+.side_bar input[type="text"] {
+    color: #000000;
+    border: none;
+    -webkit-box-shadow: inset 0px 1px 4px black;
+    -moz-box-shadow: inset 0px 1px 4px black;
+    box-shadow: inset 0px 1px 4px black;
+}
+
+.side_bar ul{
+    padding: 0 5px;
+    margin-top: 25px;
+}
+
+.nav-pills li {
+    width: 100%;
+}
+
+#scroll_for_more_overlay {
+    width: 100%;
+    opacity: 0.6;
+    position: absolute;
+    height: 1.5em;
+    bottom: 0vh;
+    background-color: black;
+    color: white;
+}
+
+#expand a:hover {
+    background-color: red;
+}
+
+.checklist{
+    margin-left: 20px;
+}
+
+.requirement {
+    padding: 10px 0;
+}
+
+.requirement_description {
+    display: inline-block;
+    margin-left: 10px;
+    width: 80%;
+}
+
+.breadth {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.checklist .wrapper {
+    margin-left: 50px;
+}
+
+@media screen and (max-width: 800px) {
+    .side_bar {
+        width: 190px;
+        position: absolute;
+    }
+    .container {
+        width: 600px;
+        position: absolute;
+        left: 190px;
+    }
+}
+
+.form-group{
+    margin-right: 20px;
+}
+
+
+.form-inline{
+    margin-left: 50px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+
+}
+
+ul.nav.nav-tabs {
+    padding: 0;
+    margin: 0;
+}
+
+/* Type Ahead */
+
+.tt-query, /* UPDATE: newer versions use tt-input instead of tt-query */
+.tt-hint {
+    width: 150px;
+    height: 30px;
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.tt-query { /* UPDATE: newer versions use tt-input instead of tt-query */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+    color: #999;
+}
+
+.tt-menu { /* UPDATE: newer versions use tt-menu instead of tt-dropdown-menu */
+    width: 200px;
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+    padding: 3px 20px;
+    font-size: 18px;
+    line-height: 24px;
+}

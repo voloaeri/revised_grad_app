@@ -1,0 +1,51 @@
+<%= form_for(course_description) do |f| %>
+  <% if course_description.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course_description.errors.count, "error") %> prohibited this course_description from being saved:</h2>
+
+      <ul>
+      <% course_description.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field left">
+    <%= f.label :number %>
+    <%= f.number_field :number %>
+  </div>
+
+  <div class="field right">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field left">
+    <%= f.label :category %>
+    <%= f.select(:category, ["Applications", "Theory","Systems"]) %>
+  </div>
+
+  <div class="field right">
+    <%= f.label :hours %>
+    <%= f.select(:hours, ["1", "2","3","4"]) %>
+  </div>
+
+
+
+
+    <div class="field left">
+      <%= f.label :teacher %>
+      <%= f.text_field(:teacher) %>
+    </div>
+
+    <div class="field left">
+      <%= f.label :semester %>
+      <%= f.select(:semester,%w(Fall Spring Summer)) %>
+      <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
+    </div>
+
+  <div class="actions right">
+    <%= f.submit %>
+  </div>
+<% end %>

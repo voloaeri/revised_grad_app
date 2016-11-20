@@ -1,0 +1,14 @@
+
+
+if(<%= @nameError %>){
+  $(".alerts").append("<div class='alert alert-danger'> One or both of your name fields are empty. </div>");
+}
+if(<%= @pidError %>){
+  $(".alerts").append("<div class='alert alert-danger'> Please enter a valid 9 digits pid. </div>");
+}
+
+alert("<%= @success %> ");
+
+if(<%= @success %>){
+  $(".alerts").append("<div class='alert alert-success'> Student was successfully created </div>");
+}

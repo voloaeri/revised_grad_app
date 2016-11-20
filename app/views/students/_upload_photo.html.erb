@@ -1,0 +1,12 @@
+<%= form_for(student, :url => {:action => 'upload_photo'}, :method => 'post') do |f| %>
+    <div class="field">
+      <%= f.label :Select_File %>
+      <%= f.file_field :imageLocation %>
+    </div>
+
+    <%= f.hidden_field :id %>
+
+    <div class="actions">
+      <%= f.submit "Upload Profile Picture" %>
+    </div>
+<% end %>
