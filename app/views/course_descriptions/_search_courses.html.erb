@@ -25,11 +25,11 @@
 
     <% f.text_field :student %>
 
-    <div class="field right">
+    <div class="field">
       <%= f.hidden_field :student %>
     </div>
 
-    <div class="field right">
+    <div class="field left">
       <%= f.select(:semester,%w(Fall Spring Summer)) %>
       <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
     </div>

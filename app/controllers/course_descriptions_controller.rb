@@ -32,6 +32,7 @@ class CourseDescriptionsController < ApplicationController
     #raise @course.inspect
 
     @semester = Semester.where(course_description_params.slice(:semester, :year).merge({course_description_id: @course.id})).first
+   
 
     #raise @semester.inspect
     if !@semester
@@ -75,23 +76,50 @@ class CourseDescriptionsController < ApplicationController
 
     #raise course_description_params.except(:teacher, :year, :semester).inspect
 
+    respond_to do |format|
+
+      @facultyError = false
+      @numberError = false
+      @nameError = false
+
+
+      if(course_description_params[:name] == "")
+        @nameError = true
+        format.js {}
+        return
+      end
+
+      if(course_description_params[:number] == "")
+        @numberError = true
+        format.js {}
+        return
+      end
+
     @course_description = CourseDescription.find_or_create_by(course_description_params.except(:teacher, :year, :semester))
 
-    firstName = course_description_params[:teacher].split(" ")[0]
-    lastName = course_description_params[:teacher].split(" ")[1]
+    name = course_description_params[:teacher].split(", ")
 
-    faculty = Faculty.where({firstName: firstName, lastName: lastName}).pluck(:id).first
+    faculty = Faculty.where({firstName: name[1], lastName: name[0]}).pluck(:id).first
+
+    if(!faculty)
+      @facultyError = true
+      format.js {}
+      return
+    end
+
+
+
 
     #raise course_description_params.slice(:year, :semester).merge({faculty_id: faculty, course_description_id: @course_description.id}).inspect
 
     @semester = Semester.new(course_description_params.slice(:year, :semester).merge({faculty_id: faculty, course_description_id: @course_description.id}))
 
     @semester.save()
-
+    
     #raise @semester.inspect
 
-    respond_to do |format|
       if @course_description.save
+        format.js {  redirect_to @course_description, notice: 'Course was successfully created.'}
         format.html { redirect_to @course_description, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course_description }
       else

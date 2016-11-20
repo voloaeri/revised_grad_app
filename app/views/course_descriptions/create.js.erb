@@ -1,0 +1,9 @@
+$(".alerts").html("");
+
+if(<%= @facultyError %>){
+  $(".alerts").append("<div class='alert alert-danger'> Instructor not found! </div>");
+} else if(<%= @numberError %>){
+  $(".alerts").append("<div class='alert alert-danger'> Number was left blank! </div>");
+} else if(<%= @nameError %>){
+  $(".alerts").append("<div class='alert alert-danger'> Name was left blank! </div>");
+}

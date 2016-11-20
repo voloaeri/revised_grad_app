@@ -55,6 +55,94 @@ class StudentsController < ApplicationController
     @course_description = CourseDescription.new
     @course_description.student = @student.id
     @course_histories = CourseHistory.where(student_id: @student.id)
+
+    @total_hours=0
+    @comp_hours=0
+    @theory=false
+    @theory_course=0
+    @systems=false
+    @systems_course=0
+    @applications=false
+    @applications_course=0
+    @ntwo_taken=false
+    @nthree_taken=false
+    @nfour_taken=false
+    @nfour_hours=0
+    @ptheory_counter=0
+    @papps_counter=0
+    @psystems_counter=0
+    @pApplications=false
+    @pTheory=false
+    @pSystems=false
+    @appCourses=""
+    @systemCourses=""
+    @theoryCourses=""
+    @prp= @student.PRP
+    @oralExam=@student.oralExam
+    @committee= @student.committeeMeeting
+    @abd= @student.ABD
+    @diss= @student.dissertation_defense
+    @final= @student.finalDiss
+    @student.course_histories.all.each do |course|
+      @current_course=course.course_description
+      hours= @current_course.hours.to_i
+      name=@current_course.number.to_s
+
+      if(@current_course.number==994)
+        @nfour_hours=@nfour_hours+hours
+      end
+      if (@nfour_hours>=6)
+        @nfour_taken=true
+      end
+      if (@current_course.department=="COMP" && @current_course.number!=990 && @current_course.number!=991)
+        @comp_hours= @comp_hours+ hours
+      end
+      if (@current_course.number==992)
+        @ntwo_taken=true
+      end
+      if (@current_course.number==993)
+        @nthree_taken=true
+
+      end
+      if (@current_course.category=="Applications")
+        @applications=true
+        @papps_counter=@papps_counter+1
+        @appCourses=@appCourses+name+", "
+        if (@papps_counter>=2)
+          @pApplications=true
+        end
+        if (@current_course.number>@applications_course)
+          @applications_course=@current_course.number
+        end
+      end
+      if (@current_course.category=="Theory")
+        @theory=true
+        @ptheory_counter=@ptheory_counter+1
+        @theoryCourses=@theoryCourses+name+", "
+        if (@ptheory_counter>=2)
+          @pTheory=true
+        end
+        if (@current_course.number>@theory_course)
+          @theory_course=@current_course.number
+        end
+      end
+      if (@current_course.category=="Systems")
+        @systems=true
+        @psystems_counter=@psystems_counter+1
+        @systemCourses=@systemCourses+name+", "
+        if(@psystems_counter>=2)
+          @pSystems=true
+        end
+        if (@current_course.number>@systems_course)
+          @systems_course=@current_course.number
+        end
+      end
+
+      @total_hours=@total_hours + hours
+     end
+    @applications_course= @applications_course.to_s
+    @theory_course= @theory_course.to_s
+    @systems_course= @systems_course.to_s
     #raise @course_histories.inspect && @course_description.inspect
     #puts @course_description.student
   end
@@ -194,6 +282,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:firstName, :lastName, :PID, :alternativeName, :gender, :ethnicity, :status, :citizenship, :residency, :enteringStatus, :advisor, :researchArea, :startedYear, :approvedYear, :startedSemester, :approvedSemester, :backgroundApproved, :approvsemester,:approvyear,:leaveExtension, :fundingStatus, :fundingEligibility, :intendedDegree, :coursesTaken, :hoursCompleted, :imageLocation, :id)
+      params.require(:student).permit(:firstName, :lastName, :PID, :alternativeName, :gender, :ethnicity, :status, :citizenship, :residency, :enteringStatus, :advisor, :researchArea, :startedYear, :approvedYear, :startedSemester, :approvedSemester, :backgroundApproved, :approvsemester,:approvyear,:leaveExtension, :fundingStatus, :fundingEligibility, :intendedDegree, :coursesTaken, :hoursCompleted, :imageLocation, :id,:PRP,:oralExam,:committeeMeeting,:ABD,:dissertation_defense,:finalDiss)
     end
 end

@@ -1,4 +1,4 @@
-<%= form_for(course_description) do |f| %>
+<%= form_for(course_description, :remote => true) do |f| %>
   <% if course_description.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(course_description.errors.count, "error") %> prohibited this course_description from being saved:</h2>
@@ -32,18 +32,24 @@
   </div>
 
 
-
-
     <div class="field left">
-      <%= f.label :teacher %>
-      <%= f.text_field(:teacher) %>
+      <%= f.label :department %>
+      <%= f.select(:hours, ["COMP", "BIOS","MATH","STAT"]) %>
     </div>
+
+    <div class="field right">
+      <%= f.label "Instructor" %>
+      <%= f.text_field(:teacher, placeholder: "Last Name, First Name") %>
+    </div>
+
 
     <div class="field left">
       <%= f.label :semester %>
       <%= f.select(:semester,%w(Fall Spring Summer)) %>
       <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
     </div>
+
+
 
   <div class="actions right">
     <%= f.submit %>

@@ -39,19 +39,19 @@
     <div class="field left">
       <%= f.label :enteringStatus, 'Entering Funding Status' %>
       <!--%= f.text_field :enteringStatus %-->
-      <%= f.select(:enteringStatus, options_for_select(%w(Funded Non-Funded)))%>
+      <%= f.select(:enteringStatus, ["Funded","Nonfunded"])%>
 
     </div>
     <div class="field right">
       <%= f.label :fundingEligibility, 'Funding Eligibility' %>
       <!--%= f.text_field :fundingEligibility %-->
-      <%= f.select(:fundingEligibility, options_for_select(%w(No Yes))) %>
+      <%= f.select(:fundingEligibility, ["Yes","No"]) %>
 
     </div>
     <div class="field right">
       <%= f.label :status, 'Funding Status' %>
       <!--%= f.text_field :status %-->
-      <%= f.select(:status, options_for_select(%w(Funded Non-Funded)))%>
+      <%= f.select(:status, ["Funded","NonFunded"])%>
 
     </div>
     <div class="field left">
@@ -60,7 +60,7 @@
     </div>
     <div class="field left">
       <%= f.label :residency, 'NC Residency' %>
-      <%= f.select(:residency, options_for_select(%w(No Yes Applied))) %>
+      <%= f.select(:residency, ["No","Yes","Applied"]) %>
     </div>
 
     <div class="field right">
@@ -93,11 +93,46 @@
 
     <div class="field right">
       <%= f.label :intendedDegree, 'Intended Degree' %>
-      <!--%= f.text_field :intendedDegree %-->
-      <%= f.select(:intendedDegree, options_for_select(%w(PhD Master's))) %>
+
+      <%= f.select(:intendedDegree, ["Master's", "PhD"]) %>
 
     </div>
+    <div class="field left">
+      <%= f.label :PRP, 'PRP Exam Taken' %>
 
+      <%= f.select(:PRP, ["No","Yes"]) %>
+
+    </div>
+    <div class="field right">
+      <%= f.label :oralExam, 'Oral Exam Taken' %>
+
+      <%= f.select(:oralExam, ["No","Yes"]) %>
+
+    </div>
+    <div class="field left">
+      <%= f.label :committeeMeeting, 'Prospectus Approval/Committee Meeting' %>
+
+      <%= f.select(:committeeMeeting, ["No","Yes"]) %>
+
+    </div>
+    <div class="field right">
+      <%= f.label :abd, 'All but Dissertation' %>
+
+      <%= f.select(:ABD, ["No","Yes"]) %>
+
+    </div>
+    <div class="field left">
+      <%= f.label :dissertation_defense, 'Dissertation Defense Submitted' %>
+
+      <%= f.select(:dissertation_defense, ["No","Yes"]) %>
+
+    </div>
+    <div class="field right">
+      <%= f.label :finalDiss, 'Final & Approved Dissertation Submitted' %>
+
+      <%= f.select(:finalDiss, ["No","Yes"]) %>
+
+    </div>
     <div class="actions right left">
       <%= f.submit %>
     </div>

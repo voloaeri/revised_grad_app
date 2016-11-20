@@ -21,40 +21,6 @@ var substringMatcher = function(strs) {
         cb(matches);
     };
 };
-//
-// var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-//     'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-//     'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-//     'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-//     'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-//     'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-//     'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-//     'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-//     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-// ];
-
-// $('#course_description_hours').typeahead({
-//         hint: true,
-//         highlight: true,
-//         minLength: 1
-//     },
-//     {
-//         name: 'states',
-//         source: substringMatcher(states)
-//     });
-
-// $(function(){
-//     $('#course_description_hours').typeahead({
-//             hint: true,
-//             highlight: true,
-//             minLength: 1
-//         },
-//         {
-//             name: 'states',
-//             source: substringMatcher(states)
-//         });
-// })
-
 
 var dropDown;
 
@@ -102,7 +68,7 @@ var courseSearchNumber = new Bloodhound({
 
 
 $(function(){
-    $('#course_description_name').typeahead(null, {
+    $('#course_description_name').typeahead({hint: false}, {
         name: 'countries',
         displayKey: function(countries) {
             console.log(countries);
@@ -127,8 +93,8 @@ $(function(){
 })
 
 $(function(){
-    $('#course_description_number').typeahead(null, {
-        name: 'countries',
+    $('#course_description_number').typeahead({hint: false}, {
+        name: 'courseNumbers',
         displayKey: function(countries) {
             console.log(countries);
             return countries;
