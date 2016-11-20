@@ -4,39 +4,28 @@
   <!-- PROFILE IMAGE -->
   <img class="img-circle" src="<%= asset_path("defaults/oldwell.png") %>" height="120">
 
-  <div><a class="click" data-toggle="pill" href="/course_descriptions/new">+ Add a course</a></div>
+  <a href="/course_descriptions/new"><div class="pillbutton">+ Add a course</div></a>
 
-  <div><a href="/students/new">+ Add students</a></div>
+  <a href="/students/new"><div class="pillbutton">+ Add students</div></a>
 
   <h2>Search Students</h2>
 
   <!-- SEARCH TEXT BOXES -->
-  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
-  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
-  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
-  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
-  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
-  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
-  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
-  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
-  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
-  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
-  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
-  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
-  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
-  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
-  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Student name">
-  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="Student PID">
+  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Name">
+  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="PID">
 
   <!-- SEARCH STUDENT CONTROLS -->
-
+  <div class="pillbutton">Search 	&#187;</div>
+  <div class="pillbutton">Search 	&#9658;</div>
   <a class='click' data-toggle="pill" href="/students/new">Advanced Search Filters</a>
   <a href="#">Add Students (No function yet)</a>
 
   <a href="/course_descriptions/new">/course_description/new</a>
 
+  <!-- HEELPRINT -->
+
   <!-- "SCROLL FOR MORE" OVERLAY -->
-  <div id="scroll_for_more_overlay">Scroll For More</div>
+  <div id="scroll_for_more_overlay"><span id="icon">&#9660;</span> Scroll For More <span id="icon">&#9660;</span></div>
 </div>
 <!-- NEW SIDE BAR ENDS -->
 

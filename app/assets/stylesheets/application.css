@@ -201,23 +201,57 @@ html, body {
     overflow-y: scroll;
     width: 20%;
     /*background-color: #B2D0E6;*/
-    background-color: #e66113;
+    /*background-color: #7BAFD4; !* Real Carolina Blue *!*/
+    background-color: #c8573f; /* Real Carolina Blua */
+    /*background-color: #e66113;*/
     color: #FFFFFF;
     height: 100vh;
     text-align: center;
     position: fixed;
+
+    /*-webkit-box-shadow: inset 0px -50px 100px #646464;*/
+    /*-moz-box-shadow: inset 0px -50px 100px #646464;*/
+    /*box-shadow: inset 0px -50px 100px #646464;*/
 }
 
 .side_bar > * {
     margin-top: 10px; /* Vertical spacing between items within side bar */
 }
 
+.side_bar > h2 {
+    font-size: 1.75em;
+    text-shadow: 0px 1px 4px black;
+    font-family: Athelas;
+    margin-bottom: 0px;
+}
+
+.side_bar .pillbutton {
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgba(255, 255, 255, 0.51);
+    border: 2px solid white;
+    color: #000000;
+    -webkit-box-shadow: 0px 1px 3px black;
+    -moz-box-shadow: 0px 1px 3px black;
+    box-shadow: 0px 1px 3px black;
+}
+
+.side_bar .pillbutton:hover {
+    background-color: #FFFFFF;
+}
+
+.side_bar a:hover {
+    text-decoration: none;
+    background-color: inherit;
+    color: inherit;
+}
+
 .side_bar input[type="text"] {
     color: #000000;
     border: none;
-    -webkit-box-shadow: inset 0px 1px 4px black;
-    -moz-box-shadow: inset 0px 1px 4px black;
-    box-shadow: inset 0px 1px 4px black;
+    -webkit-box-shadow: inset 0px 1px 5px black;
+    -moz-box-shadow: inset 0px 1px 5px black;
+    box-shadow: inset 0px 1px 5px black;
 }
 
 .side_bar ul{
@@ -231,12 +265,24 @@ html, body {
 
 #scroll_for_more_overlay {
     width: 100%;
-    opacity: 0.6;
     position: absolute;
-    height: 1.5em;
+    height: 5em;
     bottom: 0vh;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.45);
     color: white;
+    -webkit-box-shadow: inset 0px -25px 50px #000000;
+    -moz-box-shadow: inset 0px -25px 50px #000000;
+    box-shadow: inset 0px -25px 50px #000000;
+}
+
+#scroll_for_more_overlay:hover {
+    -webkit-box-shadow: inset 0px -20px 30px #000000;
+    -moz-box-shadow: inset 0px -20px 30px #000000;
+    box-shadow: inset 0px -20px 30px #000000;
+}
+
+span[id="icon"] {
+    font-size: 0.5em;
 }
 
 #expand a:hover {

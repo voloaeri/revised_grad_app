@@ -389,6 +389,7 @@
                 <tr class="ctable">
                   <th class="ctable">Course Name</th>
                   <th class="ctable">Course Number</th>
+                  <th class="ctable">Professor</th>
                   <th class="ctable">Section</th>
                   <th class="ctable">Semester</th>
                   <th class="ctable">Category</th>
@@ -396,10 +397,15 @@
                 </tr>
               <% @student.course_histories.all.each do |course| %>
                   <tr class="ctable">
-                    <td class="ctable"> <%= course.course_description.name %></td>
-                    <td class="ctable"> <%= course.course_description.number %></td>
-                    <td class="ctable"> <% course.semesters.first.semester.to_s + " " + course.semesters.first.year.to_s%></td>
-                    <td class="ctable"><%= course.course_description.category %></td>
+                    <% subject = course.course_description %>
+                    <% time = course.semester %>
+                    <% professor = time.faculty %>
+                    <td class="ctable"> <%= subject.name %></td>
+                    <td class="ctable"> <%= subject.number %></td>
+                    <td class="ctable"> <%= professor.slice(:firstName, :lastName).values.join(" ")%></td>
+                    <td class="ctable"> <%= professor.sectionNumber %></td>
+                    <td class="ctable"> <%= time.slice(:semester, :year).values.join(" ") %></td>
+                    <td class="ctable"> <%= subject.category%></td>
                     <td class ="ctable touch"> <%= link_to "Unenroll", {:controller => :course_histories, :course_history =>{:id => course.id, :student_id => @student.id}}, :method => :delete, :data => { confirm: 'Are you sure?' }  %> </td>
                   </tr>
               <% end %>
