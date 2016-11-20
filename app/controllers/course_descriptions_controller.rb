@@ -10,17 +10,36 @@ class CourseDescriptionsController < ApplicationController
   def search
     # puts "in Search!"
     #
+
+    @semesterError = false
+    @courseError = false
+
+    respond_to do |format|
+
     @student = Student.find(params[:course_description][:student])
 
     #diane's way
 
     @course = CourseDescription.where({number: params[:course_description][:number]}).first
 
+    if !@course
+      @courseError = true
+      puts "Course ERRROR"
+      format.js {}
+      return
+    end
+
     #raise @course.inspect
 
     @semester = Semester.where(course_description_params.slice(:semester, :year).merge({course_description_id: @course.id})).first
 
     #raise @semester.inspect
+    if !@semester
+      @semesterError = true
+      puts "Semester ERROR"
+      format.js {}
+      return
+    end
 
     @faculty = @semester.faculty
 
@@ -30,7 +49,6 @@ class CourseDescriptionsController < ApplicationController
 
     @history.save()
 
-    respond_to do |format|
       format.js {}
       format.html {}
     end
@@ -109,16 +127,22 @@ class CourseDescriptionsController < ApplicationController
 
   # GET /things/typeahead/:query
   def typeahead
-    puts "hello type"
-    puts search_params[:query].class
     if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.  
       return
     end
-    #@suggestions = CourseDescription.where("name LIKE" => "%#{search_params[:query]}%")
-    @suggestions = CourseDescription.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number, :hours, :category).map{ |s| {name: s[0], number: s[1], hours: s[2], category: s[3]}} #Select the data you want to load on the typeahead.
-    #@suggestions.map{ |s| {name: s[0], number: s[1], hours: s[2]}}
-    #raise @suggestions.all.inspect
-    puts @suggestions
+
+
+    if search_params[:query].to_i.to_s == search_params[:query]
+      puts "is true"
+      @suggestions = CourseDescription.where('number LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number).map{ |s| {name: s[0], number: s[1]}}
+      puts @suggestions
+    else
+      @suggestions = CourseDescription.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number).map{ |s| {name: s[0], number: s[1]}} #Select the data you want to load on the typeahead.
+      puts @suggestions
+    end
+
+    #@suggestions.values.join(" ")
+
     respond_to do |format|
       format.json { render json: @suggestions.to_json }
     end

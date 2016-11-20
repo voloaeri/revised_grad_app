@@ -202,16 +202,16 @@ html, body {
     width: 20%;
     /*background-color: #B2D0E6;*/
     /*background-color: #7BAFD4; !* Real Carolina Blue *!*/
-    background-color: #c8573f; /* Real Carolina Blua */
+    background-color: #c8573f; /* Ruddy Red */
     /*background-color: #e66113;*/
     color: #FFFFFF;
     height: 100vh;
     text-align: center;
     position: fixed;
 
-    /*-webkit-box-shadow: inset 0px -50px 100px #646464;*/
-    /*-moz-box-shadow: inset 0px -50px 100px #646464;*/
-    /*box-shadow: inset 0px -50px 100px #646464;*/
+    -webkit-box-shadow: inset 0px -50px 100px #646464;
+    -moz-box-shadow: inset 0px -50px 100px #646464;
+    box-shadow: inset 0px -50px 100px #646464;
 }
 
 .side_bar > * {

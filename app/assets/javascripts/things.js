@@ -79,6 +79,27 @@ var courseSearch = new Bloodhound({
     limit : 5
 });
 
+var courseSearchNumber = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
+    remote: {
+        url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
+        wildcard: '%QUERY',
+        filter: function(response) {
+            var results = [];
+            dropDown = response;
+            console.log(JSON.stringify(response));
+            for(var i = 0; i < response.length; i++){
+                results.push(response[i].number);
+            }
+            console.log(JSON.stringify(results));
+            return results;
+        }
+    },
+    limit : 5
+});
+
 
 $(function(){
     $('#course_description_name').typeahead(null, {
@@ -99,10 +120,35 @@ $(function(){
             console.log(dropDown[i][suggestion]);
            if(dropDown[i].name == suggestion){
                $("#course_description_number").val(dropDown[i].number);
-               $("#course_description_category").val(dropDown[i].category);
-               $("#course_description_hours").val(dropDown[i].hours);
-
            }
+        }
+
+    });
+})
+
+$(function(){
+    $('#course_description_number').typeahead(null, {
+        name: 'countries',
+        displayKey: function(countries) {
+            console.log(countries);
+            return countries;
+        },
+        source: courseSearchNumber.ttAdapter()
+    });
+})
+
+$(function(){
+    $('#course_description_number').bind('typeahead:select', function(ev, suggestion) {
+        console.log(dropDown[0]);
+        console.log('Selection of Number ' + suggestion);
+        for(var i = 0; i < dropDown.length; i++){
+            console.log("Possible " + dropDown[i].number);
+            if(dropDown[i].number == suggestion){
+                console.log("In the selection");
+                $("#course_description_number").val(dropDown[i].number);
+                $("#course_description_name").val(dropDown[i].name);
+
+            }
         }
 
     });
