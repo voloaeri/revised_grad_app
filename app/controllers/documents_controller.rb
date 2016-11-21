@@ -82,6 +82,8 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
+    puts Rails.public_path + @document.location
+    FileUtils.rm(Rails.public_path + @document.location)
     @document.destroy
     respond_to do |format|
       format.js {}

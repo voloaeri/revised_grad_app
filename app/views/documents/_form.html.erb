@@ -1,4 +1,6 @@
 <%= form_for(@document, :remote => true, :url => url_for(:controller => 'documents', :action => 'create')) do |f| %>
+    
+
     <div class="field">
       <%= f.label :Select_File %>
       <%= f.file_field :location %>

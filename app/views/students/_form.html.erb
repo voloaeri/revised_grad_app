@@ -133,7 +133,11 @@
       <%= f.select(:finalDiss, ["No","Yes"]) %>
 
     </div>
-    <div class="actions right left">
+    <div class="field left">
+      <%= f.label :phdAdmitDate, 'Date Admitted to PhD Program' %>
+      <%= f.text_field :phdAdmitDate %>
+    </div>
+    <div class="actions right ">
       <%= f.submit %>
     </div>
 <% end %>

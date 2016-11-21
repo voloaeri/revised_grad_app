@@ -14,7 +14,11 @@
     <li><a id="history" class='click' data-toggle="pill" href="#course_history"> Course History </a></li>
     <li><a id="docs" class='click' data-toggle="pill" href="#documents">Documents</a></li>
     <li><a id="work" class='click' data-toggle="pill" href="#jobs">Jobs</a></li>
-    <li><a id="progress-forms" target="_blank" data-toggle="pill" href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/">Progress Forms</a></li>
+    <li><a id="progress-forms" target="_blank" href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/">Progress Forms</a></li>
+    <li><a id="lcourses" class='click'  href="http://cs.unc.edu/academics/teaching-schedules/">List of courses</a></li>
+    <li><a id="icurrent" class='click'  href="http://cs.unc.edu/info-for/current-students/">Info for current Graduate Students</a></li>
+    <li><a id="ghandbook" class='click' href="http://handbook.unc.edu/">Graduate School Handbook</a></li>
+    <li><a id="ccourses" class='click'  href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/">Categories of Courses</a></li>
     <li><%= link_to('Back to Homepage', students_path) %></li>
 
   </ul>
@@ -165,7 +169,15 @@
         <!-- Masters TAB ENDS -->
         <!-- Ph.D TAB BEGINS -->
         <div id="PhD" class="tab-pane fade">
-          <div class="panel-group" id="accordion">
+          <div class="panel-group" >
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a > <%= if (@phdDate!="") then "Admitted to PhD program on " +@phdDate else "Not yet admitted to PhD program " end %>
+                    </a>
+                </h4>
+              </div>
+              </div>
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
@@ -176,7 +188,12 @@
               <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
                   <div class="checklist">
-
+                    <div class="requirement">
+                      <input type="checkbox"  <%= if (@abd=="Yes") then "checked" else "" end %>>
+                      <div class="requirement_description">
+                       ABD
+                      </div>
+                    </div>
                     <div class="requirement">
                       <input type="checkbox"  <%= if (@nfour_taken) then "checked" else "" end %>>
                       <div class="requirement_description">
@@ -243,29 +260,24 @@
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@committee=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
                         Proposal Approval and Committee Meeting
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@oralExam=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
                         PhD Oral Comprehensive Exam
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@prp=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
                         PRP Exam
                       </div>
                     </div>
-                    <div class="requirement">
-                      <input type="checkbox">
-                      <div class="requirement_description">
-                        PhD Oral Comprehensive Exam
-                      </div>
-                    </div>
+
 
                   </div>
                 </div>
@@ -283,13 +295,13 @@
                   <div class="checklist">
                     <!-- TODO: Finish the rest of the Requirements! -->
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@diss=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
                         Dissertation defense
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@final=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
                         Final And Approved Dissertation Submitted
                       </div>
@@ -309,6 +321,7 @@
       <ul class="nav nav-tabs">
         <li class="active"><a class='click' data-toggle="tab" href="#courses">Course History</a></li>
         <li><a class='click' data-toggle="tab" href="#enroll">Enroll</a></li>
+
       </ul>
       <div class="tab-content">
         <div id="courses" class="tab-pane fade in active">
@@ -351,6 +364,7 @@
             </div>
           </div>
           </div>
+
           </div>
         </div>
 
@@ -389,6 +403,11 @@
                         <%= value %>
                       </div>
                   <% end %>
+                 <h2> Get Blank Documents</h2>
+                  <form action="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/" method="get">
+                    <input type="submit" value="Get blank documents"
+                           name="Submit" />
+                  </form>
                 <h2> Add a Document </h2>
                 <%= render 'documents/form', document: @document %>
             </div>

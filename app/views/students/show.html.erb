@@ -12,6 +12,11 @@
     <li><a id="history" data-toggle="pill" href="#course_history"> Course History </a></li>
     <li><a id="docs" data-toggle="pill" href="#documents">Documents</a></li>
     <li><a id="work" data-toggle="pill" href="#jobs">Jobs</a></li>
+    <li><a id="progress-forms" target="_blank" href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/">Progress Forms</a></li>
+    <li><a id="lcourses" class='click'  href="http://cs.unc.edu/academics/teaching-schedules/">List of courses</a></li>
+    <li><a id="icurrent" class='click'  href="http://cs.unc.edu/info-for/current-students/">Info for current Graduate Students</a></li>
+    <li><a id="ghandbook" class='click' href="http://handbook.unc.edu/">Graduate School Handbook</a></li>
+    <li><a id="ccourses" class='click'  href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/">Categories of Courses</a></li>
   </ul>
 </div>
 <!-- SIDE BAR ends -->
@@ -63,41 +68,41 @@
                 <div class="panel-body">
                   <div class="checklist">
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@total_hours==30) then "checked" else "" end %>>
                       <div class="requirement_description">
-                        Minimum 30 hours total of courses conferring graduate credit. <b>[ Credit Hours Remaining: 14 ]</b>
+                        Minimum 30 hours total of courses conferring graduate credit. <b>[ Credit Hours Total: <%=@total_hours %> ]</b>
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@comp_hours==18) then "checked" else "" end %>>
                       <div class="requirement_description">
-                        Minimum 18 hours of COMP courses. (excluding 990, 991 sections)
+                        Minimum 18 hours of COMP courses. (excluding 990, 991 sections) <b>[ COMP Credit Hours Total: <%=@comp_hours %> ]</b>
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@ntwo||@nthree) then "checked" else "" end %>>
                       <div class="requirement_description">
-                        Minimum 3 hours of COMP 992 or COMP 993 (formal thesis) - maximum of 6 hours
+                        Minimum 3 hours of COMP 992 or COMP 993 (formal thesis) - maximum of 6 hours <b>[<%= if (@ntwo) then "992" else end %><%= if (@nthree) then "993" else end %><%= if (!@ntwo && !@nthree) then "Neither 992/993 Taken" else end %> ]</b>
                       </div>
                     </div>
                     <div class="breadth"> Breadth Requirements [Note: At most one course in the set can be at the 500 level. The other courses must be at the 600 level or above.] </div>
                     <div class="wrapper">
                       <div class="requirement">
-                        <input type="checkbox">
+                        <input type="checkbox" <%= if (@theory) then "checked" else "" end %>>
                         <div class="requirement_description">
-                          One Theory & Formal Thinking Course
+                          One Theory & Formal Thinking Course  <b>[ <%= if @theory then "Highest Number Course: " + @theory_course else "Course of this type not yet taken" end %> ]</b>
                         </div>
                       </div>
                       <div class="requirement">
-                        <input type="checkbox">
+                        <input type="checkbox" <%= if (@systems) then "checked" else "" end %>>
                         <div class="requirement_description">
-                          One Systems & Hardware Course
+                          One Systems & Hardware Course <b>[<%= if @systems then "Highest Number Course: " + @systems_course else "Course of this type not yet taken" end %> ]</b>
                         </div>
                       </div>
                       <div class="requirement">
-                        <input type="checkbox">
+                        <input type="checkbox" <%= if (@applications) then "checked" else "" end %>>
                         <div class="requirement_description">
-                          One Applications Course
+                          One Applications Course <b>[<%= if @applications then "Highest Number Course: " + @applications_course else "Course of this type not yet taken" end %> ]</b>
                         </div>
                       </div>
                     </div>
@@ -115,27 +120,28 @@
               <div id="program_requirements" class="panel-collapse collapse">
                 <div class="panel-body">
                   <div class="checklist">
-                    <!-- TODO: Finish the rest of the Requirements! -->
+
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %>>
                       <div class="requirement_description">
                         Background Preparation Worksheet (CS-01)
                       </div>
                     </div>
+                    <%# raise @doc_titles.inspect %>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if @doc_titles.include? "M.S. Program of Study" then "checked" else "" end %>>
                       <div class="requirement_description">
-                        MS Program of Study (CS-03)
+                        M.S. Program of Study (CS-03)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %>>
                       <div class="requirement_description">
                         Program Product Requirement (CS-13)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if @doc_titles.include? "Technical Writing Requirement" then "checked" else "" end %>>
                       <div class="requirement_description">
                         Writing Requirement (CS-08 or CS-04)
                       </div>
@@ -144,44 +150,21 @@
                 </div>
               </div>
             </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#other_requirements">
-                    Other Graduation Requirements</a>
-                </h4>
-              </div>
-              <div id="other_requirements" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <div class="checklist">
-                    <div class="requirement">
-                      <input type="checkbox">
-                      <div class="requirement_description">
-                        CS Forms turned in to student services coordinator (due the last day of classes)
-                      </div>
-                    </div>
-                    <div class="requirement">
-                      <input type="checkbox">
-                      <div class="requirement_description">
-                        Incomplete's or  AB's must be changed to permanent grades
-                      </div>
-                    </div>
-                    <div class="requirement">
-                      <input type="checkbox">
-                      <div class="requirement_description">
-                        Apply for Degree in ConnectCarolina
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
         <!-- Masters TAB ENDS -->
         <!-- Ph.D TAB BEGINS -->
         <div id="PhD" class="tab-pane fade">
-          <div class="panel-group" id="accordion">
+          <div class="panel-group" >
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a > <%= if (@phdDate!="") then "Admitted to PhD program on " +@phdDate else "Not yet admitted to PhD program " end %>
+                  </a>
+                </h4>
+              </div>
+            </div>
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h4 class="panel-title">
@@ -192,52 +175,41 @@
               <div id="collapse1" class="panel-collapse collapse in">
                 <div class="panel-body">
                   <div class="checklist">
-                    <!-- TODO: Change the names and values! -->
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox"  <%= if (@abd=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
-                        Minimum 30 hours total of courses conferring graduate credit. <b>[ Credit Hours Remaining: 14 ]</b>
+                        ABD
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox"  <%= if (@nfour_taken) then "checked" else "" end %>>
                       <div class="requirement_description">
-                        Minimum 18 hours of COMP courses. (excluding 990, 991 sections)
-                      </div>
-                    </div>
-                    <div class="requirement">
-                      <input type="checkbox">
-                      <div class="requirement_description">
-                        Minimum 3 hours of COMP 992 or COMP 993 (formal thesis) - maximum of 6 hours
+                        Minimum 6 hours of COMP 994 (formal thesis) <b>[ 994 Credit Hours Total: <%=@nfour_hours %> ]</b>
                       </div>
                     </div>
 
                     <div class="breadth"> Breadth Requirements [Note: At most one course in the set can be at the 500 level. The other courses must be at the 600 level or above.] </div>
                     <div class="wrapper">
                       <div class="requirement">
-                        <input type="checkbox">
+                        <input type="checkbox" <%= if (@pTheory) then "checked" else "" end %>>
                         <div class="requirement_description">
-                          Theory & Formal Thinking Courses (1 of 2 complete)
+                          Theory & Formal Thinking Courses <b>[ Counted Courses:  <%=@theoryCourses %> ]</b>
                         </div>
-                        <ul>
-                          <li>COMP 999</li>
-                        </ul>
+
                       </div>
                       <div class="requirement">
-                        <input type="checkbox">
+                        <input type="checkbox" <%= if (@pSystems) then "checked" else "" end %>>
                         <div class="requirement_description">
-                          Systems & Hardware Courses (1 of 2 complete)
+                          Systems & Hardware Courses  <b>[ Counted Courses: <%=@systemCourses %> ]</b>
                         </div>
-                        <ul>
-                          <li>COMP 998</li>
-                        </ul>
+
                       </div>
                       <div class="requirement">
-                        <input type="checkbox">
+                        <input type="checkbox" <%= if (@pApplications) then "checked" else "" end %>>
                         <div class="requirement_description">
-                          Applications Courses (0 of 2 complete)
+                          Applications Courses  <b>[ Counted Courses: <%=@appCourses %> ]</b>
                         </div>
-                        <ul></ul>
+
                       </div>
                     </div>
                   </div>
@@ -254,43 +226,46 @@
               <div id="collapse2" class="panel-collapse collapse">
                 <div class="panel-body">
                   <div class="checklist">
-                    <!-- TODO: Finish the rest of the Requirements! -->
+
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %>>
                       <div class="requirement_description">
                         Background Preparation Worksheet (CS-01)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %>>
                       <div class="requirement_description">
                         Program Product Requirement (CS-13)
                       </div>
                     </div>
+
                     <div class="requirement">
-                      <input type="checkbox">
-                      <div class="requirement_description">
-                        Writing Requirement (CS-08)
-                      </div>
-                    </div>
-                    <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if @doc_titles.include? "Ph.D. Program of Study" then "checked" else "" end %>>
                       <div class="requirement_description">
                         PhD Program of Study (CS-06)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@committee=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
                         Proposal Approval and Committee Meeting
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@oralExam=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
                         PhD Oral Comprehensive Exam
                       </div>
                     </div>
+                    <div class="requirement">
+                      <input type="checkbox" <%= if (@prp=="Yes") then "checked" else "" end %>>
+                      <div class="requirement_description">
+                        PRP Exam
+                      </div>
+                    </div>
+
+
                   </div>
                 </div>
               </div>
@@ -307,49 +282,18 @@
                   <div class="checklist">
                     <!-- TODO: Finish the rest of the Requirements! -->
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@diss=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
                         Dissertation defense
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox">
+                      <input type="checkbox" <%= if (@final=="Yes") then "checked" else "" end %>>
                       <div class="requirement_description">
-                        Title of Dissertation
-                      </div>
-                      <ul>
-                        <li>A Novel Scoring Method to Assess Associations Between Dietary Variety and Body Adiposity among a Sample of U.S. Adults</li>
-                      </ul>
-                    </div>
-                    <div class="requirement">
-                      <input type="checkbox">
-                      <div class="requirement_description">
-                        Dissertation Adviser/Chair
-                      </div>
-                      <ul>
-                        <li>Fred Brooks</li>
-                      </ul>
-                    </div>
-                    <div class="requirement">
-                      <input type="checkbox">
-                      <div class="requirement_description">
-                        Committee Members
-                      </div>
-                      <ul>
-                        <li>Jodie Gregoritsch</li>
-                        <li>Diane Pozefsky</li>
-                        <li>Fred Brooks</li>
-                      </ul>
-                    </div>
-                    <div class="requirement">
-                      <input type="checkbox">
-                      <div class="requirement_description">
-                        Dissertation Submission Date
-                      </div>
-                      <div>
-                        <input type="date">
+                        Final And Approved Dissertation Submitted
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>

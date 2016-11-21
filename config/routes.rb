@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :jobs
   resources :students
   post "course_descriptions/search" => "course_descriptions#search"
+  post "course_descriptions/transfer" => "course_descriptions#transfer"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   delete "/course_histories" => "course_histories#search_and_destroy"
   post "students/:id/upload_photo" => "students#upload_photo"

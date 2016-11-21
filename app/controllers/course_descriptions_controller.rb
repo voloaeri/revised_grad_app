@@ -20,7 +20,9 @@ class CourseDescriptionsController < ApplicationController
 
     #diane's way
 
+
     @course = CourseDescription.where({number: params[:course_description][:number]}).first
+    
 
     if !@course
       @courseError = true
@@ -60,6 +62,7 @@ class CourseDescriptionsController < ApplicationController
   # GET /course_descriptions/1.json
   def show
   end
+
 
   # GET /course_descriptions/new
   def new
@@ -119,6 +122,7 @@ class CourseDescriptionsController < ApplicationController
     #raise @semester.inspect
 
       if @course_description.save
+        
         format.js {  redirect_to @course_description, notice: 'Course was successfully created.'}
         format.html { redirect_to @course_description, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course_description }
@@ -189,6 +193,6 @@ class CourseDescriptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_description_params
-      params.require(:course_description).permit(:number, :name, :category, :hours, :teacher, :semester, :year)
+      params.require(:course_description).permit(:number, :name, :category, :hours, :teacher, :semester, :year,:transfer,:department)
     end
 end

@@ -201,8 +201,8 @@ html, body {
     overflow-y: scroll;
     width: 20%;
     /*background-color: #B2D0E6;*/
-    /*background-color: #7BAFD4; !* Real Carolina Blue *!*/
-    background-color: #c8573f; /* Ruddy Red */
+    background-color: #7BAFD4; /* Real Carolina Blue */
+    /*background-color: #c8573f; !* Ruddy Red *!*/
     /*background-color: #e66113;*/
     color: #FFFFFF;
     height: 100vh;
@@ -266,7 +266,7 @@ html, body {
 #scroll_for_more_overlay {
     width: 100%;
     position: absolute;
-    height: 5em;
+    height: 3em;
     bottom: 0vh;
     background-color: rgba(0, 0, 0, 0.45);
     color: white;
