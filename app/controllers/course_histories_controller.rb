@@ -35,12 +35,14 @@ class CourseHistoriesController < ApplicationController
 
     respond_to do |format|
 
-      @student = Student.find(params[:course_description][:student])
+      #raise params[:course_history][:student_id].inspect
+
+      @student = Student.find(params[:course_history][:student_id])
 
       #diane's way
 
 
-      @course = CourseDescription.where({number: params[:course_description][:number]}).first
+      @course = CourseDescription.where({number: params[:course_history][:number]}).first
 
 
       if !@course
@@ -52,7 +54,7 @@ class CourseHistoriesController < ApplicationController
 
       #raise @course.inspect
 
-      @semester = Semester.where(course_description_params.slice(:semester, :year).merge({course_description_id: @course.id})).first
+      @semester = Semester.where(course_history_params.slice(:semester, :year).merge({course_description_id: @course.id})).first
 
 
       #raise @semester.inspect
@@ -70,6 +72,8 @@ class CourseHistoriesController < ApplicationController
       #raise @history.inspect
 
       @history.save()
+
+      raise @history.errors.inspect
 
       format.js {}
       format.html {}
@@ -116,6 +120,6 @@ class CourseHistoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_history_params
-      params.require(:course_history).permit(:id, :student_id, :course_description_id, :grade, :section, :faculty_id, :semester)
+      params.require(:course_history).permit(:id, :student_id, :course_description_id, :grade, :year, :semester, :section, :faculty_id, :semester)
     end
 end

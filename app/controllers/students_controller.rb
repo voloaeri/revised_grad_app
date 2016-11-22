@@ -136,7 +136,7 @@ class StudentsController < ApplicationController
     @course_description.student = @student.id
     @course_histories = CourseHistory.where(student_id: @student.id)
 
-    @new_course_history = CourseHistory.new(student: @student)
+    @new_course_history = CourseHistory.new(student_id: @student.id)
     
     @total_hours=0
     @comp_hours=0
