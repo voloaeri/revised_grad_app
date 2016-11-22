@@ -336,6 +336,7 @@
                 <th class="ctable">Section</th>
                 <th class="ctable">Semester</th>
                 <th class="ctable">Category</th>
+                <th class="ctable">Hours</th>
                 <th class="ctable">Unenrollment</th>
               </tr>
               <% @student.course_histories.all.each do |course| %>
@@ -349,6 +350,7 @@
                     <td class="ctable"> <%= professor.sectionNumber %></td>
                     <td class="ctable"> <%= time.slice(:semester, :year).values.join(" ") %></td>
                     <td class="ctable"> <%= subject.category%></td>
+                    <td class="ctable"> <%= subject.hours%></td>
                     <td class ="ctable touch"> <%= link_to "Unenroll", {:controller => :course_histories, :course_history =>{:id => course.id, :student_id => @student.id}}, :method => :delete, :remote => true  %> </td>
                   </tr>
               <% end %>
