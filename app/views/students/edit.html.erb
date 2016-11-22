@@ -1,7 +1,7 @@
 <div class="side_bar">
   
   <div class="user">
-    <img class="img-circle" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120">
+    <img class="img-circle" alt="img" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120">
     <h2> <%= @student.firstName + " " + @student.lastName %> </h2>
     <h5> <%=@student.intendedDegree + " Student" %> </h5>
     <h6> <%= @student.PID  %> </h6>
@@ -340,16 +340,6 @@
               </tr>
               <% @student.course_histories.all.each do |course| %>
                   <tr class="ctable">
-                    <% subject = course.course_description %>
-                    <% time = course.semester %>
-                    <% professor = time.faculty %>
-                    <td class="ctable"> <%= subject.name %></td>
-                    <td class="ctable"> <%= subject.number %></td>
-                    <td class="ctable"> <%= professor.slice(:firstName, :lastName).values.join(" ")%></td>
-                    <td class="ctable"> <%= professor.sectionNumber %></td>
-                    <td class="ctable"> <%= time.slice(:semester, :year).values.join(" ") %></td>
-                    <td class="ctable"> <%= subject.category%></td>
-                    <td class ="ctable touch"> <%= link_to "Unenroll", {:controller => :course_histories, :course_history =>{:id => course.id, :student_id => @student.id}}, :method => :delete, :data => { confirm: 'Are you sure?' }  %> </td>
                   </tr>
               <% end %>
             </table>
@@ -360,7 +350,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="alerts"> </div>
-              <%= render 'course_descriptions/search_courses', course_description: @course_description %>
+              <%= render 'course_histories/form', course_history: @new_course_history %>
             </div>
           </div>
           </div>

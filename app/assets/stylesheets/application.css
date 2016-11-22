@@ -74,12 +74,12 @@ body { min-height: 100% }
 .stable {
     margin-top: 3%;
     margin-left: 6%;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 80%;
-    background-color: white;
-    padding: 2%;
-    text-align: center;
-    font-size: 125%;
+    /*background-color: white;*/
+    /*padding: 2%;*/
+    /*text-align: center;*/
+    /*font-size: 125%;*/
 }
 
 
@@ -200,18 +200,21 @@ html, body {
     float: left;
     overflow-y: scroll;
     width: 20%;
-    /*background-color: #B2D0E6;*/
-    background-color: #7BAFD4; /* Real Carolina Blue */
-    /*background-color: #c8573f; !* Ruddy Red *!*/
-    /*background-color: #e66113;*/
+    /*background-color: #7BAFD4; !* Real Carolina Blue *!*/
+    background-color: #c8573f; /* Ruddy Red */
+    /*background-color: #9dc853; !* Polk Place Green *!*/
+    /*background-color: #6ac896; !* Derbyshire Green *!*/
+    /*background-color: #e6611d; !* Deep tangerine *!*/
+    /*background-color: #9d9d57; !* Darjeeling Tea *!*/
+    /*background-color: #d885e6; !* Porky Pink *!*/
     color: #FFFFFF;
     height: 100vh;
     text-align: center;
     position: fixed;
 
-    -webkit-box-shadow: inset 0px -50px 100px #646464;
-    -moz-box-shadow: inset 0px -50px 100px #646464;
-    box-shadow: inset 0px -50px 100px #646464;
+    /*-webkit-box-shadow: inset 0px -50px 100px #646464;*/
+    /*-moz-box-shadow: inset 0px -50px 100px #646464;*/
+    /*box-shadow: inset 0px -50px 100px #646464;*/
 }
 
 .side_bar > * {
@@ -270,15 +273,37 @@ html, body {
     bottom: 0vh;
     background-color: rgba(0, 0, 0, 0.45);
     color: white;
-    -webkit-box-shadow: inset 0px -25px 50px #000000;
-    -moz-box-shadow: inset 0px -25px 50px #000000;
-    box-shadow: inset 0px -25px 50px #000000;
+    -webkit-box-shadow: inset 0px -10px 35px #000000;
+    -moz-box-shadow: inset 0px -10px 35px #000000;
+    box-shadow: inset 0px -10px 35px #000000;
 }
 
 #scroll_for_more_overlay:hover {
-    -webkit-box-shadow: inset 0px -20px 30px #000000;
-    -moz-box-shadow: inset 0px -20px 30px #000000;
-    box-shadow: inset 0px -20px 30px #000000;
+    -webkit-box-shadow: inset 0px -10px 25px #000000;
+    -moz-box-shadow: inset 0px -10px 25px #000000;
+    box-shadow: inset 0px -10px 25px #000000;
+}
+
+#headerRow > td {
+    background-color: #c8573f; /* Derbyshire Green */
+    color: #FFFFFF;
+    font-size: 16pt;
+    text-shadow: 0px 1px 4px black;
+    font-family: Athelas;
+}
+
+td[class="stable"] {
+    font-size: 14pt;
+    font-family: Verdana;
+    padding: 5px;
+}
+
+#resultsTable > tr[id="oddRow"] > td {
+    background-color: rgba(200, 87, 63, 0.51);
+}
+
+td[id="odd"] {
+    background-color: chartreuse;
 }
 
 span[id="icon"] {

@@ -1,47 +1,41 @@
-<%= form_for(course_history) do |f| %>
-  <% if course_history.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(course_history.errors.count, "error") %> prohibited this course_history from being saved:</h2>
+<%= form_for(course_history, :remote => true) do |f| %>
+    <% if course_history.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(course_history.errors.count, "error") %> prohibited this course_history from being saved:</h2>
 
-      <ul>
-      <% course_history.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% course_history.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :student_id %>
-    <%= f.text_field :student_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :course_description_id %>
-    <%= f.text_field :course_description_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :grade %>
-    <%= f.text_field :grade %>
-  </div>
-
-    <div class="field">
-      <%= f.label :section %>
-      <%= f.text_field :section %>
+    <div class="field left">
+      <%= f.label :number %>
+      <%= f.number_field :number %>
     </div>
 
-    <div class="field">
-      <%= f.label :faculty %>
-      <%= f.text_field :faculty_id %>
+    <div class="field right">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
     </div>
 
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <% f.text_field :student %>
+
     <div class="field">
+      <%= f.hidden_field :student %>
+    </div>
+
+    <div class="field left">
       <%= f.label :semester %>
-      <%= f.text_field :semester %>
+      <%= f.select(:semester,%w(Fall Spring Summer)) %>
+      <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 3) %>
     </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions right">
+      <%= f.submit "Enroll in Course" %> <!-- #:data => { :target => "#myModal" , :toggle => "modal"} -->
+    </div>
 <% end %>

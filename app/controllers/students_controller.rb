@@ -11,15 +11,6 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
-  def revised_edit
-    @student = Student.find(params[:id])
-    @job = Job.new(student: @student)
-    @document = Document.new(student: @student)
-    @course_description = CourseDescription.new
-    @course_description.student = @student.id
-    @course_histories = CourseHistory.where(student_id: @student.id)
-  end
-
   # GET /students/1
   # GET /students/1.json
   def show
@@ -27,7 +18,6 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     @job = Job.new(student: @student)
     @document = Document.new(student: @student)
-    @course_description = CourseDescription.new
     @course_description.student = @student.id
     @course_histories = CourseHistory.where(student_id: @student.id)
     @total_hours=0
@@ -146,6 +136,8 @@ class StudentsController < ApplicationController
     @course_description.student = @student.id
     @course_histories = CourseHistory.where(student_id: @student.id)
 
+    @new_course_history = CourseHistory.new(student: @student)
+    
     @total_hours=0
     @comp_hours=0
     @theory=false
@@ -253,7 +245,7 @@ class StudentsController < ApplicationController
     #raise @student.inspect
     @nameError = false
     @success = false
-    @pidError = false;
+    @pidError = false
 
     respond_to do |format|
 
@@ -370,8 +362,36 @@ class StudentsController < ApplicationController
     end
   end
 
+  # GET /things/typeahead/:query
+  def typeahead
+    if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.
+      return
+    end
+
+
+    if search_params[:query].to_i.to_s == search_params[:query]
+      puts "is true"
+      @suggestions = Faculties.where('number LIKE ?', "%#{search_params[:query]}%").pluck(:lastName).map{ |s| {lastName: s[0]}}
+      puts @suggestions
+    else
+      @suggestions = Faculties.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:lastName).map{ |s| {lastName: s[0]}} #Select the data you want to load on the typeahead.
+      puts @suggestions
+    end
+
+    #@suggestions.values.join(" ")
+
+    respond_to do |format|
+      format.json { render json: @suggestions.to_json }
+    end
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+  def search_params
+    params.permit(:query) || {}
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
     end

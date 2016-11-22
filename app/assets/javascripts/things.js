@@ -157,3 +157,13 @@ $(function(){
     });
 })
 
+$(function(){
+    $('#student_advisor').typeahead(null, {
+        name: 'faculty',
+        displayKey: function(countries) {
+            console.log(countries);
+            return countries;
+        },
+        source: courseFaculty.ttAdapter()
+    });
+})

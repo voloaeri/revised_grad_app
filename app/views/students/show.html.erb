@@ -1,6 +1,6 @@
 <div class="side_bar">
   <div class="user">
-    <img class="img-circle" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120">
+    <img class="img-circle" alt="img" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120">
     <h2> <%= @student.firstName + " " + @student.lastName %> </h2>
     <h5> <%=@student.intendedDegree + " Student" %> </h5>
     <h6> <%= @student.PID  %> </h6>

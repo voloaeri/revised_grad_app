@@ -4,8 +4,8 @@
   <!-- PROFILE IMAGE -->
   <img class="img-circle" src="<%= asset_path("defaults/oldwell.png") %>" height="120">
 
+  <!-- ADD COURSE / STUDENT BUTTONS -->
   <div><a href="/course_descriptions/new"><div class="pillbutton">+ Add a course</div></a></div>
-
   <div><a href="/students/new"><div class="pillbutton">+ Add students</div></a></div>
 
   <h2>Search Students</h2>
@@ -15,14 +15,11 @@
   <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="PID">
 
   <!-- SEARCH STUDENT CONTROLS -->
-  <div class="pillbutton">Search 	&#187;</div>
-  <div class="pillbutton">Search 	&#9658;</div>
-  <a class='click' data-toggle="pill" href="/students/new">Advanced Search Filters</a>
-  <a href="#">Add Students (No function yet)</a>
-
-  <a href="/course_descriptions/new">/course_description/new</a>
+  <div class="pillbutton">Search	&#187;</div>
+  <div><a class='click' data-toggle="pill" href="/students/new"><div class="pillbutton">Advanced Search</div></a></div>
 
   <!-- HEELPRINT -->
+  <!-- Self-promotion here -->
 
   <!-- "SCROLL FOR MORE" OVERLAY -->
   <div id="scroll_for_more_overlay"><span id="icon">&#9660;</span> Scroll For More <span id="icon">&#9660;</span></div>
@@ -86,14 +83,30 @@
   <table class="stable srow">
 
 
-    <tbody>
+    <tbody id="resultsTable">
+    <!-- HEADER ROW -->
+    <tr class="stable srow" id="headerRow">
+      <td class="stable">Name</td>
+      <td class="stable">PID</td>
+      <td class="stable">Research Area</td>
+      <td class="stable">Advisor</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <!-- ROWS LOADED FROM DATABASE -->
+    <% x = 0 %>
     <% @students.each do |student| %>
-        <tr class="stable srow">
-          <td class="stable"><%= student.firstName %> <%= student.lastName %></td>
+        <tr class="stable srow" id="<%= (x % 2 == 0) ? 'evenRow' : 'oddRow' %>">
+          <td class="stable"><a href="<%= link_to 'Show', student %>"><%= student.firstName %> <%= student.lastName %></a></td>
+          <td class="stable"><%= student.PID %></td>
+          <td class="stable"><%= student.researchArea %></td>
+          <td class="stable"><%= student.advisor %></td>
           <td class="stable"><%= link_to 'Show', student %></td>
           <td class="stable"><%= link_to 'Edit', edit_student_path(student) %></td>
           <td class="stable"><%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
+        <% x += 1 %>
     <% end %>
     </tbody>
   </table>
