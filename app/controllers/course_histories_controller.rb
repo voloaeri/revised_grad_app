@@ -73,7 +73,7 @@ class CourseHistoriesController < ApplicationController
 
       @history.save()
 
-      raise @history.errors.inspect
+      #raise @history.errors.inspect
 
       format.js {}
       format.html {}
@@ -107,8 +107,9 @@ class CourseHistoriesController < ApplicationController
     #raise @course_history.inspect
     @course_history.destroy
     respond_to do |format|
-      format.html { redirect_to edit_student_url(course_history_params[:student_id]), notice: 'Successfully unenrolled from Course' }
-      format.json { head :no_content }
+      format.js {}
+      #format.html { redirect_to edit_student_url(course_history_params[:student_id]), notice: 'Successfully unenrolled from Course' }
+     # format.json { head :no_content }
     end
   end
 

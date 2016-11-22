@@ -68,7 +68,7 @@ var courseSearchNumber = new Bloodhound({
 
 
 $(function(){
-    $('#course_description_name').typeahead({hint: false}, {
+    $('#course_history_name').typeahead({hint: false}, {
         name: 'countries',
         displayKey: function(countries) {
             console.log(countries);
@@ -79,13 +79,13 @@ $(function(){
 })
 
 $(function(){
-    $('#course_description_name').bind('typeahead:select', function(ev, suggestion) {
+    $('#course_history_name').bind('typeahead:select', function(ev, suggestion) {
          console.log(dropDown[0]);
          console.log('Selection: ' + suggestion);
         for(var i = 0; i < dropDown.length; i++){
             console.log(dropDown[i][suggestion]);
            if(dropDown[i].name == suggestion){
-               $("#course_description_number").val(dropDown[i].number);
+               $("#course_history_number").val(dropDown[i].number);
            }
         }
 
@@ -93,7 +93,7 @@ $(function(){
 })
 
 $(function(){
-    $('#course_description_number').typeahead({hint: false}, {
+    $('#course_history_number').typeahead({hint: false}, {
         name: 'courseNumbers',
         displayKey: function(countries) {
             console.log(countries);
@@ -104,15 +104,14 @@ $(function(){
 })
 
 $(function(){
-    $('#course_description_number').bind('typeahead:select', function(ev, suggestion) {
+    $('#course_history_number').bind('typeahead:select', function(ev, suggestion) {
         console.log(dropDown[0]);
         console.log('Selection of Number ' + suggestion);
         for(var i = 0; i < dropDown.length; i++){
             console.log("Possible " + dropDown[i].number);
             if(dropDown[i].number == suggestion){
-                console.log("In the selection");
-                $("#course_description_number").val(dropDown[i].number);
-                $("#course_description_name").val(dropDown[i].name);
+                //$("#course_history_number").val(dropDown[i].number);
+                $("#course_history_name").val(dropDown[i].name);
 
             }
         }

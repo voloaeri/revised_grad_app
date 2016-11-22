@@ -183,7 +183,7 @@ class StudentsController < ApplicationController
       end
       if (@current_course.department=="COMP" && @current_course.number!=990 && @current_course.number!=991)
         @comp_hours= @comp_hours+ hours
-        raise @comp_hours.inspect
+        #raise @comp_hours.inspect
       end
       if (@current_course.number==992)
         @ntwo_taken=true
