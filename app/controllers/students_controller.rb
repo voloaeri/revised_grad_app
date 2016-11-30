@@ -15,10 +15,14 @@ class StudentsController < ApplicationController
   # GET /students/1.json
   def show
     @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
+
     @student = Student.find(params[:id])
+    #raise @student.inspect
     @job = Job.new(student: @student)
     @document = Document.new(student: @student)
+    @course_description = CourseDescription.new
     @course_description.student = @student.id
+
     @course_histories = CourseHistory.where(student_id: @student.id)
     @total_hours=0
     @comp_hours=0
@@ -70,7 +74,7 @@ class StudentsController < ApplicationController
         @nthree_taken=true
 
       end
-      if (@current_course.category=="Applications")
+      if (@current_course.category=="Applications" && @current_course.department=="COMP")
         @applications=true
         @papps_counter=@papps_counter+1
         @appCourses=@appCourses+name+", "
@@ -81,7 +85,7 @@ class StudentsController < ApplicationController
           @applications_course=@current_course.number
         end
       end
-      if (@current_course.category=="Theory")
+      if (@current_course.category=="Theory" && @current_course.department=="COMP")
         @theory=true
         @ptheory_counter=@ptheory_counter+1
         @theoryCourses=@theoryCourses+name+", "
@@ -92,7 +96,7 @@ class StudentsController < ApplicationController
           @theory_course=@current_course.number
         end
       end
-      if (@current_course.category=="Systems")
+      if (@current_course.category=="Systems" && @current_course.department=="COMP")
         @systems=true
         @psystems_counter=@psystems_counter+1
         @systemCourses=@systemCourses+name+", "
@@ -192,7 +196,7 @@ class StudentsController < ApplicationController
         @nthree_taken=true
 
       end
-      if (@current_course.category=="Applications")
+      if (@current_course.category=="Applications" && @current_course.department=="COMP")
         @applications=true
         @papps_counter=@papps_counter+1
         @appCourses=@appCourses+name+", "
@@ -203,7 +207,7 @@ class StudentsController < ApplicationController
           @applications_course=@current_course.number
         end
       end
-      if (@current_course.category=="Theory")
+      if (@current_course.category=="Theory" && @current_course.department=="COMP")
         @theory=true
         @ptheory_counter=@ptheory_counter+1
         @theoryCourses=@theoryCourses+name+", "
@@ -214,7 +218,7 @@ class StudentsController < ApplicationController
           @theory_course=@current_course.number
         end
       end
-      if (@current_course.category=="Systems")
+      if (@current_course.category=="Systems" && @current_course.department=="COMP")
         @systems=true
         @psystems_counter=@psystems_counter+1
         @systemCourses=@systemCourses+name+", "

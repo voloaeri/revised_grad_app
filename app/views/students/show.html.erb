@@ -1,23 +1,35 @@
 <div class="side_bar">
   <div class="user">
-    <img class="img-circle" alt="img" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120">
+    <img class="img-circle" alt="img" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120" width="120">
     <h2> <%= @student.firstName + " " + @student.lastName %> </h2>
-    <h5> <%=@student.intendedDegree + " Student" %> </h5>
-    <h6> <%= @student.PID  %> </h6>
+    <h3> <%=@student.intendedDegree + " Student" %> </h3>
+    <h3> <%= @student.PID  %> </h3>
     <div class="bottom-border"></div>
   </div>
-  <ul class="nav nav-pills">
-    <li class="active"><a id="personal" data-toggle="pill" href="#basic_info">Personal Information</a></li>
-    <li><a id="reqs" data-toggle="pill" href="#requirements"> Degree Requirements </a></li>
-    <li><a id="history" data-toggle="pill" href="#course_history"> Course History </a></li>
-    <li><a id="docs" data-toggle="pill" href="#documents">Documents</a></li>
-    <li><a id="work" data-toggle="pill" href="#jobs">Jobs</a></li>
-    <li><a id="progress-forms" target="_blank" href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/">Progress Forms</a></li>
-    <li><a id="lcourses" class='click'  href="http://cs.unc.edu/academics/teaching-schedules/">List of courses</a></li>
-    <li><a id="icurrent" class='click'  href="http://cs.unc.edu/info-for/current-students/">Info for current Graduate Students</a></li>
-    <li><a id="ghandbook" class='click' href="http://handbook.unc.edu/">Graduate School Handbook</a></li>
-    <li><a id="ccourses" class='click'  href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/">Categories of Courses</a></li>
-  </ul>
+
+  <div><a id="personal" data-toggle="pill" href="#basic_info"><div class="pillbutton">Personal Information</div></a></div>
+  <div><a id="reqs" data-toggle="pill" href="#requirements"><div class="pillbutton">Degree Requirements</div></a></div>
+  <div><a id="history" data-toggle="pill" href="#course_history"><div class="pillbutton">Course History</div></a></div>
+  <div><a id="docs" data-toggle="pill" href="#documents"><div class="pillbutton">Documents</div></a></div>
+  <div><a id="work" data-toggle="pill" href="#jobs"><div class="pillbutton">Jobs</div></a></div>
+  <div><a href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/" target="_blank"><div class="pillbutton">Progress Forms</div></a></div>
+  <div><a href="http://cs.unc.edu/academics/teaching-schedules/" target="_blank"><div class="pillbutton">List of Courses</div></a></div>
+  <div><a href="http://cs.unc.edu/info-for/current-students/" target="_blank"><div class="pillbutton">Info for Current Graduate Students</div></a></div>
+  <div><a href="http://handbook.unc.edu/" target="_blank"><div class="pillbutton">Graduate School Handbook</div></a></div>
+  <div><a href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/" target="_blank"><div class="pillbutton">Course Categories</div></a></div>
+  <!--<ul class="nav nav-pills">-->
+    <!--<li class="active"><a id="personal" data-toggle="pill" href="#basic_info">Personal Information</a></li>-->
+    <!--<li><a id="reqs" data-toggle="pill" href="#requirements"> Degree Requirements </a></li>-->
+    <!--<li><a id="history" data-toggle="pill" href="#course_history"> Course History </a></li>-->
+    <!--<li><a id="docs" data-toggle="pill" href="#documents">Documents</a></li>-->
+    <!--<li><a id="work" data-toggle="pill" href="#jobs">Jobs</a></li>-->
+    <!--<li><a id="progress-forms" target="_blank" href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/">Progress Forms</a></li>-->
+    <!--<li><a id="lcourses" class='click'  href="http://cs.unc.edu/academics/teaching-schedules/">List of courses</a></li>-->
+    <!--<li><a id="icurrent" class='click'  href="http://cs.unc.edu/info-for/current-students/">Info for current Graduate Students</a></li>-->
+    <!--<li><a id="ghandbook" class='click' href="http://handbook.unc.edu/">Graduate School Handbook</a></li>-->
+    <!--<li><a id="ccourses" class='click'  href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/">Categories of Courses</a></li>-->
+  <!--</ul>-->
+
 </div>
 <!-- SIDE BAR ends -->
 <div class="container">
@@ -68,19 +80,19 @@
                 <div class="panel-body">
                   <div class="checklist">
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@total_hours==30) then "checked" else "" end %>>
+                      <input type="checkbox" <%= if (@total_hours==30) then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Minimum 30 hours total of courses conferring graduate credit. <b>[ Credit Hours Total: <%=@total_hours %> ]</b>
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@comp_hours==18) then "checked" else "" end %>>
+                      <input type="checkbox" <%= if (@comp_hours==18) then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Minimum 18 hours of COMP courses. (excluding 990, 991 sections) <b>[ COMP Credit Hours Total: <%=@comp_hours %> ]</b>
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@ntwo||@nthree) then "checked" else "" end %>>
+                      <input type="checkbox" <%= if (@ntwo||@nthree) then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Minimum 3 hours of COMP 992 or COMP 993 (formal thesis) - maximum of 6 hours <b>[<%= if (@ntwo) then "992" else end %><%= if (@nthree) then "993" else end %><%= if (!@ntwo && !@nthree) then "Neither 992/993 Taken" else end %> ]</b>
                       </div>
@@ -88,19 +100,19 @@
                     <div class="breadth"> Breadth Requirements [Note: At most one course in the set can be at the 500 level. The other courses must be at the 600 level or above.] </div>
                     <div class="wrapper">
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@theory) then "checked" else "" end %>>
+                        <input type="checkbox" <%= if (@theory) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
                           One Theory & Formal Thinking Course  <b>[ <%= if @theory then "Highest Number Course: " + @theory_course else "Course of this type not yet taken" end %> ]</b>
                         </div>
                       </div>
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@systems) then "checked" else "" end %>>
+                        <input type="checkbox" <%= if (@systems) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
                           One Systems & Hardware Course <b>[<%= if @systems then "Highest Number Course: " + @systems_course else "Course of this type not yet taken" end %> ]</b>
                         </div>
                       </div>
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@applications) then "checked" else "" end %>>
+                        <input type="checkbox" <%= if (@applications) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
                           One Applications Course <b>[<%= if @applications then "Highest Number Course: " + @applications_course else "Course of this type not yet taken" end %> ]</b>
                         </div>
@@ -122,26 +134,26 @@
                   <div class="checklist">
 
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %>>
+                      <input type="checkbox" <%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Background Preparation Worksheet (CS-01)
                       </div>
                     </div>
                     <%# raise @doc_titles.inspect %>
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "M.S. Program of Study" then "checked" else "" end %>>
+                      <input type="checkbox" <%= if @doc_titles.include? "M.S. Program of Study" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         M.S. Program of Study (CS-03)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %>>
+                      <input type="checkbox" <%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Program Product Requirement (CS-13)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Technical Writing Requirement" then "checked" else "" end %>>
+                      <input type="checkbox" <%= if @doc_titles.include? "Technical Writing Requirement" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Writing Requirement (CS-08 or CS-04)
                       </div>
@@ -176,13 +188,13 @@
                 <div class="panel-body">
                   <div class="checklist">
                     <div class="requirement">
-                      <input type="checkbox"  <%= if (@abd=="Yes") then "checked" else "" end %>>
+                      <input type="checkbox"  <%= if (@abd=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         ABD
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox"  <%= if (@nfour_taken) then "checked" else "" end %>>
+                      <input type="checkbox"  <%= if (@nfour_taken) then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Minimum 6 hours of COMP 994 (formal thesis) <b>[ 994 Credit Hours Total: <%=@nfour_hours %> ]</b>
                       </div>
@@ -191,21 +203,21 @@
                     <div class="breadth"> Breadth Requirements [Note: At most one course in the set can be at the 500 level. The other courses must be at the 600 level or above.] </div>
                     <div class="wrapper">
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@pTheory) then "checked" else "" end %>>
+                        <input type="checkbox" <%= if (@pTheory) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
                           Theory & Formal Thinking Courses <b>[ Counted Courses:  <%=@theoryCourses %> ]</b>
                         </div>
 
                       </div>
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@pSystems) then "checked" else "" end %>>
+                        <input type="checkbox" <%= if (@pSystems) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
                           Systems & Hardware Courses  <b>[ Counted Courses: <%=@systemCourses %> ]</b>
                         </div>
 
                       </div>
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@pApplications) then "checked" else "" end %>>
+                        <input type="checkbox" <%= if (@pApplications) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
                           Applications Courses  <b>[ Counted Courses: <%=@appCourses %> ]</b>
                         </div>
@@ -228,38 +240,38 @@
                   <div class="checklist">
 
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %>>
+                      <input type="checkbox" <%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Background Preparation Worksheet (CS-01)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %>>
+                      <input type="checkbox" <%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Program Product Requirement (CS-13)
                       </div>
                     </div>
 
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Ph.D. Program of Study" then "checked" else "" end %>>
+                      <input type="checkbox" <%= if @doc_titles.include? "Ph.D. Program of Study" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         PhD Program of Study (CS-06)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@committee=="Yes") then "checked" else "" end %>>
+                      <input type="checkbox" <%= if (@committee=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Proposal Approval and Committee Meeting
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@oralExam=="Yes") then "checked" else "" end %>>
+                      <input type="checkbox" <%= if (@oralExam=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         PhD Oral Comprehensive Exam
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@prp=="Yes") then "checked" else "" end %>>
+                      <input type="checkbox" <%= if (@prp=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         PRP Exam
                       </div>
@@ -282,13 +294,13 @@
                   <div class="checklist">
                     <!-- TODO: Finish the rest of the Requirements! -->
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@diss=="Yes") then "checked" else "" end %>>
+                      <input type="checkbox" <%= if (@diss=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Dissertation defense
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@final=="Yes") then "checked" else "" end %>>
+                      <input type="checkbox" <%= if (@final=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Final And Approved Dissertation Submitted
                       </div>
@@ -372,6 +384,11 @@
         <div id="upload_doc" class="tab-pane fade">
           <div class="panel panel-default">
             <div class="panel-body">
+              <h2> Get Blank Documents</h2>
+              <form action="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/" method="get">
+                <input type="submit" value="Get blank documents"
+                       name="Submit" />
+              </form>
               <h2> Add a Document </h2>
               <%= render 'documents/form', document: @document %>
             </div>

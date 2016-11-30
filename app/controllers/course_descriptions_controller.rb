@@ -67,6 +67,7 @@ class CourseDescriptionsController < ApplicationController
   # GET /course_descriptions/new
   def new
     @course_description = CourseDescription.new
+
   end
 
   # GET /course_descriptions/1/edit
@@ -84,7 +85,7 @@ class CourseDescriptionsController < ApplicationController
       @facultyError = false
       @numberError = false
       @nameError = false
-
+      @success=false
 
       if(course_description_params[:name] == "")
         @nameError = true
@@ -122,10 +123,10 @@ class CourseDescriptionsController < ApplicationController
     #raise @semester.inspect
 
       if @course_description.save
-        
-        format.js {  redirect_to @course_description, notice: 'Course was successfully created.'}
-        format.html { redirect_to @course_description, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course_description }
+        @success=true
+        format.js { }
+
+
       else
         format.html { render :new }
         format.json { render json: @course_description.errors, status: :unprocessable_entity }

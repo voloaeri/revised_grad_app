@@ -18,6 +18,18 @@
   <div class="pillbutton">Search	&#187;</div>
   <div><a class='click' data-toggle="pill" href="/students/new"><div class="pillbutton">Advanced Search</div></a></div>
 
+  <!-- ACCORDION TEST -->
+  <div class="panel-group" id="accordion">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+
+        <div><div class="pillbutton">Advanced Search Accordion Test In Progress</div></div></a>
+    </h4>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <p>Content test</p>
+    </div>
+  </div>
+
   <!-- HEELPRINT -->
   <!-- Self-promotion here -->
 
@@ -92,18 +104,16 @@
       <td class="stable">Advisor</td>
       <td></td>
       <td></td>
-      <td></td>
     </tr>
     <!-- ROWS LOADED FROM DATABASE -->
     <% x = 0 %>
     <% @students.each do |student| %>
         <tr class="stable srow" id="<%= (x % 2 == 0) ? 'evenRow' : 'oddRow' %>">
-          <td class="stable"><a href="<%= link_to 'Show', student %>"><%= student.firstName %> <%= student.lastName %></a></td>
-          <td class="stable"><%= student.PID %></td>
+          <td class="stable"><%= link_to student.firstName + " " + student.lastName,  edit_student_path(student) %></td>
+          <td class="stable"><%= link_to student.PID,  edit_student_path(student) %></td>
           <td class="stable"><%= student.researchArea %></td>
           <td class="stable"><%= student.advisor %></td>
-          <td class="stable"><%= link_to 'Show', student %></td>
-          <td class="stable"><%= link_to 'Edit', edit_student_path(student) %></td>
+          <td class="stable"><%= link_to 'Student View', student %></td>
           <td class="stable"><%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% x += 1 %>

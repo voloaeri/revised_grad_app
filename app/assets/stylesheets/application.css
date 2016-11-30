@@ -82,7 +82,6 @@ body { min-height: 100% }
     /*font-size: 125%;*/
 }
 
-
 .touch a {
     color:red;
 }
@@ -94,7 +93,7 @@ body { min-height: 100% }
     width: 80%;
     height: 100vh;
     /*background-color: rgba(247, 240, 49,.2);*/
-    background-color: white;
+    background-color: #e3dee6;
 
     min-height: 100vh;
 
@@ -158,29 +157,14 @@ html, body {
     border: 1px solid black;
     border-radius: 10%;
 }
-.user{
-    background: #B2D0E6; /* For browsers that do not support gradients #d2e1fe */
-    background: -webkit-linear-gradient(white, #B2D0E6); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(white, #B2D0E6); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(white, #B2D0E6); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(white, #B2D0E6); /* Standard syntax */
-}
+
 
 .bottom-border{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.56);
     width: 80%;
     margin: 0 auto;
 }
 
-.ctable {
-    border-spacing: 5px;
-    margin-top: 2%;
-    margin-left: 5%;
-    background-color: white;
-    border: 1px solid black;
-    padding: 1%;
-    text-align: center;
-}
 .part {
     margin-left: 2%;
 }
@@ -200,13 +184,14 @@ html, body {
     float: left;
     overflow-y: scroll;
     width: 20%;
-    /*background-color: #7BAFD4; !* Real Carolina Blue *!*/
-    background-color: #c8573f; /* Ruddy Red */
+    background-color: #7BAFD4; /* Real Carolina Blue */
+    /*background-color: #c8573f; !* Ruddy Red *!*/
     /*background-color: #9dc853; !* Polk Place Green *!*/
     /*background-color: #6ac896; !* Derbyshire Green *!*/
     /*background-color: #e6611d; !* Deep tangerine *!*/
     /*background-color: #9d9d57; !* Darjeeling Tea *!*/
     /*background-color: #d885e6; !* Porky Pink *!*/
+    /*background-color: #d4cdc9;*/
     color: #FFFFFF;
     height: 100vh;
     text-align: center;
@@ -221,11 +206,25 @@ html, body {
     margin-top: 10px; /* Vertical spacing between items within side bar */
 }
 
-.side_bar > h2 {
-    font-size: 1.75em;
+.side_bar > h2, .side_bar h2 {
+    font-size: 2.50em;
     text-shadow: 0px 1px 4px black;
     font-family: Athelas;
     margin-bottom: 0px;
+}
+.side_bar h3 {
+    font-size: 1.5em;
+    /*text-shadow: 0px 1px 4px black;*/
+    font-family: Athelas;
+    margin: 0;
+}
+
+.user h2 {
+    margin-bottom: 12px;
+}
+
+.user h3 {
+    margin-bottom: 8px;
 }
 
 .side_bar .pillbutton {
@@ -285,7 +284,7 @@ html, body {
 }
 
 #headerRow > td {
-    background-color: #c8573f; /* Derbyshire Green */
+    background-color: #7BAFD4; /* Real Carolina Blue */
     color: #FFFFFF;
     font-size: 16pt;
     text-shadow: 0px 1px 4px black;
@@ -293,17 +292,17 @@ html, body {
 }
 
 td[class="stable"] {
-    font-size: 14pt;
+    font-size: 12pt;
     font-family: Verdana;
     padding: 5px;
 }
 
 #resultsTable > tr[id="oddRow"] > td {
-    background-color: rgba(200, 87, 63, 0.51);
+    background-color: rgba(123, 175, 212, 0.51);
 }
 
-td[id="odd"] {
-    background-color: chartreuse;
+#resultsTable > tr[id="evenRow"] > td {
+    background-color: rgba(255, 247, 249, 0.75);
 }
 
 span[id="icon"] {

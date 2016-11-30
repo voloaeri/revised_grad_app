@@ -53,7 +53,7 @@ class CourseHistoriesController < ApplicationController
       end
 
       #raise @course.inspect
-
+      
       @semester = Semester.where(course_history_params.slice(:semester, :year).merge({course_description_id: @course.id})).first
 
 

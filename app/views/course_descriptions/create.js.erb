@@ -1,5 +1,7 @@
 $(".alerts").html("");
-
+if(<%= @success %>) {
+  $(".alerts").append("<div class='alert alert-success'> Course made successfully! </div>");
+}
 if(<%= @facultyError %>){
   $(".alerts").append("<div class='alert alert-danger'> Instructor not found! </div>");
 } else if(<%= @numberError %>){

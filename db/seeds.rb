@@ -22,4 +22,22 @@ File.foreach((Rails.public_path + "defaults/faculty_list.txt")).with_index do |l
   end
 end
 
-Faculty.create(firstName: "Transfer", lastName: "Credit", sectionNumber: 0)
+f= Faculty.create( :firstName => "Transfer", :lastName => "Credit", :sectionNumber => "0")
+
+a= CourseDescription.create(number: 1, name: "Transfer", category: "N/A", hours: "1", department: "TRANSFER")
+b= CourseDescription.create(number: 2, name: "Transfer", category: "N/A", hours: "2", department: "TRANSFER")
+c= CourseDescription.create(number: 3, name: "Transfer", category: "N/A", hours: "3", department: "TRANSFER")
+d= CourseDescription.create(number: 4, name: "Transfer", category: "N/A", hours: "4", department: "TRANSFER")
+
+
+year= 2006
+14.times do |x|
+
+
+
+  Semester.create(course_description_id: a.id, faculty_id: f.id, year: year, semester: "N/A" )
+  Semester.create(course_description_id: b.id, faculty_id: f.id, year: year, semester: "N/A" )
+  Semester.create(course_description_id: c.id, faculty_id: f.id, year: year, semester: "N/A" )
+  Semester.create(course_description_id: d.id, faculty_id: f.id, year: year, semester: "N/A" )
+  year= year+1
+end
