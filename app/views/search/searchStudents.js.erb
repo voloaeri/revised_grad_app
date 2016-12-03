@@ -1,0 +1,22 @@
+<% puts @PIDerror if @PIDerror%>
+if(<%= @PIDerror %>){
+    alert("PID is the wrong length!");
+} else {
+    var results = <%= (raw @searchResults.to_json ) if @searchResults %> ;
+    if(results.length == 0){
+        alert("No Results Found!");
+    } else {
+        $('.searchResult').html('');
+        $("input#PID, input#lastName").val("");
+        for(var i = 0; i < results.length; i++){
+            var id = "id=" + (i + 1 % 2 ? "evenRow" : "oddRow");
+            var name = "<td class='stable'> <a href='/students/" + results[i].id + "/edit'>" + results[i].firstName + ' ' + results[i].lastName + "</a> </td>";
+            var pid = "<td class='stable'> <a href='/students/" + results[i].id + "/edit'>" + results[i].PID + "</a> </td>";
+            var research = "<td class='stable'> <a href=''>" + results[i].researchArea + "</a> </td>";
+            var advisor = "<td class='stable'> <a href=''>" + results[i].advisor + "</a> </td>";
+            var view = "<td class='stable'> <a href='/students/" + results[i].id + " '> Student View</a> </td>";
+            var deleteStudent = "<td class='stable'> <a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='/students/" + results[i].id + "'> Delete </a> </td>";
+            $("<tr class='stable srow searchResult' " +  id + " >" + name + pid + research + advisor + view + deleteStudent + "</tr>").insertAfter("#headerRow");
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<%= form_tag({controller: "search", action: "searchStudents"}, method: "get", remote: true) do %>
+
+    <div class="searchBox">
+      <%= label_tag(:PID, "PID:") %>
+      <%= text_field_tag(:PID) %>
+    </div>
+    <div class="searchBox">
+      <%= label_tag(:lastName, "Last Name") %>
+      <%= text_field_tag(:lastName) %>
+    </div>
+
+    <div class="pillbutton">
+      <%= submit_tag("Search") %>
+    </div>
+<% end %>

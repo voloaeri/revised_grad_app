@@ -258,6 +258,10 @@ class StudentsController < ApplicationController
         puts "name error"
         format.js { }
         return
+      elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
+        @nameError=true
+        puts "name error"
+        format.js { }
       end
 
       if student_params[:lastName] == ""
@@ -387,6 +391,11 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.json { render json: @suggestions.to_json }
     end
+  end
+
+  def search
+    raise student_params.inspect
+
   end
 
   private

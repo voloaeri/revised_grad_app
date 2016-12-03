@@ -10,14 +10,16 @@
 
   <h2>Search Students</h2>
 
+  <%= render 'students/formSearch' %>
+
   <!-- SEARCH TEXT BOXES -->
-  <input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Name">
-  <input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="PID">
+  <!--<input id="searchName" class="searchBox" type="text" name="searchName" placeholder="Name">-->
+  <!--<input id="searchPID" class="searchBox" type="text" name="searchID" placeholder="PID">-->
 
   <!-- SEARCH STUDENT CONTROLS -->
   <div class="pillbutton">Search	&#187;</div>
   <div><a class='click' data-toggle="pill" href="/students/new"><div class="pillbutton">Advanced Search</div></a></div>
-
+  
   <!-- ACCORDION TEST -->
   <div class="panel-group" id="accordion">
     <h4 class="panel-title">
@@ -92,7 +94,7 @@
 <!-- SEARCH RESULTS CONTAINER BEGINS -->
 <div class="container">
   <h2 id="searchResults"> Search Results</h2>
-  <table class="stable srow">
+  <table class="stable srow" id="searcherResults">
 
 
     <tbody id="resultsTable">
@@ -108,7 +110,7 @@
     <!-- ROWS LOADED FROM DATABASE -->
     <% x = 0 %>
     <% @students.each do |student| %>
-        <tr class="stable srow" id="<%= (x % 2 == 0) ? 'evenRow' : 'oddRow' %>">
+        <tr class="stable srow searchResult" id="<%= (x % 2 == 0) ? 'evenRow' : 'oddRow' %>">
           <td class="stable"><%= link_to student.firstName + " " + student.lastName,  edit_student_path(student) %></td>
           <td class="stable"><%= link_to student.PID,  edit_student_path(student) %></td>
           <td class="stable"><%= student.researchArea %></td>
