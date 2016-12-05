@@ -7,6 +7,14 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
 
+    if(session[:admin] || session[:student_id].to_s == params[:document][:student_id].to_s)
+      puts session[:admin]
+      puts session[:faculty]
+      puts session[:student_id]
+    else
+      raise "no access".inspect
+    end
+
     @pdfError = false
     @selectError = false
     @warning = false;
@@ -82,6 +90,14 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
+    if(session[:admin] || session[:student_id].to_s == params[:document][:student_id].to_s)
+      puts session[:admin]
+      puts session[:faculty]
+      puts session[:student_id]
+    else
+      raise "no access".inspect
+    end
+    
     puts Rails.public_path + @document.location
     FileUtils.rm(Rails.public_path + @document.location)
     @document.destroy

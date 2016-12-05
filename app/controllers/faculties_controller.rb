@@ -4,6 +4,14 @@ class FacultiesController < ApplicationController
   # GET /faculties
   # GET /faculties.json
   def index
+    if(session[:admin])
+      puts session[:admin]
+      puts session[:faculty]
+      puts session[:student_id]
+    else
+      raise "no access".inspect
+    end
+
     @faculties = Faculty.all
   end
 
@@ -24,8 +32,16 @@ class FacultiesController < ApplicationController
   # POST /faculties
   # POST /faculties.json
   def create
-    @faculty = Faculty.new(faculty_params)
 
+    if(session[:admin])
+      puts session[:admin]
+      puts session[:faculty]
+      puts session[:student_id]
+    else
+      raise "no access".inspect
+    end
+
+    @faculty = Faculty.new(faculty_params)
 
     respond_to do |format|
       if @faculty.save
@@ -41,6 +57,15 @@ class FacultiesController < ApplicationController
   # PATCH/PUT /faculties/1
   # PATCH/PUT /faculties/1.json
   def update
+
+    if(session[:admin])
+      puts session[:admin]
+      puts session[:faculty]
+      puts session[:student_id]
+    else
+      raise "no access".inspect
+    end
+
     respond_to do |format|
       if @faculty.update(faculty_params)
         format.html { redirect_to @faculty, notice: 'Faculty was successfully updated.' }
@@ -55,6 +80,15 @@ class FacultiesController < ApplicationController
   # DELETE /faculties/1
   # DELETE /faculties/1.json
   def destroy
+
+    if(session[:admin])
+      puts session[:admin]
+      puts session[:faculty]
+      puts session[:student_id]
+    else
+      raise "no access".inspect
+    end
+
     @faculty.destroy
     respond_to do |format|
       format.html { redirect_to faculties_url, notice: 'Faculty was successfully destroyed.' }

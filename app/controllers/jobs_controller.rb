@@ -28,6 +28,14 @@ class JobsController < ApplicationController
   def create
     #raise params.inspect
 
+    if(session[:admin])
+      puts session[:admin]
+      puts session[:faculty]
+      puts session[:student_id]
+    else
+      raise "no access".inspect
+    end
+
     @posError=false;
     @semError=false;
     @superError=false;
@@ -104,6 +112,13 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
+    if(session[:admin])
+      puts session[:admin]
+      puts session[:faculty]
+      puts session[:student_id]
+    else
+      raise "no access".inspect
+    end
     @job.destroy
 
   end
