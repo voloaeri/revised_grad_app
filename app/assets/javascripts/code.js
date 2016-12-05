@@ -75,7 +75,13 @@ $(document).ready(function(){
         $("#jobs ul.nav li:nth-child(1) a").tab('show');
     });
 
-    
+    $(".searchBox #PID").click(function() {
+        $('.searchBox #lastName').val('');
+    });
+
+    $(".searchBox #lastName").click(function() {
+        $('.searchBox #PID').val('');
+    });
 });
 
 

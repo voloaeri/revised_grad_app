@@ -1,0 +1,10 @@
+<%= form_for(:session, url: login_path, method: 'post') do |f| %>
+
+    <%= f.label :PID %>
+    <%= f.text_field :PID %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "Passwords Not Supported" %>
+
+    <%= f.submit "Log in", class: "btn btn-primary" %>
+<% end %>

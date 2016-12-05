@@ -8,12 +8,23 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
+
+    if !session[:admin] && !session[:faculty]
+      redirect_to login_url
+    end
+
     @students = Student.all
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
+
+    if (session[:student_id].to_s != params[:id].to_s) && !session[:admin] || !session[:faculty]
+      raise ("Access Denied").inspect
+    end
+
+
     @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
 
     @student = Student.find(params[:id])
@@ -125,6 +136,11 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+
+    if !session[:admin]
+      redirect_to login_url
+    end
+
     @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
     @student = Student.find(params[:id])
 

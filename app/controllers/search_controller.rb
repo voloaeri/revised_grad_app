@@ -5,12 +5,13 @@ class SearchController < ApplicationController
     @searchResults = nil
     puts !params[:PID].nil? && !params[:lastName].nil?
     respond_to do |format|
+
       if !params[:PID].nil? && !params[:lastName].nil?
-        if params[:PID].length != 9 && params[:lastName].nil?
+        if params[:PID].length.to_i != 9 && params[:lastName]==""
           @PIDerror = true
-          puts "DFDSF"
+
           format.js {}
-          return
+
         end
         @searchResults = Student.where({PID: params[:PID].strip})
         if @searchResults.size == 0

@@ -1,7 +1,8 @@
-<% puts @PIDerror if @PIDerror%>
+
 if(<%= @PIDerror %>){
-    alert("PID is the wrong length!");
-} else {
+    alert("PID is the wrong length or last name is nil!");
+}
+else {
     var results = <%= (raw @searchResults.to_json ) if @searchResults %> ;
     if(results.length == 0){
         alert("No Results Found!");

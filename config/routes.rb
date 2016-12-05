@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get 'course_descriptions/typeahead/:query' => 'course_descriptions#typeahead'
   get 'faculties/typeahead/:query' => 'faculties#typeahead'
   get 'search' => 'search#searchStudents'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'login' => 'sessions#destroy'
 end
