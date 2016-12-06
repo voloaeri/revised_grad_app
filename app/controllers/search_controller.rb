@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
 
   def searchStudents
+    allow_faculty
     @PIDerror = false
     @searchResults = nil
     puts !params[:PID].nil? && !params[:lastName].nil?

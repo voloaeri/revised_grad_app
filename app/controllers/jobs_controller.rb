@@ -4,21 +4,26 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
+
+    allow_admin
     @jobs = Job.all
   end
 
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    allow_admin
   end
 
   # GET /jobs/new
   def new
+    allow_admin
     @job = Job.new
   end
 
   # GET /jobs/1/edit
   def edit
+    allow_admin
     puts "in Edit"
     @job = Job.find(params[:id])
   end
@@ -26,15 +31,10 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+
     #raise params.inspect
 
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+    allow_admin
 
     @posError=false;
     @semError=false;
@@ -98,6 +98,7 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
+    allow_admin
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to @job.student , notice: 'Job was successfully updated.' }
@@ -112,13 +113,9 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+    allow_admin
+
+
     @job.destroy
 
   end

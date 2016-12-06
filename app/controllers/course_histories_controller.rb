@@ -4,22 +4,27 @@ class CourseHistoriesController < ApplicationController
   # GET /course_histories
   # GET /course_histories.json
   def index
+    allow_admin
+
     @course_histories = CourseHistory.all
   end
 
   # GET /course_histories/1
   # GET /course_histories/1.json
   def show
+    allow_admin
   end
 
   # GET /course_histories/new
   def new
+    allow_admin
     @course_history = CourseHistory.new
 
   end
 
   # GET /course_histories/1/edit
   def edit
+    allow_admin
     puts "in course histories edit"
     render false
   end
@@ -29,7 +34,7 @@ class CourseHistoriesController < ApplicationController
   def create
     # puts "in Search!"
     #
-
+    allow_admin
     @semesterError = false
     @courseError = false
 
@@ -84,6 +89,7 @@ class CourseHistoriesController < ApplicationController
   # PATCH/PUT /course_histories/1
   # PATCH/PUT /course_histories/1.json
   def update
+    allow_admin
     respond_to do |format|
       if @course_history.update(course_history_params)
         format.html { redirect_to @course_history, notice: 'Course history was successfully updated.' }
@@ -105,6 +111,7 @@ class CourseHistoriesController < ApplicationController
 
   def destroy
     #raise @course_history.inspect
+    allow_admin
     @course_history.destroy
     respond_to do |format|
       format.js {}

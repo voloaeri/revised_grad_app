@@ -9,13 +9,7 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
 
-    if session[:admin] || session[:faculty]
-
-    elsif session[:student_id]
-      redirect_to student_url(session[:student_id])
-    else
-      redirect_to login_url
-    end
+    allow_faculty
 
     @students = Student.all
   end
@@ -23,7 +17,7 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-
+    
     allow_student params[:id]
 
     @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
@@ -129,13 +123,8 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+
+    allow_admin
 
     #Defaults: Current Year and Semester and United States (Most students are probably USA citizens)
     year = Date.today.strftime("%Y");
@@ -146,18 +135,7 @@ class StudentsController < ApplicationController
   # GET /students/1/edit
   def edit
 
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    elsif (session[:faculty])
-      redirect_to Student.find(params[:id])
-    else
-      raise "no access".inspect
-    end
-
-
-    #if session[:admin] && session[:faculty]
+    allow_admin_faculty_no_edit params[:id]
 
     @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
     @student = Student.find(params[:id])
@@ -277,13 +255,7 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
 
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+    allow_admin
 
     @student = Student.new(student_params)
     @student.semesterStartedCS = student_params[:startedSemester] + " "  + student_params[:startedYear]
@@ -347,13 +319,7 @@ class StudentsController < ApplicationController
 
   def upload_photo
 
-    if session[:admin] || session[:student_id].to_s == student_params[:id].to_s
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+    allow_student_only student_params[:id]
 
     @student = Student.find(student_params[:id])
 
@@ -398,12 +364,7 @@ class StudentsController < ApplicationController
 
   def update
 
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-      raise "no access".inspect
-    end
+    allow_admin
 
     @student.semesterStartedCS = student_params[:startedSemester] + " "  + student_params[:startedYear]
     @student.backgroundApproved = student_params[:approvedSemester] + " "  + student_params[:approvedYear]
@@ -422,13 +383,9 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+
+    allow_admin
+
     @student.destroy
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
@@ -438,6 +395,9 @@ class StudentsController < ApplicationController
 
   # GET /things/typeahead/:query
   def typeahead
+
+    allow_admin
+
     if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.
       return
     end

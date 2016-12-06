@@ -6,6 +6,7 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
+      allow__admin_and_student params[:document][:student_id]
 
     if(session[:admin] || session[:student_id].to_s == params[:document][:student_id].to_s)
       puts session[:admin]
@@ -90,14 +91,9 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
-    if(session[:admin] || session[:student_id].to_s == params[:document][:student_id].to_s)
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
-    
+
+    allow__admin_and_student @document.student_id
+
     puts Rails.public_path + @document.location
     FileUtils.rm(Rails.public_path + @document.location)
     @document.destroy

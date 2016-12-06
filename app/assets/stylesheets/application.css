@@ -403,3 +403,7 @@ ul.nav.nav-tabs {
     font-size: 18px;
     line-height: 24px;
 }
+
+.alerts {
+    text-align: center;
+}

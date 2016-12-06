@@ -4,13 +4,8 @@ class FacultiesController < ApplicationController
   # GET /faculties
   # GET /faculties.json
   def index
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+
+    allow_admin
 
     @faculties = Faculty.all
   end
@@ -22,24 +17,21 @@ class FacultiesController < ApplicationController
 
   # GET /faculties/new
   def new
+    allow_admin
     @faculty = Faculty.new
   end
 
   # GET /faculties/1/edit
   def edit
+    allow_admin
+
   end
 
   # POST /faculties
   # POST /faculties.json
   def create
 
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+    allow_admin
 
     @faculty = Faculty.new(faculty_params)
 
@@ -58,13 +50,7 @@ class FacultiesController < ApplicationController
   # PATCH/PUT /faculties/1.json
   def update
 
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+    allow_admin
 
     respond_to do |format|
       if @faculty.update(faculty_params)
@@ -81,13 +67,7 @@ class FacultiesController < ApplicationController
   # DELETE /faculties/1.json
   def destroy
 
-    if(session[:admin])
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+    allow_admin
 
     @faculty.destroy
     respond_to do |format|
@@ -98,6 +78,8 @@ class FacultiesController < ApplicationController
 
   # GET /things/typeahead/:query
   def typeahead
+
+    allow_admin
 
     if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.
       return

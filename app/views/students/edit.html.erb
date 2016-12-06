@@ -20,7 +20,7 @@
   <div><a href="http://handbook.unc.edu/" target="_blank"><div class="pillbutton">Graduate School Handbook</div></a></div>
   <div><a href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/" target="_blank"><div class="pillbutton">Course Categories</div></a></div>
   <div><a href="/students"><div class="pillbutton">Back to Homepage</div></a></div>
-
+  <div><a href="/login" data-method="delete" ><div class="pillbutton"> Log Out </div></a></div>
   <!--<ul class="nav nav-pills">-->
     <!--<li class="active"><a class='click' id="personal" data-toggle="pill" href="#basic_info">Personal Information</a></li>-->
     <!--<li><a id="reqs" class='click' data-toggle="pill" href="#requirements"> Degree Requirements </a></li>-->
@@ -93,41 +93,41 @@
                 <div class="panel-body">
                   <div class="checklist">
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@total_hours==30) then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="requirementHrs" <%= if (@total_hours==30) then "checked" else "" end %> disabled="disabled" >
                       <div class="requirement_description">
-                        Minimum 30 hours total of courses conferring graduate credit. <b>[ Credit Hours Total: <%=@total_hours %> ]</b>
+                        Minimum 30 hours total of courses conferring graduate credit. <em>[ Credit Hours Total: <%=@total_hours %> ]</em>
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@comp_hours==18) then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="csrequirement" <%= if (@comp_hours==18) then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
-                        Minimum 18 hours of COMP courses. (excluding 990, 991 sections) <b>[ COMP Credit Hours Total: <%=@comp_hours %> ]</b>
+                        Minimum 18 hours of COMP courses. (excluding 990, 991 sections) <em>[ COMP Credit Hours Total: <%=@comp_hours %> ]</em>
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@ntwo||@nthree) then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="theserequirementHrs" <%= if (@ntwo||@nthree) then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
-                        Minimum 3 hours of COMP 992 or COMP 993 (formal thesis) - maximum of 6 hours <b>[<%= if (@ntwo) then "992" else end %><%= if (@nthree) then "993" else end %><%= if (!@ntwo && !@nthree) then "Neither 992/993 Taken" else end %> ]</b>
+                        Minimum 3 hours of COMP 992 or COMP 993 (formal thesis) - maximum of 6 hours <em>[<%= if (@ntwo) then "992" else end %><%= if (@nthree) then "993" else end %><%= if (!@ntwo && !@nthree) then "Neither 992/993 Taken" else end %> ]</em>
                       </div>
                     </div>
                     <div class="breadth"> Breadth Requirements [Note: At most one course in the set can be at the 500 level. The other courses must be at the 600 level or above.] </div>
                     <div class="wrapper">
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@theory) then "checked" else "" end %> disabled="disabled">
+                        <input type="checkbox" title ="catagoryreq"<%= if (@theory) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
-                          One Theory & Formal Thinking Course  <b>[ <%= if @theory then "Highest Number Course: " + @theory_course else "Course of this type not yet taken" end %> ]</b>
+                          One Theory & Formal Thinking Course  <em>[ <%= if @theory then "Highest Number Course: " + @theory_course else "Course of this type not yet taken" end %> ]</em>
                         </div>
                       </div>
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@systems) then "checked" else "" end %> disabled="disabled">
+                        <input type="checkbox" title ="catagoryreq2"<%= if (@systems) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
-                          One Systems & Hardware Course <b>[<%= if @systems then "Highest Number Course: " + @systems_course else "Course of this type not yet taken" end %> ]</b>
+                          One Systems & Hardware Course <em>[<%= if @systems then "Highest Number Course: " + @systems_course else "Course of this type not yet taken" end %> ]</em>
                         </div>
                       </div>
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@applications) then "checked" else "" end %> disabled="disabled">
+                        <input type="checkbox" title ="catagoryreq3"<%= if (@applications) then "checked" else "" end %> disabled="disable<d">
                         <div class="requirement_description">
-                          One Applications Course <b>[<%= if @applications then "Highest Number Course: " + @applications_course else "Course of this type not yet taken" end %> ]</b>
+                          One Applications Course <em>[<%= if @applications then "Highest Number Course: " + @applications_course else "Course of this type not yet taken" end %> ]</em>
                         </div>
                       </div>
                     </div>
@@ -147,26 +147,26 @@
                   <div class="checklist">
 
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="formrec"<%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Background Preparation Worksheet (CS-01)
                       </div>
                     </div>
                     <%# raise @doc_titles.inspect %>
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "M.S. Program of Study" then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="formrec2"<%= if @doc_titles.include? "M.S. Program of Study" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         M.S. Program of Study (CS-03)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="formrec3"<%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Program Product Requirement (CS-13)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Technical Writing Requirement" then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="formrec4"<%= if @doc_titles.include? "Technical Writing Requirement" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Writing Requirement (CS-08 or CS-04)
                       </div>
@@ -201,38 +201,38 @@
                 <div class="panel-body">
                   <div class="checklist">
                     <div class="requirement">
-                      <input type="checkbox"  <%= if (@abd=="Yes") then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox"  title ="phdrec1"<%= if (@abd=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                        ABD
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox"  <%= if (@nfour_taken) then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="phdrec2"  <%= if (@nfour_taken) then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
-                        Minimum 6 hours of COMP 994 (formal thesis) <b>[ 994 Credit Hours Total: <%=@nfour_hours %> ]</b>
+                        Minimum 6 hours of COMP 994 (formal thesis) <em>[ 994 Credit Hours Total: <%=@nfour_hours %> ]</em>
                       </div>
                     </div>
 
                     <div class="breadth"> Breadth Requirements [Note: At most one course in the set can be at the 500 level. The other courses must be at the 600 level or above.] </div>
                     <div class="wrapper">
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@pTheory) then "checked" else "" end %> disabled="disabled">
+                        <input type="checkbox" title ="phdrec3"<%= if (@pTheory) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
-                          Theory & Formal Thinking Courses <b>[ Counted Courses:  <%=@theoryCourses %> ]</b>
+                          Theory & Formal Thinking Courses <em>[ Counted Courses:  <%=@theoryCourses %> ]</em>
                         </div>
 
                       </div>
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@pSystems) then "checked" else "" end %> disabled="disabled">
+                        <input type="checkbox" title ="phdrec4" <%= if (@pSystems) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
-                          Systems & Hardware Courses  <b>[ Counted Courses: <%=@systemCourses %> ]</b>
+                          Systems & Hardware Courses  <em>[ Counted Courses: <%=@systemCourses %> ]</em>
                         </div>
 
                       </div>
                       <div class="requirement">
-                        <input type="checkbox" <%= if (@pApplications) then "checked" else "" end %> disabled="disabled">
+                        <input type="checkbox" title ="phdrec5" <%= if (@pApplications) then "checked" else "" end %> disabled="disabled">
                         <div class="requirement_description">
-                          Applications Courses  <b>[ Counted Courses: <%=@appCourses %> ]</b>
+                          Applications Courses  <em>[ Counted Courses: <%=@appCourses %> ]</em>
                         </div>
 
                       </div>
@@ -253,38 +253,38 @@
                   <div class="checklist">
 
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="phdrec6"<%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Background Preparation Worksheet (CS-01)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="phdrec7"<%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Program Product Requirement (CS-13)
                       </div>
                     </div>
 
                     <div class="requirement">
-                      <input type="checkbox" <%= if @doc_titles.include? "Ph.D. Program of Study" then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="phdrec8"<%= if @doc_titles.include? "Ph.D. Program of Study" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         PhD Program of Study (CS-06)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@committee=="Yes") then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="phdrec9"<%= if (@committee=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Proposal Approval and Committee Meeting
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@oralExam=="Yes") then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="phdrec10"<%= if (@oralExam=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         PhD Oral Comprehensive Exam
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@prp=="Yes") then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="phdrec11"<%= if (@prp=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         PRP Exam
                       </div>
@@ -307,13 +307,13 @@
                   <div class="checklist">
                     <!-- TODO: Finish the rest of the Requirements! -->
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@diss=="Yes") then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="phdrec12"<%= if (@diss=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Dissertation defense
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" <%= if (@final=="Yes") then "checked" else "" end %> disabled="disabled">
+                      <input type="checkbox" title ="phdrec13"<%= if (@final=="Yes") then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Final And Approved Dissertation Submitted
                       </div>

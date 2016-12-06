@@ -4,12 +4,15 @@ class CourseDescriptionsController < ApplicationController
   # GET /course_descriptions
   # GET /course_descriptions.json
   def index
+
+    allow_admin
+
     @course_descriptions = CourseDescription.all
   end
 
   def search
-    # puts "in Search!"
-    #
+
+    allow_admin
 
     @semesterError = false
     @courseError = false
@@ -61,22 +64,29 @@ class CourseDescriptionsController < ApplicationController
   # GET /course_descriptions/1
   # GET /course_descriptions/1.json
   def show
+    allow_admin
+
   end
 
 
   # GET /course_descriptions/new
   def new
+    allow_admin
+
     @course_description = CourseDescription.new
 
   end
 
   # GET /course_descriptions/1/edit
   def edit
+    allow_admin
+
   end
 
   # POST /course_descriptions
   # POST /course_descriptions.json
   def create
+    allow_admin
 
     #raise course_description_params.except(:teacher, :year, :semester).inspect
 
@@ -137,6 +147,7 @@ class CourseDescriptionsController < ApplicationController
   # PATCH/PUT /course_descriptions/1
   # PATCH/PUT /course_descriptions/1.json
   def update
+    allow_admin
     respond_to do |format|
       # if @course_description.update(course_description_params)
         format.html { redirect_to @course_description, notice: 'Course description was successfully updated.' }
@@ -151,6 +162,7 @@ class CourseDescriptionsController < ApplicationController
   # DELETE /course_descriptions/1
   # DELETE /course_descriptions/1.json
   def destroy
+    allow_admin
     @course_description.destroy
     respond_to do |format|
       format.html { redirect_to course_descriptions_url, notice: 'Course description was successfully destroyed.' }
@@ -160,6 +172,9 @@ class CourseDescriptionsController < ApplicationController
 
   # GET /things/typeahead/:query
   def typeahead
+
+    allow_admin
+    
     if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.  
       return
     end

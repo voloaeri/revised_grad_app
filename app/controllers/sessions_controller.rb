@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
     admin = Admin.find_by(PID: params[:session][:PID].strip)
 
     if student
+
       log_in_student student
+
       redirect_to student
     elsif faculty
       log_in_faculty
@@ -18,13 +20,21 @@ class SessionsController < ApplicationController
       log_in_admin
       redirect_to students_url
     else
-      #render error
+      flash[:alert] = "That PID isn't in our database!"
+      redirect_to login_url
     end
 
   end
 
+  def not_found
+    
+  end
+
   def destroy
-    puts :end
+    reset_session
+    flash[:success] = "You have been logged out!"
+    redirect_to login_url
+
   end
 
 end

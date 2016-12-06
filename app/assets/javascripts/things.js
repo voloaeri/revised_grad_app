@@ -27,7 +27,7 @@ var dropDown;
 var courseSearch = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
+    //prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
     remote: {
         url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
         wildcard: '%QUERY',
@@ -48,7 +48,7 @@ var courseSearch = new Bloodhound({
 var courseSearchNumber = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
+    //prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
     remote: {
         url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
         wildcard: '%QUERY',
@@ -121,7 +121,7 @@ $(function(){
 
 $(function(){
     $('#job_course').typeahead(null, {
-        name: 'countries',
+        name: 'course',
         displayKey: function(countries) {
             console.log(countries);
             return countries;
@@ -134,7 +134,7 @@ $(function(){
 var courseFaculty = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: document.location.origin + '/faculties/typeahead/suggestions.json',
+    //prefetch: document.location.origin + '/faculties/typeahead/suggestions.json',
     remote: {
         url: document.location.origin + '/faculties/typeahead/%QUERY',
         wildcard: '%QUERY',
@@ -146,7 +146,11 @@ var courseFaculty = new Bloodhound({
 });
 
 $(function(){
-    $('#course_description_teacher').typeahead(null, {
+    $('#course_description_teacher').typeahead({
+        hint: false,
+        highlight: true,
+        minLength: 1
+    }, {
         name: 'faculty',
         displayKey: function(countries) {
             console.log(countries);
@@ -158,7 +162,7 @@ $(function(){
 
 $(function(){
     $('#student_advisor').typeahead(null, {
-        name: 'faculty',
+        name: 'advisor',
         displayKey: function(countries) {
             console.log(countries);
             return countries;
