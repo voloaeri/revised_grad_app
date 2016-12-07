@@ -16,8 +16,6 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'twitter-typeahead-rails'
-
 gem 'railties'
 
 # Use jquery as the JavaScript library
@@ -33,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # file upload
 gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7d'
 
-gem 'jquery-ui-rails'
+gem 'jquery-turbolinks'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
