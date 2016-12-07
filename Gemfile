@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'twitter-typeahead-rails'
 
-gem 'railties'
+gem 'mysql2', '0.4.5'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
