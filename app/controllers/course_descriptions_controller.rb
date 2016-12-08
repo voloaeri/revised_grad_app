@@ -174,19 +174,15 @@ class CourseDescriptionsController < ApplicationController
   def typeahead
 
     allow_admin
-    
-    if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.  
-      return
-    end
-
 
     if search_params[:query].to_i.to_s == search_params[:query]
-      puts "is true"
-      @suggestions = CourseDescription.where('number LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number).map{ |s| {name: s[0], number: s[1]}}
-      puts @suggestions
+      puts "is number"
+      @suggestions = CourseDescription.where('number LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number).map{ |s| {course: s[1].to_s + ": "  + s[0].to_s}}
+      #raise @suggestions.to_json.inspect
     else
+      puts "is name"
       @suggestions = CourseDescription.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number).map{ |s| {name: s[0], number: s[1]}} #Select the data you want to load on the typeahead.
-      puts @suggestions
+      #puts @suggestions
     end
 
     #@suggestions.values.join(" ")

@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function() {
                 dropDown = response;
                 console.log(JSON.stringify(response));
                 for(var i = 0; i < response.length; i++){
-                    results.push(response[i].number);
+                    results.push(response[i].course);
                 }
                 console.log(JSON.stringify(results));
                 return results;
@@ -88,13 +88,13 @@ $(document).on('turbolinks:load', function() {
 
     });
 
-    $('#job_course').typeahead(null, {
+    $('#job_course').typeahead({hint: false}, {
         name: 'course',
         displayKey: function(countries) {
             console.log(countries);
             return countries;
         },
-        source: courseSearch.ttAdapter()
+        source: courseSearchNumber.ttAdapter()
     });
 
     var courseFaculty = new Bloodhound({
@@ -111,7 +111,7 @@ $(document).on('turbolinks:load', function() {
         limit : 5
     });
 
-    $('#course_description_teacher').typeahead({hint: false}, {
+    $('#course_description_teacher').typeahead({minLength: 1,hint: false}, {
         name: 'faculty',
         displayKey: function(countries) {
             //console.log(countries);
