@@ -1,73 +1,49 @@
+$(document).on('turbolinks:load', function() {
 
-var substringMatcher = function(strs) {
-    console.log("working?");
-    return function findMatches(q, cb) {
-        var matches, substringRegex;
+    var dropDown;
 
-        // an array that will be populated with substring matches
-        matches = [];
-
-        // regex used to determine if a string contains the substring `q`
-        substrRegex = new RegExp(q, 'i');
-
-        // iterate through the pool of strings and for any string that
-        // contains the substring `q`, add it to the `matches` array
-        $.each(strs, function(i, str) {
-            if (substrRegex.test(str)) {
-                matches.push(str);
+    var courseSearch = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        //prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
+        remote: {
+            url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
+            wildcard: '%QUERY',
+            filter: function(response) {
+                var results = [];
+                dropDown = response;
+                console.log(JSON.stringify(response));
+                for(var i = 0; i < response.length; i++){
+                    results.push(response[i].name);
+                }
+                console.log(JSON.stringify(results));
+                return results;
             }
-        });
+        },
+        limit : 5
+    });
 
-        cb(matches);
-    };
-};
-
-var dropDown;
-
-var courseSearch = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    //prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
-    remote: {
-        url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
-        wildcard: '%QUERY',
-        filter: function(response) {
-            var results = [];
-            dropDown = response;
-            console.log(JSON.stringify(response));
-            for(var i = 0; i < response.length; i++){
-                results.push(response[i].name);
+    var courseSearchNumber = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        //prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
+        remote: {
+            url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
+            wildcard: '%QUERY',
+            filter: function(response) {
+                var results = [];
+                dropDown = response;
+                console.log(JSON.stringify(response));
+                for(var i = 0; i < response.length; i++){
+                    results.push(response[i].number);
+                }
+                console.log(JSON.stringify(results));
+                return results;
             }
-            console.log(JSON.stringify(results));
-            return results;
-        }
-    },
-    limit : 5
-});
+        },
+        limit : 5
+    });
 
-var courseSearchNumber = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    //prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
-    remote: {
-        url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
-        wildcard: '%QUERY',
-        filter: function(response) {
-            var results = [];
-            dropDown = response;
-            console.log(JSON.stringify(response));
-            for(var i = 0; i < response.length; i++){
-                results.push(response[i].number);
-            }
-            console.log(JSON.stringify(results));
-            return results;
-        }
-    },
-    limit : 5
-});
-
-
-$(function(){
     $('#course_history_name').typeahead({hint: false}, {
         name: 'countries',
         displayKey: function(countries) {
@@ -76,23 +52,19 @@ $(function(){
         },
         source: courseSearch.ttAdapter()
     });
-})
 
-$(function(){
     $('#course_history_name').bind('typeahead:select', function(ev, suggestion) {
-         console.log(dropDown[0]);
-         console.log('Selection: ' + suggestion);
+        console.log(dropDown[0]);
+        console.log('Selection: ' + suggestion);
         for(var i = 0; i < dropDown.length; i++){
             console.log(dropDown[i][suggestion]);
-           if(dropDown[i].name == suggestion){
-               $("#course_history_number").val(dropDown[i].number);
-           }
+            if(dropDown[i].name == suggestion){
+                $("#course_history_number").val(dropDown[i].number);
+            }
         }
 
     });
-})
 
-$(function(){
     $('#course_history_number').typeahead({hint: false}, {
         name: 'courseNumbers',
         displayKey: function(countries) {
@@ -101,9 +73,7 @@ $(function(){
         },
         source: courseSearchNumber.ttAdapter()
     });
-})
 
-$(function(){
     $('#course_history_number').bind('typeahead:select', function(ev, suggestion) {
         console.log(dropDown[0]);
         console.log('Selection of Number ' + suggestion);
@@ -117,9 +87,7 @@ $(function(){
         }
 
     });
-})
 
-$(function(){
     $('#job_course').typeahead(null, {
         name: 'course',
         displayKey: function(countries) {
@@ -128,24 +96,21 @@ $(function(){
         },
         source: courseSearch.ttAdapter()
     });
-})
 
+    var courseFaculty = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        //prefetch: document.location.origin + '/faculties/typeahead/suggestions.json',
+        remote: {
+            url: document.location.origin + '/faculties/typeahead/%QUERY',
+            wildcard: '%QUERY',
+            filter: function(response) {
+                return response;
+            }
+        },
+        limit : 5
+    });
 
-var courseFaculty = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    //prefetch: document.location.origin + '/faculties/typeahead/suggestions.json',
-    remote: {
-        url: document.location.origin + '/faculties/typeahead/%QUERY',
-        wildcard: '%QUERY',
-        filter: function(response) {
-            return response;
-        }
-    },
-    limit : 5
-});
-
-$(function(){
     $('#course_description_teacher').typeahead({
         hint: false,
         highlight: true,
@@ -158,9 +123,7 @@ $(function(){
         },
         source: courseFaculty.ttAdapter()
     });
-})
 
-$(function(){
     $('#student_advisor').typeahead(null, {
         name: 'advisor',
         displayKey: function(countries) {
@@ -169,4 +132,4 @@ $(function(){
         },
         source: courseFaculty.ttAdapter()
     });
-})
+});
