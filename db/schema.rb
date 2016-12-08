@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20161205053507) do
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "firstName"
     t.string   "lastName"
     t.string   "PID"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20161205053507) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "course_descriptions", force: :cascade do |t|
+  create_table "course_descriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "number"
     t.string   "name"
     t.string   "category"
@@ -30,29 +30,29 @@ ActiveRecord::Schema.define(version: 20161205053507) do
     t.string   "department"
   end
 
-  create_table "course_histories", force: :cascade do |t|
+  create_table "course_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "student_id"
     t.integer  "course_description_id"
     t.integer  "semester_id"
     t.string   "grade"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["course_description_id"], name: "index_course_histories_on_course_description_id"
-    t.index ["semester_id"], name: "index_course_histories_on_semester_id"
-    t.index ["student_id"], name: "index_course_histories_on_student_id"
+    t.index ["course_description_id"], name: "index_course_histories_on_course_description_id", using: :btree
+    t.index ["semester_id"], name: "index_course_histories_on_semester_id", using: :btree
+    t.index ["student_id"], name: "index_course_histories_on_student_id", using: :btree
   end
 
-  create_table "documents", force: :cascade do |t|
+  create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.string   "location"
     t.boolean  "background_sheet", default: false
     t.integer  "student_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-    t.index ["student_id"], name: "index_documents_on_student_id"
+    t.index ["student_id"], name: "index_documents_on_student_id", using: :btree
   end
 
-  create_table "faculties", force: :cascade do |t|
+  create_table "faculties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "firstName"
     t.string   "lastName"
     t.string   "sectionNumber"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20161205053507) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "jobs", force: :cascade do |t|
+  create_table "jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "position"
     t.string   "supervisor"
     t.string   "course"
@@ -69,10 +69,10 @@ ActiveRecord::Schema.define(version: 20161205053507) do
     t.string   "current"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["student_id"], name: "index_jobs_on_student_id"
+    t.index ["student_id"], name: "index_jobs_on_student_id", using: :btree
   end
 
-  create_table "semesters", force: :cascade do |t|
+  create_table "semesters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "course_description_id"
     t.integer  "faculty_id"
     t.integer  "year"
@@ -82,11 +82,11 @@ ActiveRecord::Schema.define(version: 20161205053507) do
     t.integer  "category_override"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["course_description_id"], name: "index_semesters_on_course_description_id"
-    t.index ["faculty_id"], name: "index_semesters_on_faculty_id"
+    t.index ["course_description_id"], name: "index_semesters_on_course_description_id", using: :btree
+    t.index ["faculty_id"], name: "index_semesters_on_faculty_id", using: :btree
   end
 
-  create_table "students", force: :cascade do |t|
+  create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "firstName"
     t.string   "lastName"
     t.string   "PID"
