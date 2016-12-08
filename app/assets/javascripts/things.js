@@ -111,14 +111,10 @@ $(document).on('turbolinks:load', function() {
         limit : 5
     });
 
-    $('#course_description_teacher').typeahead({
-        hint: false,
-        highlight: true,
-        minLength: 1
-    }, {
+    $('#course_description_teacher').typeahead({hint: false}, {
         name: 'faculty',
         displayKey: function(countries) {
-            console.log(countries);
+            //console.log(countries);
             return countries;
         },
         source: courseFaculty.ttAdapter()
@@ -127,7 +123,7 @@ $(document).on('turbolinks:load', function() {
     $('#student_advisor').typeahead(null, {
         name: 'advisor',
         displayKey: function(countries) {
-            console.log(countries);
+            //console.log(countries);
             return countries;
         },
         source: courseFaculty.ttAdapter()

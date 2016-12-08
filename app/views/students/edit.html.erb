@@ -412,11 +412,6 @@
               <div class="panel panel-default">
                 <div class="panel-body">
                   <div class="alerts"> </div>
-                  <% flash.each do |key, value| %>
-                      <div class="<%= flash_class(key.to_sym) %>">
-                        <%= value %>
-                      </div>
-                  <% end %>
                  <h2> Get Blank Documents</h2>
                   <form action="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/" method="get" target="_blank">
                     <input type="submit" value="Get blank documents"
@@ -464,11 +459,6 @@
               <div class="panel panel-default">
                 <div class="panel-body">
                   <div class="alerts"> </div>
-                  <% flash.each do |key, value| %>
-                      <div class="<%= flash_class(key.to_sym) %>">
-                        <%= value %>
-                      </div>
-                  <% end %>
                    <%= render 'jobs/form', job: @job %>
                 </div>
              </div>

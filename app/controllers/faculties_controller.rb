@@ -87,7 +87,7 @@ class FacultiesController < ApplicationController
     #@suggestions = CourseDescription.where("name LIKE" => "%#{search_params[:query]}%")
     @suggestions = Faculty.where('lastName LIKE ?', "%#{search_params[:query]}%").pluck(:lastName, :firstName).map{ |s| s[0] + ", " + s[1] } #Select the data you want to load on the typeahead.
     #@suggestions.map{ |s| {name: s[0], number: s[1], hours: s[2]}}
-    puts @suggestions
+    #raise @suggestions.inspect
     respond_to do |format|
       format.json { render json: @suggestions.to_json }
     end

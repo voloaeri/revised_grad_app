@@ -64,6 +64,13 @@ $(document).ready(function(){
     $('#student_PID').on('keyup',function(){
         var text = $(this).val();
         $(".side_bar .user h6").html(text);
+
+        if($("#student_PID").val().length == 9){
+            $(this).css('background-color', "#CBF3CD");
+        } else {
+            $(this).css('background-color', "#F7BCD4");
+        }
+
     });
 
     $('#student_intendedDegree').on('keyup',function(){
@@ -82,6 +89,7 @@ $(document).ready(function(){
     $(".searchBox #lastName").click(function() {
         $('.searchBox #PID').val('');
     });
+
 });
 
 

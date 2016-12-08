@@ -12,7 +12,7 @@
 # end
 
 File.foreach((Rails.public_path + "defaults/faculty_list.txt")).with_index do |line, line_num|
-  #puts "#{line_num}: #{line.strip}"
+  puts "#{line_num}: #{line.strip}"
   line = line.strip.split(" ")
   # puts line
   if(line.length == 3)
