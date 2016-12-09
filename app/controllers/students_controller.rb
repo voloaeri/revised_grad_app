@@ -9,7 +9,9 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
 
-    allow_faculty
+    if(!allow_faculty)
+      return false
+    end
 
     @students = Student.all
   end
@@ -17,8 +19,10 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-    
-    allow_student params[:id]
+
+    if(!allow_student params[:id])
+      return false
+    end
 
     @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
 
@@ -124,7 +128,9 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
 
-    allow_admin
+    if(!allow_admin)
+      return false
+    end
 
     #Defaults: Current Year and Semester and United States (Most students are probably USA citizens)
     year = Date.today.strftime("%Y");
@@ -135,7 +141,9 @@ class StudentsController < ApplicationController
   # GET /students/1/edit
   def edit
 
-    allow_admin_faculty_no_edit params[:id]
+    if(!allow_admin_faculty_no_edit params[:id])
+      return false
+    end
 
     @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
     @student = Student.find(params[:id])
@@ -153,7 +161,7 @@ class StudentsController < ApplicationController
     @course_histories = CourseHistory.where(student_id: @student.id)
 
     @new_course_history = CourseHistory.new(student_id: @student.id)
-    
+
     @total_hours=0
     @comp_hours=0
     @theory=false
@@ -255,7 +263,9 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
 
-    allow_admin
+    if(!allow_admin)
+      return false
+    end
 
     @student = Student.new(student_params)
     @student.semesterStartedCS = student_params[:startedSemester] + " "  + student_params[:startedYear]
@@ -318,9 +328,13 @@ class StudentsController < ApplicationController
 
 
   def upload_photo
-
-    allow_student_only student_params[:id]
-
+    @admin=false
+    if(!allow_admin_and_student student_params[:id])
+      return false
+    end
+    if(session[:admin]==true)
+      @admin=true
+    end
     @student = Student.find(student_params[:id])
 
     uploaded_io = student_params[:imageLocation]
@@ -355,7 +369,11 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.update(new_params)
-        format.html { redirect_to edit_student_url(@student), notice: 'Student was successfully updated.' }
+        if (@admin==true)
+          format.html { redirect_to edit_student_url(@student), notice: 'Student was successfully updated.' }
+        else
+          format.html { redirect_to student_url(@student), notice: 'Student was successfully updated.' }
+        end
       else
         format.html { render :edit }
       end
@@ -364,7 +382,9 @@ class StudentsController < ApplicationController
 
   def update
 
-    allow_admin
+    if(!allow_admin)
+      return false
+    end
 
     @student.semesterStartedCS = student_params[:startedSemester] + " "  + student_params[:startedYear]
     @student.backgroundApproved = student_params[:approvedSemester] + " "  + student_params[:approvedYear]
@@ -384,7 +404,9 @@ class StudentsController < ApplicationController
   # DELETE /students/1.json
   def destroy
 
-    allow_admin
+    if(!allow_admin)
+      return false
+    end
 
     @student.destroy
     respond_to do |format|

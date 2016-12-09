@@ -1,7 +1,7 @@
 $(".alerts").html("");
 
 if(<%= @warning %>){
-  if(confirm("You'll be overwriting a older upload. That ok?")){
+  if(confirm("This has overwritten an older file. ")){
     <%  @subDoc.respond_to?(:update) ? @subDoc.update(@dupQuery) : nil %>
     <% if !@uploaded_io.nil? %>
     <% File.open(Rails.root.join('public', "uploads/#{@studentName}", @uploaded_io.original_filename), 'wb') do |file| %>
@@ -37,7 +37,25 @@ if(<%= @warning %>){
 
   $(".alerts").append("<%= "<div class='alert alert-success'> Document Successfully Uploaded </div>"%>");
 
-  $('#new_document')[0].reset();
+    //Checkmarks requirements page so there no need to refresh page
+
+
+    if("<%= @document.title %>" == "Background Preparation Worksheet"){
+        $( "#background_check" ).prop( "checked", true );
+
+    } else if("<%= @document.title %>" == "M.S. Program of Study"){
+        $( "#ms_check" ).prop( "checked", true );
+
+    } else if("<%= @document.title %>" == "Program Product Requirement"){
+        $( "#product_check" ).prop( "checked", true );
+
+    } else if("<%= @document.title %>" == "Technical Writing Requirement"){
+        $( "#writing_check" ).prop( "checked", true );
+    }
+
+    document.getElementById('document_location').value = null;
+
+    $('#new_document')[0].reset();
 
 
 

@@ -6,15 +6,11 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-      allow__admin_and_student params[:document][:student_id]
+      if(!allow_admin_and_student params[:document][:student_id])
+        return false
+      end
 
-    if(session[:admin] || session[:student_id].to_s == params[:document][:student_id].to_s)
-      puts session[:admin]
-      puts session[:faculty]
-      puts session[:student_id]
-    else
-      raise "no access".inspect
-    end
+
 
     @pdfError = false
     @selectError = false
@@ -92,11 +88,14 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
 
-    allow__admin_and_student @document.student_id
+    if(!allow_admin_and_student @document.student_id)
+      return false
+    end
 
     puts Rails.public_path + @document.location
     FileUtils.rm(Rails.public_path + @document.location)
     @document.destroy
+
     respond_to do |format|
       format.js {}
       # format.html { redirect_to edit_student_url(@document.student_id), notice: 'Document was successfully destroyed.' }

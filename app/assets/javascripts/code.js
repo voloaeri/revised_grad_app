@@ -7,7 +7,7 @@ function expandAll() {
 
 }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
     if(navigator.platform.match('Mac') !== null) {
         document.body.setAttribute('class', 'OSX');
     }
@@ -55,11 +55,18 @@ $(document).ready(function(){
         $(".side_bar .user h2").html(text);
     });
 
-    // $('#student_lastName').on('keyup',function(){
-    //     var text = $(this).val();
-    //     //var firstName = $(".side_bar .user h2").text();
-    //     $(".side_bar .user h2").html(firstName + " " + text);
-    // });
+    $('#course_history_number').on('keyup',function(){
+        var text = $(this).val();
+        if(text == ""){  console.log('cleaning num'); $('#course_history_name').val("") }
+
+    });
+
+    $('#course_history_name').on('keyup',function(){
+        var text = $(this).val();
+        alert(text);
+        if(text == ""){  console.log('cleaning nam'); $('#course_history_number').val("") }
+
+    });
 
     $('#student_PID').on('keyup',function(){
         var text = $(this).val();
@@ -89,6 +96,10 @@ $(document).ready(function(){
     $(".searchBox #lastName").click(function() {
         $('.searchBox #PID').val('');
     });
+
+
+    // Document form doesn't always reset, so this forces a reset on page load.
+    $('#new_document')[0].reset();
 
 });
 

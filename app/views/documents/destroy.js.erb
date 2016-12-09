@@ -1,3 +1,15 @@
-//$(".alerts").html("");
 
-//$(".alerts").append("<%#("<div class='alert alert-success'> Document Successfully Deleted </div>") %>");
+// "Successfully Deleted" code is in code.js (in assets) since jquery append and rails didn't play nice in this file for unknown reasons.
+
+if("<%= @document.title %>" == "Background Preparation Worksheet"){
+    $( "#background_check" ).prop( "checked", false );
+
+} else if("<%= @document.title %>" == "M.S. Program of Study"){
+    $( "#ms_check" ).prop( "checked", false );
+
+} else if("<%= @document.title %>" == "Program Product Requirement"){
+    $( "#product_check" ).prop( "checked", false );
+
+} else if("<%= @document.title %>" == "Technical Writing Requirement"){
+    $( "#writing_check" ).prop( "checked", false );
+}

@@ -147,26 +147,26 @@
                   <div class="checklist">
 
                     <div class="requirement">
-                      <input type="checkbox" title ="formrec"<%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %> disabled="disabled">
+                      <input id="background_check" type="checkbox" title ="formrec"<%= if @doc_titles.include? "Background Preparation Worksheet" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Background Preparation Worksheet (CS-01)
                       </div>
                     </div>
                     <%# raise @doc_titles.inspect %>
                     <div class="requirement">
-                      <input type="checkbox" title ="formrec2"<%= if @doc_titles.include? "M.S. Program of Study" then "checked" else "" end %> disabled="disabled">
+                      <input id="ms_check" type="checkbox" title ="formrec2"<%= if @doc_titles.include? "M.S. Program of Study" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         M.S. Program of Study (CS-03)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" title ="formrec3"<%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %> disabled="disabled">
+                      <input id="product_check" type="checkbox" title ="formrec3"<%= if @doc_titles.include? "Program Product Requirement" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Program Product Requirement (CS-13)
                       </div>
                     </div>
                     <div class="requirement">
-                      <input type="checkbox" title ="formrec4"<%= if @doc_titles.include? "Technical Writing Requirement" then "checked" else "" end %> disabled="disabled">
+                      <input id="writing_check" type="checkbox" title ="formrec4"<%= if @doc_titles.include? "Technical Writing Requirement" then "checked" else "" end %> disabled="disabled">
                       <div class="requirement_description">
                         Writing Requirement (CS-08 or CS-04)
                       </div>
@@ -332,7 +332,7 @@
     <div id="course_history" class="tab-pane fade">
       <ul class="nav nav-tabs">
         <li class="active"><a class='click' data-toggle="tab" href="#courses">Course History</a></li>
-        <li><a class='click' data-toggle="tab" href="#enroll">Enroll</a></li>
+        <li><a class='click' data-toggle="tab" href="#enroll">Add Course to Student's History </a></li>
 
       </ul>
       <div class="tab-content">

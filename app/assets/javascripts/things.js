@@ -2,13 +2,12 @@ $(document).on('turbolinks:load', function() {
 
     var dropDown;
 
-    var courseSearch = new Bloodhound({
+    var courseSearchName = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        //prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
         remote: {
-            url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
-            wildcard: '%QUERY',
+            url: document.location.origin + '/course_descriptions/typeahead/%name',
+            wildcard: '%name',
             filter: function(response) {
                 var results = [];
                 dropDown = response;
@@ -23,13 +22,12 @@ $(document).on('turbolinks:load', function() {
         limit : 5
     });
 
-    var courseSearchNumber = new Bloodhound({
+    var courseSearchBoth = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        //prefetch: document.location.origin + '/course_descriptions/typeahead/suggestions.json',
         remote: {
-            url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
-            wildcard: '%QUERY',
+            url: document.location.origin + '/course_descriptions/typeahead/%both',
+            wildcard: '%both',
             filter: function(response) {
                 var results = [];
                 dropDown = response;
@@ -44,13 +42,33 @@ $(document).on('turbolinks:load', function() {
         limit : 5
     });
 
+    var courseSearchNumber = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: document.location.origin + '/course_descriptions/typeahead/%QUERY',
+            wildcard: '%QUERY',
+            filter: function(response) {
+                var results = [];
+                dropDown = response;
+                console.log(JSON.stringify(response));
+                for(var i = 0; i < response.length; i++){
+                    results.push(response[i].number);
+                }
+                console.log(JSON.stringify(results));
+                return results;
+            }
+        },
+        limit : 5
+    });
+
     $('#course_history_name').typeahead({hint: false}, {
         name: 'countries',
         displayKey: function(countries) {
             console.log(countries);
             return countries;
         },
-        source: courseSearch.ttAdapter()
+        source: courseSearchName.ttAdapter()
     });
 
     $('#course_history_name').bind('typeahead:select', function(ev, suggestion) {
@@ -94,7 +112,7 @@ $(document).on('turbolinks:load', function() {
             console.log(countries);
             return countries;
         },
-        source: courseSearchNumber.ttAdapter()
+        source: courseSearchBoth.ttAdapter()
     });
 
     var courseFaculty = new Bloodhound({

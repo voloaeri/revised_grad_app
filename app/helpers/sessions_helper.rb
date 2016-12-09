@@ -17,9 +17,11 @@ module SessionsHelper
       puts session[:admin]
       puts session[:faculty]
       puts session[:student_id]
+      return true
     else
       flash[:alert] = "You either don't have permission or aren't logged in yet!"
       redirect_to login_url
+      return false
     end
   end
 
@@ -28,10 +30,14 @@ module SessionsHelper
       puts session[:admin]
       puts session[:faculty]
       puts session[:student_id]
+      return true
     elsif session[:faculty]
       redirect_to student_url user
+      return false
     else
-      raise "no access".inspect
+      flash[:alert] = "You either don't have permission or aren't logged in yet!"
+      redirect_to login_url
+      return false
     end
   end
 
@@ -40,8 +46,11 @@ module SessionsHelper
       puts session[:admin]
       puts session[:faculty]
       puts session[:student_id]
+      return true
     else
+      flash[:alert] = "You either don't have permission or aren't logged in yet!"
       redirect_to login_url
+      return false
     end
   end
 
@@ -51,28 +60,39 @@ module SessionsHelper
       puts session[:admin]
       puts session[:faculty]
       puts session[:student_id]
+      return true
     else
-      raise "no access".inspect
+      flash[:alert] = "You either don't have permission or aren't logged in yet!"
+      redirect_to login_url
+      return false
     end
   end
 
   def allow_student_only(id)
+    id=id.to_i
     if session[:student_id] == id
       puts session[:admin]
       puts session[:faculty]
       puts session[:student_id]
+      return true
     else
-      raise "no access".inspect
+      flash[:alert] = "You either don't have permission or aren't logged in yet!"
+      redirect_to login_url
+      return false
     end
   end
 
-  def allow__admin_and_student user
+  def allow_admin_and_student id
+    id=id.to_i
     if(session[:admin]) || session[:student_id] == id
       puts session[:admin]
       puts session[:faculty]
       puts session[:student_id]
+      return true
     else
-      raise "no access".inspect
+      flash[:alert] = "You either don't have permission or aren't logged in yet!"
+      redirect_to login_url
+      return false
     end
   end
 

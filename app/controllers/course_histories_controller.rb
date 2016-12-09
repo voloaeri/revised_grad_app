@@ -58,11 +58,11 @@ class CourseHistoriesController < ApplicationController
       end
 
       #raise @course.inspect
-      
+
       @semester = Semester.where(course_history_params.slice(:semester, :year).merge({course_description_id: @course.id})).first
 
 
-      #raise @semester.inspect
+
       if !@semester
         @semesterError = true
         puts "Semester ERROR"
@@ -128,6 +128,6 @@ class CourseHistoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_history_params
-      params.require(:course_history).permit(:id, :student_id, :course_description_id, :grade, :year, :semester, :section, :faculty_id, :semester)
+      params.require(:course_history).permit(:id, :student_id, :course_description_id, :grade, :year, :semester, :section, :faculty_id, :semester,:number,:name)
     end
 end

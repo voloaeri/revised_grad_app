@@ -25,7 +25,7 @@ class CourseDescriptionsController < ApplicationController
 
 
     @course = CourseDescription.where({number: params[:course_description][:number]}).first
-    
+
 
     if !@course
       @courseError = true
@@ -86,7 +86,10 @@ class CourseDescriptionsController < ApplicationController
   # POST /course_descriptions
   # POST /course_descriptions.json
   def create
-    allow_admin
+
+    if(!allow_admin)
+      return false
+    end
 
     #raise course_description_params.except(:teacher, :year, :semester).inspect
 
@@ -173,13 +176,15 @@ class CourseDescriptionsController < ApplicationController
   # GET /things/typeahead/:query
   def typeahead
 
+    #raise params.inspect
+
     allow_admin
 
-    if search_params[:query].to_i.to_s == search_params[:query]
+    if search_params[:query].to_i.to_s == search_params[:query] # Check whether query is a number
       puts "is number"
-      @suggestions = CourseDescription.where('number LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number).map{ |s| {course: s[1].to_s + ": "  + s[0].to_s}}
+      @suggestions = CourseDescription.where('number LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number).map{ |s| {course: s[1].to_s + ": "  + s[0].to_s, name: s[0], number: s[1] }}
       #raise @suggestions.to_json.inspect
-    else
+    else # must be a string
       puts "is name"
       @suggestions = CourseDescription.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:name,:number).map{ |s| {name: s[0], number: s[1]}} #Select the data you want to load on the typeahead.
       #puts @suggestions
@@ -205,6 +210,7 @@ class CourseDescriptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_description_params
+
       params.require(:course_description).permit(:number, :name, :category, :hours, :teacher, :semester, :year,:transfer,:department)
     end
 end

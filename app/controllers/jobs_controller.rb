@@ -34,7 +34,9 @@ class JobsController < ApplicationController
 
     #raise params.inspect
 
-    allow_admin
+    if(!allow_admin)
+      return false
+    end
 
     @posError=false;
     @semError=false;
@@ -113,7 +115,10 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
-    allow_admin
+
+    if(!allow_admin)
+      return false
+    end
 
 
     @job.destroy
