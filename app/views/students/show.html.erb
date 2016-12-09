@@ -360,22 +360,24 @@
 
     <div id="documents" class="tab-pane fade in">
       <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#documents_tab"> Documents </a></li>
-        <li ><a data-toggle="tab" href="#upload_doc"> Upload </a></li>
+        <li id="doc_tab" class="active"><a class="click" data-toggle="tab" href="#documents_tab"> Documents </a></li>
+        <li id="doc_upload_tab"><a class="click" data-toggle="tab" href="#upload_doc"> Upload </a></li>
       </ul>
       <div class="tab-content">
         <div id="documents_tab" class="tab-pane fade in active">
           <div class="panel panel-default">
-            <div class="panel-body noBreaks">
-              <table class="ctable" style="width:75%">
+            <div class="panel-body">
+              <div class="alerts"> </div>
+              <table id="documents_table" class="ctable" style="width:75%">
                 <tr class="ctable">
                   <th class="ctable">Document Type</th>
+                  <th class="ctable"> Last Update</th>
                 </tr>
                 <% @student.documents.all.each do |document| %>
-                    <tr class="ctable">
-                      <td class="ctable"><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
-
-                      <td class="ctable touch"><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br/>
+                    <tr id=<%= "doc_row_#{document.id}" %> class="ctable">
+                      <td class="ctable doc_title"><a target="_blank" href="<%= asset_path(document.location)%>"> <%= document.title %> </a> </td>
+                      <td class="ctable"><a> <%= document.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p") %> </a> </td>
+                      <td class="ctable touch"><%= link_to 'Delete', document, method: :delete, :class => "docDelete", :data => {:remote => true,:format => "js"} %></td>
                     </tr>
                 <% end %>
               </table>
@@ -385,10 +387,11 @@
         <div id="upload_doc" class="tab-pane fade">
           <div class="panel panel-default">
             <div class="panel-body">
+              <div class="alerts"> </div>
               <h2> Get Blank Documents</h2>
-              <form action="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/" method="get">
+              <form action="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/" method="get" target="_blank">
                 <input type="submit" value="Get blank documents"
-                       name="Submit" />
+                       name="Submit" target="_blank"/>
               </form>
               <h2> Add a Document </h2>
               <%= render 'documents/form', document: @document %>
