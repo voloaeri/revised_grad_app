@@ -1,4 +1,4 @@
-
+<!-- Used for edit page- editing and creating new students -->
 <%= form_for(student,:remote => true) do |f| %>
     <% if student.errors.any? %>
         <div id="error_explanation">
@@ -22,7 +22,7 @@
     </div>
     <div class="field left">
       <%= f.label :PID %>
-      <%= f.text_field :PID %>
+      <%= f.text_field :PID, :autocomplete => :off %>
     </div>
     <div class="field right">
       <%= f.label :alternativeName, 'Alternate Name' %>

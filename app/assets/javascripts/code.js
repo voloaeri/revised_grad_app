@@ -37,12 +37,6 @@ $(document).on('turbolinks:load', function(){
         $(".alert").html("");
     });
 
-    // $(".docDelete").click(function(){
-    //     $(this).closest("tr").remove();
-    //     console.log('deleted');
-    //     //$(".alerts").append("<div class='alert alert-success'> Document Successfully Deleted </div>");
-    // });
-
     $("tbody").unbind('click').on("click",'.touch a', function(){
         $(this).closest("tr").remove();
         console.log('deleted');
@@ -79,7 +73,7 @@ $(document).on('turbolinks:load', function(){
         }
 
     });
-
+    
     $('#student_intendedDegree').on('keyup',function(){
         var text = $(this).val();
         $(".side_bar .user h5").html(text);
@@ -96,7 +90,6 @@ $(document).on('turbolinks:load', function(){
     $(".searchBox #lastName").click(function() {
         $('.searchBox #PID').val('');
     });
-
 
     // Document form doesn't always reset, so this forces a reset on page load.
     $('#new_document')[0].reset();
