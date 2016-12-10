@@ -7,7 +7,7 @@
     <h3> <%= @student.PID  %> </h3>
     <div class="bottom-border"></div>
   </div>
-
+  <!-- Navigation buttons for the page. Bootstrap pills-->
   <div><a id="personal" data-toggle="pill" href="#basic_info"><div class="pillbutton">Personal Information</div></a></div>
   <div><a id="reqs" data-toggle="pill" href="#requirements"><div class="pillbutton">Degree Requirements</div></a></div>
   <div><a id="history" data-toggle="pill" href="#course_history"><div class="pillbutton">Course History</div></a></div>
@@ -37,7 +37,7 @@
 <div class="container">
   <!--<p id="notice"><%= notice %></p>-->
   <div class="tab-content">
-
+    <!--Buttons link to here. Based on their id, they show different pieces of content. -->
     <div id="basic_info" class="tab-pane fade in active">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#personal_info">Personal Information</a></li>
@@ -59,9 +59,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- Basic info tab. Calls _formRead to show and edit information. Also calls _upload_photo to change pics -->
 
-    <div id="requirements" class="tab-pane fade in">
+    <div id="requirements" class="tab-pane fade in"> <!-- Requirements tab. Shows the progress towards the degrees -->
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#masters">Masters</a></li>
         <li><a data-toggle="tab" href="#PhD">Ph.D</a></li>
@@ -69,7 +69,7 @@
       </ul>
       <div class="tab-content">
         <!-- Masters TAB BEGINS -->
-        <div id="masters" class="tab-pane fade in active">
+        <div id="masters" class="tab-pane fade in active"> <!-- Takes variables from students controller to fill in information on this page. -->
           <div class="panel-group" id="accordion">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -169,7 +169,7 @@
         </div>
         <!-- Masters TAB ENDS -->
         <!-- Ph.D TAB BEGINS -->
-        <div id="PhD" class="tab-pane fade">
+        <div id="PhD" class="tab-pane fade">  <!-- Takes variables from students controller to fill in information on this page. -->
           <div class="panel-group" >
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -318,7 +318,7 @@
       </div>
     </div>
 
-    <div id="course_history" class="tab-pane fade">
+    <div id="course_history" class="tab-pane fade"> <!--Course history tab. Shows what courses a student is enrolled in -->
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#courses">Course History</a></li>
 
@@ -359,7 +359,7 @@
       </div>
     </div>
 
-    <div id="documents" class="tab-pane fade in">
+    <div id="documents" class="tab-pane fade in"> <!-- Used to see documents associated with the student and also to add new documents. Uses _form under documents to add new documents. -->
       <ul class="nav nav-tabs">
         <li id="doc_tab" class="active"><a class="click" data-toggle="tab" href="#documents_tab"> Documents </a></li>
         <li id="doc_upload_tab"><a class="click" data-toggle="tab" href="#upload_doc"> Upload </a></li>
@@ -402,7 +402,7 @@
       </div>
     </div>
 
-    <div id="jobs" class="tab-pane fade in">
+    <div id="jobs" class="tab-pane fade in"> <!-- Used to view jobs the student has  -->
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#jobs_tab">Jobs</a></li>
 

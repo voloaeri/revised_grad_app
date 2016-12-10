@@ -8,39 +8,27 @@
     <h6> <%= @student.PID  %> </h6>
     <div class="bottom-border"></div>
   </div>
+  <!-- Navigation buttons for the page. Bootstrap pills -->
+  <div><a class='click' id="personal" data-toggle="pill" href="#basic_info"><div class="pillbutton">Personal Information</div></a></div>
+  <div><a class='click' id="reqs" data-toggle="pill" href="#requirements"><div class="pillbutton">Degree Requirements</div></a></div>
+  <div><a class='click'id="history" data-toggle="pill" href="#course_history"><div class="pillbutton">Course History</div></a></div>
+  <div><a  class='click' id="docs" data-toggle="pill" href="#documents"><div class="pillbutton">Documents</div></a></div>
+  <div><a class='click' id="work" data-toggle="pill" href="#jobs"><div class="pillbutton">Jobs</div></a></div>
 
-  <div><a id="personal" data-toggle="pill" href="#basic_info"><div class="pillbutton">Personal Information</div></a></div>
-  <div><a id="reqs" data-toggle="pill" href="#requirements"><div class="pillbutton">Degree Requirements</div></a></div>
-  <div><a id="history" data-toggle="pill" href="#course_history"><div class="pillbutton">Course History</div></a></div>
-  <div><a id="docs" data-toggle="pill" href="#documents"><div class="pillbutton">Documents</div></a></div>
-  <div><a id="work" data-toggle="pill" href="#jobs"><div class="pillbutton">Jobs</div></a></div>
-
-  <div><a href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/" target="_blank"><div class="pillbutton">Progress Forms</div></a></div>
-  <div><a href="http://cs.unc.edu/academics/teaching-schedules/" target="_blank"><div class="pillbutton">List of Courses</div></a></div>
-  <div><a href="http://cs.unc.edu/info-for/current-students/" target="_blank"><div class="pillbutton">Info for Current Students</div></a></div>
-  <div><a href="http://handbook.unc.edu/" target="_blank"><div class="pillbutton">Graduate School Handbook</div></a></div>
-  <div><a href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/" target="_blank"><div class="pillbutton">Course Categories</div></a></div>
-  <div><a href="/students"><div class="pillbutton">Back to Homepage</div></a></div>
-  <div><a href="/login" data-method="delete" ><div class="pillbutton"> Log Out </div></a></div>
-  <!--<ul class="nav nav-pills">-->
-    <!--<li class="active"><a class='click' id="personal" data-toggle="pill" href="#basic_info">Personal Information</a></li>-->
-    <!--<li><a id="reqs" class='click' data-toggle="pill" href="#requirements"> Degree Requirements </a></li>-->
-    <!--<li><a id="history" class='click' data-toggle="pill" href="#course_history"> Course History </a></li>-->
-    <!--<li><a id="docs" class='click' data-toggle="pill" href="#documents">Documents</a></li>-->
-    <!--<li><a id="work" class='click' data-toggle="pill" href="#jobs">Jobs</a></li>-->
-    <!--<li><a id="progress-forms" target="_blank" href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/">Progress Forms</a></li>-->
-    <!--<li><a id="lcourses" class='click'  href="http://cs.unc.edu/academics/teaching-schedules/">List of courses</a></li>-->
-    <!--<li><a id="icurrent" class='click'  href="http://cs.unc.edu/info-for/current-students/">Info for current Graduate Students</a></li>-->
-    <!--<li><a id="ghandbook" class='click' href="http://handbook.unc.edu/">Graduate School Handbook</a></li>-->
-    <!--<li><a id="ccourses" class='click'  href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/">Categories of Courses</a></li>-->
-    <!--<li><%#= link_to('Back to Homepage', students_path) %></li>-->
-  <!--</ul>-->
-
+  <div><a class='click' href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/" target="_blank"><div class="pillbutton">Progress Forms</div></a></div>
+  <div><a class='click' href="http://cs.unc.edu/academics/teaching-schedules/" target="_blank"><div class="pillbutton">List of Courses</div></a></div>
+  <div><a class='click'  href="http://cs.unc.edu/info-for/current-students/" target="_blank"><div class="pillbutton">Info for Current Students</div></a></div>
+  <div><a class='click'  href="http://handbook.unc.edu/" target="_blank"><div class="pillbutton">Graduate School Handbook</div></a></div>
+  <div><a class='click'  href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/" target="_blank"><div class="pillbutton">Course Categories</div></a></div>
+  <div><a class='click'  href="/students"><div class="pillbutton">Back to Homepage</div></a></div>
+  <div><a class='click'  href="/login" data-method="delete" ><div class="pillbutton"> Log Out </div></a></div>
+  
 </div>
 <!-- SIDE BAR ends -->
+
 <div class="container">
   <div class="tab-content">
-
+    <!--Buttons link to here. Based on their id, they show different pieces of content. -->
     <div id="basic_info" class="tab-pane fade in active">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#personal_info">Personal Information</a></li>
@@ -71,9 +59,9 @@
         </div>
       </div>
       </div>
-    </div>
+    </div> <!-- Basic info tab. Calls _form to show and edit information. Also calls _upload_photo to change pics -->
 
-    <div id="requirements" class="tab-pane fade in">
+    <div id="requirements" class="tab-pane fade in">    <!-- Requirements tab. Shows the progress towards the degrees -->
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#masters">Masters</a></li>
         <li><a data-toggle="tab" href="#PhD">Ph.D</a></li>
@@ -178,10 +166,10 @@
             </div>
 
           </div>
-        </div>
+        </div> <!-- Takes variables from students controller to fill in information on this page. -->
         <!-- Masters TAB ENDS -->
         <!-- Ph.D TAB BEGINS -->
-        <div id="PhD" class="tab-pane fade">
+        <div id="PhD" class="tab-pane fade"> <!-- Takes variables from students controller to fill in information on this page. -->
           <div class="panel-group" >
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -330,7 +318,7 @@
       </div>
     </div>
 
-    <div id="course_history" class="tab-pane fade">
+    <div id="course_history" class="tab-pane fade">   <!--Course history tab. Shows what courses a student is enrolled in and the other tab entrolls them in courses. Uses _form under course_histories -->
       <ul class="nav nav-tabs">
         <li class="active"><a class='click' data-toggle="tab" href="#courses">Course History</a></li>
         <li><a class='click' data-toggle="tab" href="#enroll">Add Course to Student's History </a></li>
@@ -389,7 +377,7 @@
           </div>
         </div>
 
-    <div id="documents" class="tab-pane fade in">
+    <div id="documents" class="tab-pane fade in"> <!-- Used to see documents associated with the student and also to add new documents. Uses _form under documents to add new documents. -->
       <ul class="nav nav-tabs">
         <li id="doc_tab" class="active"><a class="click" data-toggle="tab" href="#documents_tab"> Documents </a></li>
         <li id="doc_upload_tab"><a class="click" data-toggle="tab" href="#upload_doc"> Upload </a></li>
@@ -432,7 +420,7 @@
       </div>
     </div>
 
-    <div id="jobs" class="tab-pane fade in">
+    <div id="jobs" class="tab-pane fade in"> <!-- Used to view jobs the student has and to add new jobs they are associated with. Used with _form under jobs -->
       <ul class="nav nav-tabs">
         <li class="active"><a class="click"data-toggle="tab" href="#jobs_tab">Jobs</a></li>
         <li><a data-toggle="tab" class="click" href="#add_job">Add New Job</a></li>

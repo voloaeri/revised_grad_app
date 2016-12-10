@@ -8,10 +8,9 @@ class SessionsController < ApplicationController
     faculty = Faculty.find_by(PID: params[:session][:PID].strip)
     admin = Admin.find_by(PID: params[:session][:PID].strip)
 
+    # login functions are in the helper/session_helper.rb file
     if student
-
       log_in_student student
-
       redirect_to student
     elsif faculty
       log_in_faculty

@@ -5,34 +5,34 @@ class StudentsController < ApplicationController
     render :layout => 'home'
   end
 
-  # GET /students
-  # GET /students.json
+
+  # Home Search page
   def index
 
-    if(!allow_faculty)
+    if (!allow_faculty)
       return false
     end
 
     @students = Student.all
   end
 
-  # GET /students/1
-  # GET /students/1.json
+
+  # Non Editable Student Page
   def show
 
-    if(!allow_student params[:id])
+    if (!allow_student params[:id])
       return false
     end
 
     @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
 
     @student = Student.find(params[:id])
-    #raise @student.inspect
     @job = Job.new(student: @student)
     @document = Document.new(student: @student)
     @course_description = CourseDescription.new
     @course_description.student = @student.id
 
+    # Calculations for the requirements page
     @course_histories = CourseHistory.where(student_id: @student.id)
     @total_hours=0
     @comp_hours=0
@@ -68,7 +68,7 @@ class StudentsController < ApplicationController
       hours= @current_course.hours.to_i
       name=@current_course.number.to_s
 
-      if(@current_course.number==994)
+      if (@current_course.number==994)
         @nfour_hours=@nfour_hours+hours
       end
       if (@nfour_hours>=6)
@@ -110,7 +110,7 @@ class StudentsController < ApplicationController
         @systems=true
         @psystems_counter=@psystems_counter+1
         @systemCourses=@systemCourses+name+", "
-        if(@psystems_counter>=2)
+        if (@psystems_counter>=2)
           @pSystems=true
         end
         if (@current_course.number>@systems_course)
@@ -125,10 +125,11 @@ class StudentsController < ApplicationController
     @systems_course= @systems_course.to_s
   end
 
-  # GET /students/new
+
+  # Creates the new student page
   def new
 
-    if(!allow_admin)
+    if (!allow_admin)
       return false
     end
 
@@ -138,13 +139,14 @@ class StudentsController < ApplicationController
     @student = Student.new({:citizenship => "United States", :startedYear => year, :approvedYear => year, :startedSemester => semester, :approvedSemester => semester})
   end
 
-  # GET /students/1/edit
+  # Admin's edit Page
   def edit
 
-    if(!allow_admin_faculty_no_edit params[:id])
+    if (!allow_admin_faculty_no_edit params[:id])
       return false
     end
 
+    # calculates requirements stuff It's repeated code. Sorry! You'll have to refactor it and place it in a helper module.
     @doc_titles = Document.where({:student_id => params[:id]}).pluck(:title)
     @student = Student.find(params[:id])
 
@@ -199,7 +201,7 @@ class StudentsController < ApplicationController
       hours= @current_course.hours.to_i
       name=@current_course.number.to_s
 
-      if(@current_course.number==994)
+      if (@current_course.number==994)
         @nfour_hours=@nfour_hours+hours
       end
       if (@nfour_hours>=6)
@@ -242,7 +244,7 @@ class StudentsController < ApplicationController
         @systems=true
         @psystems_counter=@psystems_counter+1
         @systemCourses=@systemCourses+name+", "
-        if(@psystems_counter>=2)
+        if (@psystems_counter>=2)
           @pSystems=true
         end
         if (@current_course.number>@systems_course)
@@ -251,7 +253,7 @@ class StudentsController < ApplicationController
       end
 
       @total_hours=@total_hours + hours
-     end
+    end
     @applications_course= @applications_course.to_s
     @theory_course= @theory_course.to_s
     @systems_course= @systems_course.to_s
@@ -259,11 +261,10 @@ class StudentsController < ApplicationController
     #puts @course_description.student
   end
 
-  # POST /students
-  # POST /students.json
+  # called after submit is clicked on the new student page
   def create
 
-    if(!allow_admin)
+    if (!allow_admin)
       return false
     end
 
@@ -271,79 +272,80 @@ class StudentsController < ApplicationController
     @student.firstName.capitalize!
     @student.lastName.capitalize!
     student_params[:PID].strip!
-    @student.semesterStartedCS = student_params[:startedSemester] + " "  + student_params[:startedYear]
-    @student.backgroundApproved = student_params[:approvedSemester] + " "  + student_params[:approvedYear]
+    @student.semesterStartedCS = student_params[:startedSemester] + " " + student_params[:startedYear]
+    @student.backgroundApproved = student_params[:approvedSemester] + " " + student_params[:approvedYear]
 
     #raise @student.inspect
     @nameError = false
     @success = false
     @pidError = false
-    @pidDup  = false
+    @pidDup = false
 
     respond_to do |format|
 
       if student_params[:firstName] == ""
         @nameError=true
         puts "name error"
-        format.js { }
+        format.js {}
         return
       elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
         @nameError=true
         puts "name error"
-        format.js { }
+        format.js {}
       end
 
       if student_params[:lastName] == ""
         @nameError=true
         puts "name error"
-        format.js { }
+        format.js {}
         return
       end
 
       if student_params[:PID] == ""
         @pidError=true
         puts "pid error"
-        format.js { }
+        format.js {}
         return
       elsif !/\A\d+\z/.match(student_params[:PID])
         @pidError=true
         puts "pid error"
-        format.js { }
+        format.js {}
         return
       elsif student_params[:PID].length!=9
         @pidError=true
         puts "pid error"
-        format.js { }
+        format.js {}
         return
       end
 
       if Student.find_by(PID: student_params[:PID])
         puts "DUPL"
         @pidDup = true
-        format.js { }
+        format.js {}
         return
       end
 
       if @student.save
         @success = true
-        format.js { redirect_to edit_student_url(@student), flash: { success: 'Student Created Successfully!' } }
+        format.js { redirect_to edit_student_url(@student), flash: {success: 'Student Created Successfully!'} }
         format.json { render :show, status: :created, location: @student }
       else
         format.js { render :new }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
 
-      end
+    end
 
   end
 
 
+
   def upload_photo
     @admin=false
-    if(!allow_admin_and_student student_params[:id])
+    if (!allow_admin_and_student student_params[:id])
       return false
     end
-    if(session[:admin]==true)
+    if (session[:admin]==true)
       @admin=true
     end
     @student = Student.find(student_params[:id])
@@ -356,7 +358,7 @@ class StudentsController < ApplicationController
       return
     end
 
-    imageTypes = {"image/png" => true, "image/jpeg" => true }
+    imageTypes = {"image/png" => true, "image/jpeg" => true}
 
     if !imageTypes[uploaded_io.content_type]
       flash[:notice] = "Please upload a PNG or JPEG image"
@@ -367,7 +369,7 @@ class StudentsController < ApplicationController
 
     pid = @student.PID
 
-    FileUtils.mkdir_p  Rails.public_path + "uploads/#{pid}"
+    FileUtils.mkdir_p Rails.public_path + "uploads/#{pid}"
 
     File.open(Rails.root.join('public', "uploads/#{pid}", uploaded_io.original_filename), 'wb') do |file|
       file.write(uploaded_io.read)
@@ -375,8 +377,7 @@ class StudentsController < ApplicationController
 
     new_params = Hash.new
     new_params[:imageLocation] = "uploads/#{pid}/#{uploaded_io.original_filename}"
-    new_params[:id] = student_params[:id];
-    #raise new_params.inspect
+    new_params[:id] = student_params[:id]
 
     respond_to do |format|
       if @student.update(new_params)
@@ -391,80 +392,68 @@ class StudentsController < ApplicationController
     end
   end
 
+  # Called when update is clicked on the edit page
   def update
 
-    if(!allow_admin)
+    if (!allow_admin)
       return false
     end
 
     @nameError = false
     @success = false
     @pidError = false
-    @pidDup  = false
+    @pidDup = false
     @pidDup = false
 
     respond_to do |format|
-    if student_params[:firstName] == ""
-      @nameError=true
-      puts "name error"
-      format.js { }
-      return
-    elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
-      @nameError=true
-      puts "name error"
-      format.js { }
-    end
+      if student_params[:firstName] == ""
+        @nameError=true
+        puts "name error"
+        format.js {}
+        return
+      elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
+        @nameError=true
+        puts "name error"
+        format.js {}
+      end
 
-    if student_params[:lastName] == ""
-      @nameError=true
-      puts "name error"
-      format.js { }
-      return
-    end
+      if student_params[:lastName] == ""
+        @nameError=true
+        puts "name error"
+        format.js {}
+        return
+      end
 
-    if student_params[:PID] == ""
-      @pidError=true
-      puts "pid error"
-      format.js { }
-      return
-    elsif !/\A\d+\z/.match(student_params[:PID])
-      @pidError=true
-      puts "pid error"
-      format.js { }
-      return
-    elsif student_params[:PID].length!=9
-      @pidError=true
-      puts "pid error"
-      format.js { }
-      return
-    end
+      if student_params[:PID] == ""
+        @pidError=true
+        puts "pid error"
+        format.js {}
+        return
+      elsif !/\A\d+\z/.match(student_params[:PID])
+        @pidError=true
+        puts "pid error"
+        format.js {}
+        return
+      elsif student_params[:PID].length!=9
+        @pidError=true
+        puts "pid error"
+        format.js {}
+        return
+      end
 
+      newPID_student = Student.find_by(PID: student_params[:PID])
+      current_Student = Student.find(params[:id])
 
-   # raise student_params.inspect
-    puts 'PID: ' + student_params[:PID].to_s
+      # checks if pid is not used already and makes sure it isn't compared to itself.
+      if !newPID_student.nil? && newPID_student.id != current_Student.id
+        puts "DUPL"
+        @pidDup = true
+        format.js {}
+        return
+      end
 
-    newPID = Student.find_by(PID: student_params[:PID])
-    currentStudent = Student.find(params[:id])
-
-    puts newPID.id
-    puts currentStudent.id
-
-
-
-    # puts (student_params[:id].to_s + ":" + s.id.to_s)
-    #
-    # puts student_params[:id].to_i.to_s != s.id.to_s
-
-
-    if !newPID.nil? && newPID.id != currentStudent.id
-      puts "DUPL"
-      @pidDup = true
-      format.js { }
-      return
-    end
-
-    @student.semesterStartedCS = student_params[:startedSemester] + " "  + student_params[:startedYear]
-    @student.backgroundApproved = student_params[:approvedSemester] + " "  + student_params[:approvedYear]
+      @student.semesterStartedCS = student_params[:startedSemester] + " " + student_params[:startedYear]
+      @student.backgroundApproved = student_params[:approvedSemester] + " " + student_params[:approvedYear]
 
       if @student.update(student_params)
         @success = true
@@ -477,11 +466,9 @@ class StudentsController < ApplicationController
     end
   end
 
-  # DELETE /students/1
-  # DELETE /students/1.json
-  def destroy
 
-    if(!allow_admin)
+  def destroy
+    if (!allow_admin)
       return false
     end
 
@@ -492,45 +479,18 @@ class StudentsController < ApplicationController
     end
   end
 
-  # GET /things/typeahead/:query
-  def typeahead
-
-    allow_admin
-
-    if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.
-      return
-    end
-
-
-    if search_params[:query].to_i.to_s == search_params[:query]
-      puts "is true"
-      @suggestions = Faculties.where('number LIKE ?', "%#{search_params[:query]}%").pluck(:lastName).map{ |s| {lastName: s[0]}}
-      puts @suggestions
-    else
-      @suggestions = Faculties.where('name LIKE ?', "%#{search_params[:query]}%").pluck(:lastName).map{ |s| {lastName: s[0]}} #Select the data you want to load on the typeahead.
-      puts @suggestions
-    end
-
-    #@suggestions.values.join(" ")
-
-    respond_to do |format|
-      format.json { render json: @suggestions.to_json }
-    end
-  end
-
-
   private
   def search_params
     params.permit(:query) || {}
   end
 
   # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = Student.find(params[:id])
-    end
+  def set_student
+    @student = Student.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def student_params
-      params.require(:student).permit(:firstName, :lastName, :PID, :alternativeName, :gender, :ethnicity, :status, :citizenship, :residency, :enteringStatus, :advisor, :researchArea, :startedYear, :approvedYear, :startedSemester, :approvedSemester, :backgroundApproved, :approvsemester,:approvyear,:leaveExtension, :fundingStatus, :fundingEligibility, :intendedDegree, :coursesTaken, :hoursCompleted, :imageLocation, :id,:PRP,:oralExam,:committeeMeeting,:ABD,:dissertation_defense,:finalDiss,:phdAdmitDate)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def student_params
+    params.require(:student).permit(:firstName, :lastName, :PID, :alternativeName, :gender, :ethnicity, :status, :citizenship, :residency, :enteringStatus, :advisor, :researchArea, :startedYear, :approvedYear, :startedSemester, :approvedSemester, :backgroundApproved, :approvsemester, :approvyear, :leaveExtension, :fundingStatus, :fundingEligibility, :intendedDegree, :coursesTaken, :hoursCompleted, :imageLocation, :id, :PRP, :oralExam, :committeeMeeting, :ABD, :dissertation_defense, :finalDiss, :phdAdmitDate)
+  end
 end

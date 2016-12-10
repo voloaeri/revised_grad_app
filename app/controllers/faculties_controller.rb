@@ -2,16 +2,12 @@ class FacultiesController < ApplicationController
   before_action :set_faculty, only: [:show, :edit, :update, :destroy]
 
   # GET /faculties
-  # GET /faculties.json
   def index
-
     allow_admin
-
     @faculties = Faculty.all
   end
 
   # GET /faculties/1
-  # GET /faculties/1.json
   def show
   end
 
@@ -28,7 +24,6 @@ class FacultiesController < ApplicationController
   end
 
   # POST /faculties
-  # POST /faculties.json
   # Creating a new faculty member. Admin only. 
   def create
 
@@ -48,7 +43,6 @@ class FacultiesController < ApplicationController
   end
 
   # PATCH/PUT /faculties/1
-  # PATCH/PUT /faculties/1.json
   def update
 
     allow_admin
@@ -65,7 +59,6 @@ class FacultiesController < ApplicationController
   end
 
   # DELETE /faculties/1
-  # DELETE /faculties/1.json
   def destroy
 
     allow_admin
@@ -82,30 +75,24 @@ class FacultiesController < ApplicationController
 
     allow_admin
 
-    if params[:id] == "suggestions"  # Typeahead Prefetch default returns nothing. Prevents bug on page load.
-      return
-    end
-    #@suggestions = CourseDescription.where("name LIKE" => "%#{search_params[:query]}%")
-    @suggestions = Faculty.where('lastName LIKE ?', "%#{search_params[:query]}%").pluck(:lastName, :firstName).map{ |s| s[0] + ", " + s[1] } #Select the data you want to load on the typeahead.
-    #@suggestions.map{ |s| {name: s[0], number: s[1], hours: s[2]}}
-    #raise @suggestions.inspect
+    @suggestions = Faculty.where('lastName LIKE ?', "%#{search_params[:query]}%").pluck(:lastName, :firstName).map { |s| s[0] + ", " + s[1] } #Select the data you want to load on the typeahead.
     respond_to do |format|
       format.json { render json: @suggestions.to_json }
     end
   end
 
   private
-    def search_params
-      params.permit(:query) || {}
-    end
+  def search_params
+    params.permit(:query) || {}
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_faculty
-      @faculty = Faculty.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_faculty
+    @faculty = Faculty.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def faculty_params
-      params.require(:faculty).permit(:firstName, :lastName, :sectionNumber, :PID, :isAdmin)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def faculty_params
+    params.require(:faculty).permit(:firstName, :lastName, :sectionNumber, :PID, :isAdmin)
+  end
 end
