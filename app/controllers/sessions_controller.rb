@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
     render 'new'
   end
-
+  # Creates the original session on login. Uses PID only right now. Go to helpers, sessions for the functions used to check what session and persmissions to give people
   def create
     student = Student.find_by(PID: params[:session][:PID].strip)
     faculty = Faculty.find_by(PID: params[:session][:PID].strip)
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
   def not_found
     
   end
-
+  # Logs them out and destroys the session upon click of the logout button
   def destroy
     reset_session
     flash[:success] = "You have been logged out!"

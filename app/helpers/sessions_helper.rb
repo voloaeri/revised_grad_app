@@ -1,5 +1,9 @@
 module SessionsHelper
-
+  # Manages session permissions based on type of user: admin, faculty, student.
+  # Admin- can see everything and do everything
+  # Faculty- can see everything, can make no changes
+  # Student- can only see themselves, can change some stuff about themselves
+  # Each function checks based on type of user and if a user is trying to access something they shouldn't the user is kicked out to login page and given an error message
   def log_in_student(user)
     session[:student_id] = user.id
   end

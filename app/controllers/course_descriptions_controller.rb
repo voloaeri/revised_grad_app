@@ -3,13 +3,15 @@ class CourseDescriptionsController < ApplicationController
 
   # GET /course_descriptions
   # GET /course_descriptions.json
+  # Gets a list of all course_descriptions
   def index
 
     allow_admin
 
     @course_descriptions = CourseDescription.all
   end
-
+  # Used to search for a specific course_description when adding to a course_history. Must have an instance of the course_description in the selected semester to be added
+  # to a course_history. Admin only. Calls create.js.erb
   def search
 
     allow_admin
@@ -85,6 +87,7 @@ class CourseDescriptionsController < ApplicationController
 
   # POST /course_descriptions
   # POST /course_descriptions.json
+  # Used together with _form under course_descriptions in views to create a new course_description in a certain semester. Admin only. Calls create.js.erb under course_descriptions
   def create
 
     if(!allow_admin)
@@ -164,6 +167,7 @@ class CourseDescriptionsController < ApplicationController
 
   # DELETE /course_descriptions/1
   # DELETE /course_descriptions/1.json
+  # Used to delete a course
   def destroy
     allow_admin
     @course_description.destroy
@@ -174,6 +178,7 @@ class CourseDescriptionsController < ApplicationController
   end
 
   # GET /things/typeahead/:query
+  # Returns a json representation of courses that you may interested in to the typeahead on the page
   def typeahead
 
     #raise params.inspect

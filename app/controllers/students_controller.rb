@@ -270,6 +270,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
     @student.firstName.capitalize!
     @student.lastName.capitalize!
+    student_params[:PID].strip!
     @student.semesterStartedCS = student_params[:startedSemester] + " "  + student_params[:startedYear]
     @student.backgroundApproved = student_params[:approvedSemester] + " "  + student_params[:approvedYear]
 
@@ -277,6 +278,7 @@ class StudentsController < ApplicationController
     @nameError = false
     @success = false
     @pidError = false
+    @pidDup  = false
 
     respond_to do |format|
 
@@ -311,6 +313,13 @@ class StudentsController < ApplicationController
       elsif student_params[:PID].length!=9
         @pidError=true
         puts "pid error"
+        format.js { }
+        return
+      end
+
+      if Student.find_by(PID: student_params[:PID])
+        puts "DUPL"
+        @pidDup = true
         format.js { }
         return
       end
@@ -388,11 +397,77 @@ class StudentsController < ApplicationController
       return false
     end
 
+    @nameError = false
+    @success = false
+    @pidError = false
+    @pidDup  = false
+    @pidDup = false
+
+    respond_to do |format|
+    if student_params[:firstName] == ""
+      @nameError=true
+      puts "name error"
+      format.js { }
+      return
+    elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
+      @nameError=true
+      puts "name error"
+      format.js { }
+    end
+
+    if student_params[:lastName] == ""
+      @nameError=true
+      puts "name error"
+      format.js { }
+      return
+    end
+
+    if student_params[:PID] == ""
+      @pidError=true
+      puts "pid error"
+      format.js { }
+      return
+    elsif !/\A\d+\z/.match(student_params[:PID])
+      @pidError=true
+      puts "pid error"
+      format.js { }
+      return
+    elsif student_params[:PID].length!=9
+      @pidError=true
+      puts "pid error"
+      format.js { }
+      return
+    end
+
+
+   # raise student_params.inspect
+    puts 'PID: ' + student_params[:PID].to_s
+
+    newPID = Student.find_by(PID: student_params[:PID])
+    currentStudent = Student.find(params[:id])
+
+    puts newPID.id
+    puts currentStudent.id
+
+
+
+    # puts (student_params[:id].to_s + ":" + s.id.to_s)
+    #
+    # puts student_params[:id].to_i.to_s != s.id.to_s
+
+
+    if !newPID.nil? && newPID.id != currentStudent.id
+      puts "DUPL"
+      @pidDup = true
+      format.js { }
+      return
+    end
+
     @student.semesterStartedCS = student_params[:startedSemester] + " "  + student_params[:startedYear]
     @student.backgroundApproved = student_params[:approvedSemester] + " "  + student_params[:approvedYear]
 
-    respond_to do |format|
       if @student.update(student_params)
+        @success = true
         format.html { redirect_to edit_student_url(@student), notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else

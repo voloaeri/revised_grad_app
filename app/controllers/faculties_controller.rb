@@ -29,6 +29,7 @@ class FacultiesController < ApplicationController
 
   # POST /faculties
   # POST /faculties.json
+  # Creating a new faculty member. Admin only. 
   def create
 
     allow_admin

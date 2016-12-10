@@ -30,6 +30,7 @@ class JobsController < ApplicationController
 
   # POST /jobs
   # POST /jobs.json
+  # Admin only. Creates a new job instance to add to a student. Uses _form under jobs under views. Calls create.js.erb to put it down on the page without reloading
   def create
 
     #raise params.inspect
@@ -99,6 +100,7 @@ class JobsController < ApplicationController
 
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
+  # No longer used
   def update
     allow_admin
     respond_to do |format|
@@ -114,6 +116,7 @@ class JobsController < ApplicationController
 
   # DELETE /jobs/1
   # DELETE /jobs/1.json
+  # Admin only. Used to destroy a job.
   def destroy
 
     if(!allow_admin)

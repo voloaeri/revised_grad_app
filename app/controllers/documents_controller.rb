@@ -5,6 +5,8 @@ class DocumentsController < ApplicationController
 
   # POST /documents
   # POST /documents.json
+  # Used together with _form under documents under views to create a document instance to add to a student's profile. Only allowed by admin and the specified student
+  # Calls create.js.erb in views as well
   def create
       if(!allow_admin_and_student params[:document][:student_id])
         return false
@@ -86,6 +88,7 @@ class DocumentsController < ApplicationController
 
   # DELETE /documents/1
   # DELETE /documents/1.json
+  # Used to delete a document instance. Only allowed by admin and the specified student. Calls destroy.js.erb in views as well
   def destroy
 
     if(!allow_admin_and_student @document.student_id)

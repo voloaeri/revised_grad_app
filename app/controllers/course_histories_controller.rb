@@ -31,6 +31,7 @@ class CourseHistoriesController < ApplicationController
 
   # POST /course_histories
   # POST /course_histories.json
+  # Used together with _form under course_histories under views to add a a course_desciption in a specific semester to a course_history. Admin only. Calls create.js.erb in views
   def create
     # puts "in Search!"
     #

@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
-
+  # Search page for students. Only searches on either PID or last name, js file in applications clears one text box when the other is clicked. Calls searchStudents.js.erb
+  # under search under views. Only 9 digit PIDS are allowed
   def searchStudents
     allow_faculty
     @PIDerror = false

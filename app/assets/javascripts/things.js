@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
 
     var dropDown;
-
+    //Typeahead stuff. Original framework created and maintained by Twitter
     var courseSearchName = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
