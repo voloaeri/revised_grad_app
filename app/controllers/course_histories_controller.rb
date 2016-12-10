@@ -80,7 +80,13 @@ class CourseHistoriesController < ApplicationController
 
       #raise @history.errors.inspect
 
-      format.js {}
+      if(!@semesterError && !@courseError)
+        flash[:success] = "Successful"
+      else
+        flash[:danger] = "fail. ;( "
+      end
+
+      format.js { redirect_to edit_student_url(@student) + "#history" }
       format.html {}
     end
     #render layout: false

@@ -16,7 +16,7 @@
 
   <div><a href="http://cs.unc.edu/academics/graduate/ms-requirements/progress-forms/" target="_blank"><div class="pillbutton">Progress Forms</div></a></div>
   <div><a href="http://cs.unc.edu/academics/teaching-schedules/" target="_blank"><div class="pillbutton">List of Courses</div></a></div>
-  <div><a href="http://cs.unc.edu/info-for/current-students/" target="_blank"><div class="pillbutton">Info for Current Graduate Students</div></a></div>
+  <div><a href="http://cs.unc.edu/info-for/current-students/" target="_blank"><div class="pillbutton">Info for Current Students</div></a></div>
   <div><a href="http://handbook.unc.edu/" target="_blank"><div class="pillbutton">Graduate School Handbook</div></a></div>
   <div><a href="http://cs.unc.edu/academics/graduate/ms-requirements/course-categories/" target="_blank"><div class="pillbutton">Course Categories</div></a></div>
   <div><a href="/students"><div class="pillbutton">Back to Homepage</div></a></div>
@@ -339,7 +339,13 @@
         <div id="courses" class="tab-pane fade in active">
         <div class="panel panel-default">
           <div class="panel-body">
-            <div class="alerts"> </div>
+            <div class="alerts">
+              <% flash.each do |type, message| %>
+                  <div class="alert <%= flash_class(type.to_sym) %>">
+                    <%= message %>
+                  </div>
+              <% end %>
+            </div>
             <table class="ctable course_table" style="width:75%">
               <tr class="ctable">
                 <th class="ctable">Course Name</th>

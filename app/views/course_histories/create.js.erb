@@ -21,12 +21,16 @@ if(<%= @courseError %> ){
   var semester = "<td class='ctable'> <%= @semester.semester + " " + @semester.year.to_s  if @semester%></td>";
   var destroy=  "<td class ='ctable touch'> <a data-remote='true' rel='nofollow' data-method='delete' href='/course_histories?course_history%5Bid%5D=<%= @history.id if @history%>&amp;course_history%5Bstudent_id%5D=<%= @student.id %>'>Unenroll</a> </td>";
 
-  $(".course_table").append("<tr class='ctable'>"+name+number+teacher+section+semester+category+hours+destroy+"</tr>");//<tr class='temp'>"+name+number+time+category+"</tr>
+//  $(".course_table").append("<tr class='ctable'>"+name+number+teacher+section+semester+category+hours+destroy+"</tr>");//<tr class='temp'>"+name+number+time+category+"</tr>
+//
+//  $("#course_history ul.nav li:nth-child(1) a").tab('show');
+//
+//  $(".alerts").append("<div class='alert alert-success'> Student Successfully Enrolled  </div>");
+//
+//  $('#new_course_history')[0].reset();
 
-  $("#course_history ul.nav li:nth-child(1) a").tab('show');
+  <%= flash[:success] = "yay" %>
 
-  $(".alerts").append("<div class='alert alert-success'> Student Successfully Enrolled  </div>");
-
-  $('#new_course_history')[0].reset();
+    window.location.href = '<%= edit_student_url(@student) %>';
 
 }
