@@ -268,6 +268,8 @@ class StudentsController < ApplicationController
     end
 
     @student = Student.new(student_params)
+    @student.firstName.capitalize!
+    @student.lastName.capitalize!
     @student.semesterStartedCS = student_params[:startedSemester] + " "  + student_params[:startedYear]
     @student.backgroundApproved = student_params[:approvedSemester] + " "  + student_params[:approvedYear]
 
