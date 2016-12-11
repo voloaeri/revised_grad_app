@@ -341,64 +341,7 @@ class StudentsController < ApplicationController
 
 
   def upload_photo
-    @admin=false
-    @nameError=false
-    if (!allow_admin_and_student student_params[:id])
-      return false
-    end
-    if (session[:admin]==true)
-      @admin=true
-    end
-
-    @student = Student.find(student_params[:id])
-     if (student_params.size<=1)
-      flash[:notice] = "Please select a picture to upload"
-      if(@admin)
-        redirect_to edit_student_url(@student)
-      else
-        redirect_to student_url(@student)
-      end
-      return
-    end
-    if !(student_params.size<=1)
-    
-    if (student_params[:imageLocation].tempfile.size.to_f / 1024000) > 1.5
-      flash[:notice] = "Please select a smaller image"
-      if(@admin)
-        redirect_to edit_student_url(@student)
-      else
-        redirect_to student_url(@student)
-      end
-      return
-    end
-    end
-    uploaded_io = student_params[:imageLocation]
-
-    imageTypes = {"image/png" => true, "image/jpeg" => true}
-
-    if !imageTypes[uploaded_io.content_type]
-      flash[:notice] = "Please upload a PNG or JPEG image"
-      
-      if(@admin)
-        redirect_to edit_student_url(@student)
-      else
-        redirect_to student_url(@student)
-      end
-      return
-    end
-
-
-    pid = @student.PID
-
-    FileUtils.mkdir_p Rails.public_path + "uploads/#{pid}"
-
-    File.open(Rails.root.join('public', "uploads/#{pid}", uploaded_io.original_filename), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
-
-    new_params = Hash.new
-    new_params[:imageLocation] = "uploads/#{pid}/#{uploaded_io.original_filename}"
-    new_params[:id] = student_params[:id]
+   
     respond_to do |format|
       if @student.update(new_params)
         if (@admin==true)
@@ -415,65 +358,64 @@ class StudentsController < ApplicationController
   # Called when update is clicked on the edit page
   def update
 
-#     if (!allow_admin)
-#       return false
-#     end
+     if (!allow_admin)
+       return false
+     end
 
-#     @nameError = false
-#     @success = false
-#     @pidError = false
-#     @pidDup = false
-#     @pidDup = false
+     @nameError = false
+     @success = false
+     @pidError = false
+     @pidDup = false
+     @pidDup = false
 
-#     respond_to do |format|
-#       if student_params[:firstName] == ""
-#         @nameError=true
-#         puts "name error"
-#         format.js {}
-#         return
-#       elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
-#         @nameError=true
-#         puts "name error"
-#         format.js {}
-#       end
+     respond_to do |format|
+       if student_params[:firstName] == ""
+         @nameError=true
+         puts "name error"
+         format.js {}
+         return
+       elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
+         @nameError=true
+         puts "name error"
+         format.js {}
+       end
 
-#       if student_params[:lastName] == ""
-#         @nameError=true
-#         puts "name error"
-#         format.js {}
-#         return
-#       end
+       if student_params[:lastName] == ""
+         @nameError=true
+         puts "name error"
+         format.js {}
+         return
+       end
 
-#       if student_params[:PID] == ""
-#         @pidError=true
-#         puts "pid error"
-#         format.js {}
-#         return
-#       elsif !/\A\d+\z/.match(student_params[:PID])
-#         @pidError=true
-#         puts "pid error"
-#         format.js {}
-#         return
-#       elsif student_params[:PID].length!=9
-#         @pidError=true
-#         puts "pid error"
-#         format.js {}
-#         return
-#       end
+       if student_params[:PID] == ""
+         @pidError=true
+         puts "pid error"
+         format.js {}
+         return
+       elsif !/\A\d+\z/.match(student_params[:PID])
+         @pidError=true
+         puts "pid error"
+         format.js {}
+         return
+       elsif student_params[:PID].length!=9
+         @pidError=true
+         puts "pid error"
+         format.js {}
+         return
+       end
 
-#       newPID_student = Student.find_by(PID: student_params[:PID])
-#       current_Student = Student.find(params[:id])
+       newPID_student = Student.find_by(PID: student_params[:PID])
+       current_Student = Student.find(params[:id])
 
-#       # checks if pid is not used already and makes sure it isn't compared to itself.
-#       if !newPID_student.nil? && newPID_student.id != current_Student.id
-#         puts "DUPL"
-#         @pidDup = true
-#         format.js {}
-#         return
-#       end
-
-#       @student.semesterStartedCS = student_params[:startedSemester] + " " + student_params[:startedYear]
-#       @student.backgroundApproved = student_params[:approvedSemester] + " " + student_params[:approvedYear]
+       # checks if pid is not used already and makes sure it isn't compared to itself.
+       if !newPID_student.nil? && newPID_student.id != current_Student.id
+         puts "DUPL"
+         @pidDup = true
+         format.js {}
+         return
+       end
+       @student.semesterStartedCS = student_params[:startedSemester] + " " + student_params[:startedYear]
+       @student.backgroundApproved = student_params[:approvedSemester] + " " + student_params[:approvedYear]
 
       if @student.update(student_params)
         @success = true
