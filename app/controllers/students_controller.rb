@@ -349,12 +349,11 @@ class StudentsController < ApplicationController
     if (session[:admin]==true)
       @admin=true
     end
+
     @student = Student.find(student_params[:id])
 
-
-
-
     uploaded_io = student_params[:imageLocation]
+
     if uploaded_io.nil?
       flash[:notice] = "Please select a picture to upload"
       if(@admin)
