@@ -341,7 +341,64 @@ class StudentsController < ApplicationController
 
 
   def upload_photo
-   
+    @admin=false
+    @nameError=false
+    if (!allow_admin_and_student student_params[:id])
+      return false
+    end
+    if (session[:admin]==true)
+      @admin=true
+    end
+
+    @student = Student.find(student_params[:id])
+     if (student_params.size<=1)
+      flash[:notice] = "Please select a picture to upload"
+      if(@admin)
+        redirect_to edit_student_url(@student)
+      else
+        redirect_to student_url(@student)
+      end
+      return
+    end
+    if !(student_params.size<=1)
+    
+    if (student_params[:imageLocation].tempfile.size.to_f / 1024000) > 1.5
+      flash[:notice] = "Please select a smaller image"
+      if(@admin)
+        redirect_to edit_student_url(@student)
+      else
+        redirect_to student_url(@student)
+      end
+      return
+    end
+    end
+    uploaded_io = student_params[:imageLocation]
+
+    imageTypes = {"image/png" => true, "image/jpeg" => true}
+
+    if !imageTypes[uploaded_io.content_type]
+      flash[:notice] = "Please upload a PNG or JPEG image"
+      
+      if(@admin)
+        redirect_to edit_student_url(@student)
+      else
+        redirect_to student_url(@student)
+      end
+      return
+    end
+
+
+    pid = @student.PID
+
+    FileUtils.mkdir_p Rails.public_path + "uploads/#{pid}"
+
+    File.open(Rails.root.join('public', "uploads/#{pid}", uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+
+    new_params = Hash.new
+    new_params[:imageLocation] = "uploads/#{pid}/#{uploaded_io.original_filename}"
+    new_params[:id] = student_params[:id]
     respond_to do |format|
       if @student.update(new_params)
         if (@admin==true)
