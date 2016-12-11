@@ -361,7 +361,7 @@ class StudentsController < ApplicationController
       return
     end
 
-    if (student_params[:imageLocation].tempfile.size.to_f / 1024000) > 1.5
+    if (student_params[:imageLocation].tempfile.size.to_f / 1024000 && !(student_params.size<=1)) > 1.5
       flash[:notice] = "Please select a smaller image"
       if(@admin)
         redirect_to edit_student_url(@student)
