@@ -138,7 +138,7 @@ $(document).on('turbolinks:load', function() {
         source: courseFaculty.ttAdapter()
     });
 
-    $('#student_advisor').typeahead(null, {
+    $('#student_advisor').typeahead({hint: false}, {
         name: 'advisor',
         displayKey: function(countries) {
             //console.log(countries);
