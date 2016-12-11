@@ -74,6 +74,12 @@ $(document).on('turbolinks:load', function(){
 
     });
     
+    //Button disabled until file is chosen. Prevents some unknown rails bug from occuring on the Blade.
+    $('#student_imageLocation').on("change", function() {
+        $('#upload_photo_button').prop('disabled', !$(this).val());
+    });
+
+    
     $('#student_intendedDegree').on('keyup',function(){
         var text = $(this).val();
         $(".side_bar .user h5").html(text);
