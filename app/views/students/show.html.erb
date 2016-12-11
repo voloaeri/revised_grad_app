@@ -1,7 +1,7 @@
 <!-- Show page. Seen mostly by students and faculty. Students can add documents and change their profile photos. -->
 <div class="side_bar">
   <div class="user">
-    <img class="img-circle" alt="img" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120" width="120">
+    <img class="img-circle" alt="img" src="<%= @student.imageLocation ? asset_path(@student.imageLocation) : asset_path("defaults/default_profile_picture.jpg") %>" height="120" >
     <h2> <%= @student.firstName + " " + @student.lastName %> </h2>
     <h3> <%=@student.intendedDegree + " Student" %> </h3>
     <h3> <%= @student.PID  %> </h3>
