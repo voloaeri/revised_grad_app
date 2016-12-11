@@ -352,7 +352,9 @@ class StudentsController < ApplicationController
 
     @student = Student.find(student_params[:id])
 
-    if student_params[:imageLocation].nil?
+    
+
+    if (student_params.size<=1)
       flash[:notice] = "Please select a picture to upload"
       if(@admin)
         redirect_to edit_student_url(@student)
