@@ -352,9 +352,7 @@ class StudentsController < ApplicationController
 
     @student = Student.find(student_params[:id])
 
-    uploaded_io = student_params[:imageLocation]
-
-    if uploaded_io.nil?
+    if student_params[:imageLocation].nil?
       flash[:notice] = "Please select a picture to upload"
       if(@admin)
         redirect_to edit_student_url(@student)
@@ -363,6 +361,7 @@ class StudentsController < ApplicationController
       end
       return
     end
+
     if (student_params[:imageLocation].tempfile.size.to_f / 1024000) > 1.5
       flash[:notice] = "Please select a smaller image"
       if(@admin)
@@ -372,6 +371,8 @@ class StudentsController < ApplicationController
       end
       return
     end
+
+    uploaded_io = student_params[:imageLocation]
 
     imageTypes = {"image/png" => true, "image/jpeg" => true}
 
