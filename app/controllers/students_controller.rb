@@ -360,8 +360,9 @@ class StudentsController < ApplicationController
       end
       return
     end
-
-    if (student_params[:imageLocation].tempfile.size.to_f / 1024000 && !(student_params.size<=1)) > 1.5
+    if !(student_params.size<=1)
+    
+    if (student_params[:imageLocation].tempfile.size.to_f / 1024000) > 1.5
       flash[:notice] = "Please select a smaller image"
       if(@admin)
         redirect_to edit_student_url(@student)
@@ -370,7 +371,7 @@ class StudentsController < ApplicationController
       end
       return
     end
-
+    end
     uploaded_io = student_params[:imageLocation]
 
     imageTypes = {"image/png" => true, "image/jpeg" => true}
