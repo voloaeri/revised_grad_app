@@ -35,6 +35,13 @@
         <div id="personal_info" class="tab-pane fade in active">
           <div class="panel panel-default">
             <div class="panel-body">
+              <div class="alerts">
+                <% flash.each do |type, message| %>
+                    <div class="alert <%= flash_class(type.to_sym) %>">
+                      <%= message %>
+                    </div>
+                <% end %>
+              </div>
               <%= render 'formRead', student: @student %>
             </div>
           </div>

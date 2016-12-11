@@ -342,6 +342,7 @@ class StudentsController < ApplicationController
 
   def upload_photo
     @admin=false
+    @nameError=false
     if (!allow_admin_and_student student_params[:id])
       return false
     end
@@ -350,11 +351,26 @@ class StudentsController < ApplicationController
     end
     @student = Student.find(student_params[:id])
 
-    uploaded_io = student_params[:imageLocation]
 
+
+
+    uploaded_io = student_params[:imageLocation]
+    if uploaded_io.nil?
+      flash[:notice] = "Please select a picture to upload"
+      if(@admin)
+        redirect_to edit_student_url(@student)
+      else
+        redirect_to student_url(@student)
+      end
+      return
+    end
     if (student_params[:imageLocation].tempfile.size.to_f / 1024000) > 1.5
-      flash[:notice] = "Please upload an image less than 1.5 megabytes!"
-      redirect_to edit_student_url(@student)
+      flash[:notice] = "Please select a smaller image"
+      if(@admin)
+        redirect_to edit_student_url(@student)
+      else
+        redirect_to student_url(@student)
+      end
       return
     end
 
@@ -362,7 +378,12 @@ class StudentsController < ApplicationController
 
     if !imageTypes[uploaded_io.content_type]
       flash[:notice] = "Please upload a PNG or JPEG image"
-      redirect_to edit_student_url(@student)
+      
+      if(@admin)
+        redirect_to edit_student_url(@student)
+      else
+        redirect_to student_url(@student)
+      end
       return
     end
 
@@ -378,7 +399,6 @@ class StudentsController < ApplicationController
     new_params = Hash.new
     new_params[:imageLocation] = "uploads/#{pid}/#{uploaded_io.original_filename}"
     new_params[:id] = student_params[:id]
-
     respond_to do |format|
       if @student.update(new_params)
         if (@admin==true)
