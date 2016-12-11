@@ -415,65 +415,65 @@ class StudentsController < ApplicationController
   # Called when update is clicked on the edit page
   def update
 
-    if (!allow_admin)
-      return false
-    end
+#     if (!allow_admin)
+#       return false
+#     end
 
-    @nameError = false
-    @success = false
-    @pidError = false
-    @pidDup = false
-    @pidDup = false
+#     @nameError = false
+#     @success = false
+#     @pidError = false
+#     @pidDup = false
+#     @pidDup = false
 
-    respond_to do |format|
-      if student_params[:firstName] == ""
-        @nameError=true
-        puts "name error"
-        format.js {}
-        return
-      elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
-        @nameError=true
-        puts "name error"
-        format.js {}
-      end
+#     respond_to do |format|
+#       if student_params[:firstName] == ""
+#         @nameError=true
+#         puts "name error"
+#         format.js {}
+#         return
+#       elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
+#         @nameError=true
+#         puts "name error"
+#         format.js {}
+#       end
 
-      if student_params[:lastName] == ""
-        @nameError=true
-        puts "name error"
-        format.js {}
-        return
-      end
+#       if student_params[:lastName] == ""
+#         @nameError=true
+#         puts "name error"
+#         format.js {}
+#         return
+#       end
 
-      if student_params[:PID] == ""
-        @pidError=true
-        puts "pid error"
-        format.js {}
-        return
-      elsif !/\A\d+\z/.match(student_params[:PID])
-        @pidError=true
-        puts "pid error"
-        format.js {}
-        return
-      elsif student_params[:PID].length!=9
-        @pidError=true
-        puts "pid error"
-        format.js {}
-        return
-      end
+#       if student_params[:PID] == ""
+#         @pidError=true
+#         puts "pid error"
+#         format.js {}
+#         return
+#       elsif !/\A\d+\z/.match(student_params[:PID])
+#         @pidError=true
+#         puts "pid error"
+#         format.js {}
+#         return
+#       elsif student_params[:PID].length!=9
+#         @pidError=true
+#         puts "pid error"
+#         format.js {}
+#         return
+#       end
 
-      newPID_student = Student.find_by(PID: student_params[:PID])
-      current_Student = Student.find(params[:id])
+#       newPID_student = Student.find_by(PID: student_params[:PID])
+#       current_Student = Student.find(params[:id])
 
-      # checks if pid is not used already and makes sure it isn't compared to itself.
-      if !newPID_student.nil? && newPID_student.id != current_Student.id
-        puts "DUPL"
-        @pidDup = true
-        format.js {}
-        return
-      end
+#       # checks if pid is not used already and makes sure it isn't compared to itself.
+#       if !newPID_student.nil? && newPID_student.id != current_Student.id
+#         puts "DUPL"
+#         @pidDup = true
+#         format.js {}
+#         return
+#       end
 
-      @student.semesterStartedCS = student_params[:startedSemester] + " " + student_params[:startedYear]
-      @student.backgroundApproved = student_params[:approvedSemester] + " " + student_params[:approvedYear]
+#       @student.semesterStartedCS = student_params[:startedSemester] + " " + student_params[:startedYear]
+#       @student.backgroundApproved = student_params[:approvedSemester] + " " + student_params[:approvedYear]
 
       if @student.update(student_params)
         @success = true
