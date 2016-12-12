@@ -1,0 +1,92 @@
+s.course_description
+s.course_descriptions
+s.course_descriptions.first
+s.course_descriptions.first.semester
+s.course_descriptions.first.semesters.semester
+clear
+s.course_descriptions.first.semesters.year
+s.course_descriptions.first.semesters
+s.course_descriptions.first.semesters.first
+s.course_descriptions.first.semesters.first.semester
+ActiveRecord::Migration.drop_table(:course_history)
+ActiveRecord::Base.connection.execute("drop table Course_History")
+ActiveRecord::Base.connection.execute("drop table course_histories")
+rake db:migrate
+s = Student.find 1
+s.course_histories
+CourseDescriptions.all
+CourseDescription.all
+rails c
+s = Student.find(1)
+s.coursehistories
+s.course_histories.all
+s.course_histories.semester
+s.course_histories.semesters
+Semester.all
+CourseHistory.first
+h =  CourseHistory.first
+h
+Student.new({firstName: "A"})
+CourseHistory.new number: 523
+CourseHistory.new student_id: 1
+Semester.new year: 2016
+a = Student.first.course_histories
+a = Student.first
+Student.all
+s = Student.new firstName: "tim"
+s.save()
+b = CourseHistory.new student_id: 1
+b.save
+s = Semester.new year: 2016
+s.svae
+s.save
+s.error
+s.errors
+CourseDescription.new({number: 550}).save 
+s = Semester.new year: 2016, course_description: 1
+h.year
+h.semester.year
+h.faculty
+h.semester.faculty
+Faculty.all
+Semester.find(3)
+h.semesters
+h.semster
+lls
+eeixexit
+ls
+h = CourseHistory.first
+h.semester
+Student.find 1
+rake db:reset
+Faculty.create( firstName => "Transfer", lastName => "Credit", sectionNumber => "0")
+Faculty.create( :firstName => "Transfer", :lastName => "Credit", :sectionNumber => "0")
+for x in range 14
+f= Faculty.create( :firstName => "Transfer", :lastName => "Credit", :sectionNumber => "0")
+a= CourseDescription.create(number: 1, name: "Transfer", category: "N/A", hours: "1", department: "TRANSFER")
+b= CourseDescription.create(number: 2, name: "Transfer", category: "N/A", hours: "2", department: "TRANSFER")
+c= CourseDescription.create(number: 3, name: "Transfer", category: "N/A", hours: "3", department: "TRANSFER")
+d= CourseDescription.create(number: 4, name: "Transfer", category: "N/A", hours: "4", department: "TRANSFER")
+year= 2006
+14.times do |x|
+  Semester.create(course_description_id: a.id, faculty_id: f.id, year: year, semester: "N/A" )
+  Semester.create(course_description_id: b.id, faculty_id: f.id, year: year, semester: "N/A" )
+  Semester.create(course_description_id: c.id, faculty_id: f.id, year: year, semester: "N/A" )
+  Semester.create(course_description_id: d.id, faculty_id: f.id, year: year, semester: "N/A" )
+  year= year+1
+end
+a = Admin.new(firstName:Jodie, lastName:Gregoritsch, PID:987654321)
+a = Admin.new(firstName:"Jodie", lastName:"Gregoritsch", PID:987654321)
+a.save
+a = Faculty.first
+a = Faculty.find_by({firstName:"Kevin"})
+a.update({PID: 111122223})
+Admin.create(firstName: "Jodie", lastName: "Gregorvitch", PID: "987654321")
+fac= Faculty.first
+fac.update(PID: 111122223)
+Faculty.find_by(firstName: "Diane")
+Faculty.where('lastName LIKE ?' "Poz")
+Faculty.where('lastName LIKE ?', "%Poz%")
+Documents.find_by(student_id: 1)
+Document.find_by(student_id: 1)
+exit

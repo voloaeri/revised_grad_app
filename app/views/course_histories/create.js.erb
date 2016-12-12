@@ -3,13 +3,13 @@ $(".alerts").html("");
 
 if(<%= @courseError %> ){
 
-  $(".alerts").append("<div class='alert alert-danger'> Course could not be found! </div>");
+  $(".alerts").append("<div class='alert alert-danger'> Course could not be found! <a target='_blank' href='"+ base_url+"/course_descriptions/new'> Click here to add it! </a> </div> </div>");
 
 } else if (<%= @semesterError %>) {
 
     var base_url = window.location.origin;
 
-  $(".alerts").append("<div class='alert alert-danger'> Semester for course could not be found! <a href='"+ base_url+"/course_descriptions/new'> Click here to add it! </a> </div>");
+  $(".alerts").append("<div class='alert alert-danger'> Semester for course could not be found! <a target='_blank' href='"+ base_url+"/course_descriptions/new'> Click here to add it! </a> </div>");
 
 } else {
 
