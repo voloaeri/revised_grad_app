@@ -9,6 +9,7 @@
 
 <%= form_for(:session, url: login_path, method: 'post', html: {id: :login } ) do |f| %>
 
+    <div style="font-size: 10px;" onClick="alert('Admin PID: 987654321\nFaculty PID: 111122223')"> Click for Hint! </div>
     <%= f.label :PID %>
     <%= f.text_field :PID %>
 
