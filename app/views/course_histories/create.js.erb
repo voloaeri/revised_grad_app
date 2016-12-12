@@ -3,6 +3,8 @@ $(".alerts").html("");
 
 if(<%= @courseError %> ){
 
+    var base_url = window.location.origin;
+
   $(".alerts").append("<div class='alert alert-danger'> Course could not be found! <a target='_blank' href='"+ base_url+"/course_descriptions/new'> Click here to add it! </a> </div> </div>");
 
 } else if (<%= @semesterError %>) {
