@@ -312,17 +312,17 @@ class StudentsController < ApplicationController
 
       if student_params[:PID] == ""
         @pidError=true
-        puts "pid error"
+        puts "pid error 3"
         format.js {}
         return
       elsif !/\A\d+\z/.match(student_params[:PID].strip!)
         @pidError=true
-        puts "pid error"
+        puts "pid error 2"
         format.js {}
         return
       elsif student_params[:PID].length!=9
         @pidError=true
-        puts "pid error"
+        puts "pid error 1"
         format.js {}
         return
       end
