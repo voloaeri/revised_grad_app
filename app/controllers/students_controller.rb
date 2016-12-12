@@ -291,7 +291,7 @@ class StudentsController < ApplicationController
         puts "name error"
         format.js {}
         return
-      elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
+      elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName].strip!)
         @nameError=true
         puts "name error"
         format.js {}
@@ -302,6 +302,10 @@ class StudentsController < ApplicationController
         puts "name error"
         format.js {}
         return
+      elsif !/^[a-zA-Z\-]+$/.match(student_params[:lastName].strip!)
+        @nameError=true
+        puts "name error"
+        format.js {}
       end
 
       if student_params[:PID] == ""
@@ -309,7 +313,7 @@ class StudentsController < ApplicationController
         puts "pid error"
         format.js {}
         return
-      elsif !/\A\d+\z/.match(student_params[:PID])
+      elsif !/\A\d+\z/.match(student_params[:PID].strip!)
         @pidError=true
         puts "pid error"
         format.js {}
@@ -439,7 +443,7 @@ class StudentsController < ApplicationController
          puts "name error"
          format.js {}
          return
-       elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName])
+       elsif !/^[a-zA-Z\-]+$/.match(student_params[:firstName].strip!)
          @nameError=true
          puts "name error"
          format.js {}
@@ -457,7 +461,7 @@ class StudentsController < ApplicationController
          puts "pid error"
          format.js {}
          return
-       elsif !/\A\d+\z/.match(student_params[:PID])
+       elsif !/\A\d+\z/.match(student_params[:PID].strip!)
          @pidError=true
          puts "pid error"
          format.js {}
