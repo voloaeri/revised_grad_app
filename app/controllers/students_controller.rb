@@ -268,6 +268,9 @@ class StudentsController < ApplicationController
       return false
     end
 
+    student_params[:firstName].strip!
+    student_params[:lastName].strip!
+
     @student = Student.new(student_params)
     @student.firstName.capitalize!
     @student.lastName.capitalize!
@@ -426,6 +429,9 @@ class StudentsController < ApplicationController
      @pidError = false
      @pidDup = false
      @pidDup = false
+
+     student_params[:firstName].strip!
+     student_params[:lastName].strip!
 
      respond_to do |format|
        if student_params[:firstName] == ""

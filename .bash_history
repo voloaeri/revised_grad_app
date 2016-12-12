@@ -603,3 +603,21 @@ cd revis
 cd r
 ls
 rails s -p 80 -b 138.197.12.198
+git add .
+git push origin
+ls
+git add .
+git commit -m "course history error link to add new course"
+git push origin 
+rails s -p 80 -b 138.197.12.198
+git add .
+git commit - "added hints for diane"
+git commit -m "added hints for diane"
+git push origin
+git add .
+git commit - "course history bug"
+git commit -m "course history bug"
+git push origin
+git add .
+git commit -m "course history bug 2"
+git push origin
