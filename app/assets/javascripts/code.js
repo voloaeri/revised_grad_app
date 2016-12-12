@@ -57,7 +57,6 @@ $(document).on('turbolinks:load', function(){
 
     $('#course_history_name').on('keyup',function(){
         var text = $(this).val();
-        alert(text);
         if(text == ""){  console.log('cleaning nam'); $('#course_history_number').val("") }
 
     });
