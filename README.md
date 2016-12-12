@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Grad Track
 
-Things you may want to cover:
+Ruby 2.3.1
+Rails 5.0.1
 
-* Ruby version
 
-* System dependencies
+Start the server: sudo rails s -p [PORT #] -b [IP]
 
-* Configuration
+Run server in the background: rails s -d -p [PORT #] -b [IP]
 
-* Database creation
+reset database: rails db:reset
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
